@@ -68,6 +68,9 @@ function incrementAskedCount(id) {
 function deleteApprovedBySource(source) {
   return db.prepare("DELETE FROM qa WHERE source=? AND status='approved'").run(source);
 }
+function deleteQa(id) {
+  db.prepare("DELETE FROM qa WHERE id=?").run(id);
+}
 function listTopics() {
   return db.prepare("SELECT DISTINCT topic FROM qa WHERE topic IS NOT NULL AND topic != '' ORDER BY topic").all().map(function(r) { return r.topic; });
 }
@@ -248,6 +251,7 @@ module.exports = {
   updateQa: updateQa,
   approveQaToSource: approveQaToSource,
   incrementAskedCount: incrementAskedCount,
+  deleteQa: deleteQa,
   deleteApprovedBySource: deleteApprovedBySource,
   listTopics: listTopics,
   logAiCall: logAiCall,

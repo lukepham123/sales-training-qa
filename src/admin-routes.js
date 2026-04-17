@@ -8,6 +8,28 @@ const { generateSecret, verifyTOTP, generateURI } = require('./otp');
 function registerAdminRoutes(route, sendJson, requireAdmin, dbApi) {
   console.log('[admin-routes] Dang dang ky routes...');
 
+  // Edit Q&A
+  route('PUT', '/api/admin/edit/:id', async (req, res, ctx) => {
+    if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
+    var id = parseInt(ctx.params.id, 10);
+    var doc = dbApi.getById(id);
+    if (!doc) return sendJson(res, 404, { error: 'Khong tim thay' });
+    var q = ((ctx.body || {}).question || '').trim();
+    var a = ((ctx.body || {}).answer || '').trim();
+    var topic = (ctx.body || {}).topic || null;
+    if (!q || !a) return sendJson(res, 400, { error: 'Thieu cau hoi hoac tra loi' });
+    dbApi.updateQa(id, { question: q, answer: a, keywords: JSON.stringify(tokenize(q + ' ' + a)), topic: topic });
+    sendJson(res, 200, { ok: true });
+  });
+
+  // Delete/Reject Q&A
+  route('DELETE', '/api/admin/reject/:id', async (req, res, ctx) => {
+    if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
+    var id = parseInt(ctx.params.id, 10);
+    dbApi.deleteQa(id);
+    sendJson(res, 200, { ok: true });
+  });
+
   // Import Excel
   route('POST', '/api/admin/import-excel', async (req, res, { body }) => {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
@@ -644,6 +666,28 @@ function registerAdminRoutes(route, sendJson, requireAdmin, dbApi) {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
     var userId = (body || {}).userId;
     if (!userId) return sendJson(res, 400, { error: 'Thieu userId' });
+    dbApi.disableOtp(userId);
+    sendJson(res, 200, { ok: true });
+  });
+
+  console.log('[admin-routes] Da dang ky xong tat ca routes.');
+}
+
+module.exports = { registerAdminRoutes };
+  // ---------- OTP: check if current user has OTP enabled ----------
+  route('GET', '/api/admin/otp/status', async (req, res) => {
+    if (\!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
+    var token = (req.headers['authorization'] || '').replace('Bearer ', '');
+    var user = token ? dbApi.getUserByToken(token) : null;
+    if (\!user) return sendJson(res, 200, { otpEnabled: false });
+    sendJson(res, 200, { otpEnabled: \!\!(user.otp_enabled && user.otp_secret) });
+  });
+
+  // ---------- OTP: disable ----------
+  route('POST', '/api/admin/otp/disable', async (req, res, { body }) => {
+    if (\!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
+    var userId = (body || {}).userId;
+    if (\!userId) return sendJson(res, 400, { error: 'Thieu userId' });
     dbApi.disableOtp(userId);
     sendJson(res, 200, { ok: true });
   });
