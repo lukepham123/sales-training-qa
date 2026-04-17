@@ -326,3 +326,60 @@ route('POST', '/api/admin/approve/:id', async function(req, res, ctx) {
   if (source !== 'A' && source !== 'B') source = 'A';
   sendJson(res, 200, dbApi.approveQaToSource(id, source));
 });
+
+// ---------- Register admin routes ----------
+registerAdminRoutes(route, sendJson, requireAdmin, dbApi);
+
+// ---------- Auth routes ----------
+route('POST', '/api/auth/login', async function(req, res, ctx) {
+  var username = ((ctx.body || {}).username || '').trim();
+  var password = (ctx.body || {}).password || '';
+  if (!username || !password) return sendJson(res, 400, { error: 'Thieu username hoac password' });
+  var user = dbApi.getUserByUsername(username);
+  if (!user || user.password_hash !== require('node:crypto').createHash('sha256').update(password).digest('hex')) {
+    return sendJson(res, 401, { error: 'Sai ten dang nhap hoac mat khau' });
+  }
+  if (user.otp_enabled) {
+    return sendJson(res, 200, { requireOtp: true, userId: user.id });
+  }
+  var token = require('node:crypto').randomBytes(32).toString('hex');
+  dbApi.setUserToken(user.id, token);
+  sendJson(res, 200, { ok: true, token: token, role: user.role, username: user.username, fullName: user.full_name });
+});
+
+route('POST', '/api/auth/login-otp', async function(req, res, ctx) {
+  var userId = (ctx.body || {}).userId;
+  var otpCode = ((ctx.body || {}).otp || '').trim();
+  if (!userId || !otpCode) return sendJson(res, 400, { error: 'Thieu thong tin' });
+  var user = dbApi.getUserById(userId);
+  if (!user || !user.otp_enabled) return sendJson(res, 400, { error: 'OTP khong hop le' });
+  if (!verifyTOTP(user.otp_secret, otpCode)) return sendJson(res, 401, { error: 'Ma OTP sai hoac het han' });
+  var token = require('node:crypto').randomBytes(32).toString('hex');
+  dbApi.setUserToken(user.id, token);
+  sendJson(res, 200, { ok: true, token: token, role: user.role, username: user.username, fullName: user.full_name });
+});
+
+route('POST', '/api/auth/logout', async function(req, res) {
+  var token = (req.headers['authorization'] || '').replace('Bearer ', '');
+  if (token) {
+    var user = dbApi.getUserByToken(token);
+    if (user) dbApi.setUserToken(user.id, null);
+  }
+  sendJson(res, 200, { ok: true });
+});
+
+route('GET', '/api/auth/me', async function(req, res) {
+  var user = requireAuth(req);
+  if (!user) return sendJson(res, 401, { error: 'Chua dang nhap' });
+  sendJson(res, 200, { role: user.role, username: user.username, fullName: user.full_name });
+});
+
+// ---------- Import verifyTOTP for auth ----------
+var verifyTOTP = require('./otp').verifyTOTP;
+
+// ---------- Start server ----------
+var server = http.createServer(handleRequest);
+server.listen(PORT, function() {
+  console.log('[server] Running on http://localhost:' + PORT);
+  console.log('[server] Model: ' + getModel());
+});

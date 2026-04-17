@@ -20,8 +20,8 @@ Tải Git tại: https://git-scm.com/download/win
 Sau khi cài, mở **Command Prompt** hoặc **PowerShell** và chạy:
 
 ```
-git config --global user.name "Tên của bạn"
-git config --global user.email "khongdangnhap@hellocon.vn"
+git config --global user.name "Ngoc Pham"
+git config --global user.email "xuanngoc.hp94@gmail.com"
 ```
 
 ### Bước 3: Push code lên GitHub
@@ -39,7 +39,7 @@ git init
 git add .
 git commit -m "v2.3.0 - Sales training QA tool"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/sales-training-qa.git
+git remote add origin https://github.com/lukepham123/sales-training-qa.git
 git push -u origin main
 ```
 
