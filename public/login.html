@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập – Hello Con</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>🤱 Q&A Đào tạo nhân viên bán hàng</h1>
+    <div class="sub">Ngành mẹ bầu &amp; trẻ sơ sinh · Hello Con</div>
+  </div>
+</div>
+
+<div class="login-box" id="loginBox">
+  <h2 style="text-align:center;">🔐 Đăng nhập</h2>
+  <p class="muted" style="text-align:center;margin-bottom:20px;">Nhập tài khoản để vào hệ thống</p>
+  <input type="text" id="usernameInput" placeholder="Tên đăng nhập" autofocus>
+  <input type="password" id="passwordInput" placeholder="Mật khẩu">
+  <div id="otpGroup" style="display:none;">
+    <p class="muted" style="margin:8px 0 4px;">Nhập mã OTP từ Google Authenticator:</p>
+    <input type="text" id="otpInput" placeholder="6 chữ số" maxlength="6" inputmode="numeric" autocomplete="one-time-code" style="text-align:center;font-size:24px;letter-spacing:8px;">
+  </div>
+  <button class="btn btn-primary" id="btnLogin" onclick="doLogin()" style="width:100%;margin-top:8px;">Đăng nhập</button>
+  <div class="err hidden" id="loginErr" style="margin-top:12px;"></div>
+</div>
+
+<script>
+var API = '';
+var pendingUsername = '';
+
+function doLogin() {
+  var username = document.getElementById('usernameInput').value.trim();
+  var password = document.getElementById('passwordInput').value.trim();
+  var otpCode = document.getElementById('otpInput').value.trim();
+  var errDiv = document.getElementById('loginErr');
+  var btn = document.getElementById('btnLogin');
+  errDiv.classList.add('hidden');
+
+  if (pendingUsername) username = pendingUsername;
+  if (!username || !password) {
+    errDiv.textContent = 'Vui lòng nhập tên đăng nhập và mật khẩu';
+    errDiv.classList.remove('hidden');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Đang đăng nhập...';
+
+  fetch(API + '/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: username, password: password, otpCode: otpCode }),
+  })
+  .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+  .then(function(r) {
+    btn.disabled = false;
+    btn.textContent = 'Đăng nhập';
+    if (r.data.requireOtp) {
+      pendingUsername = username;
+      document.getElementById('otpGroup').style.display = 'block';
+      document.getElementById('usernameInput').disabled = true;
+      document.getElementById('passwordInput').disabled = true;
+      document.getElementById('otpInput').focus();
+      return;
+    }
+    if (!r.ok || !r.data.ok) {
+      errDiv.textContent = r.data.error || 'Đăng nhập thất bại';
+      errDiv.classList.remove('hidden');
+      return;
+    }
+    try { localStorage.setItem('hc_session', r.data.token); } catch(e) {}
+    try { localStorage.setItem('hc_role', r.data.role); } catch(e) {}
+    try { localStorage.setItem('hc_display', r.data.displayName || username); } catch(e) {}
+    if (r.data.role === 'admin') {
+      location.href = '/admin.html';
+    } else {
+      location.href = '/index.html';
+    }
+  })
+  .catch(function(err) {
+    btn.disabled = false;
+    btn.textContent = 'Đăng nhập';
+    errDiv.textContent = 'Lỗi kết nối: ' + err.message;
+    errDiv.classList.remove('hidden');
+  });
+}
+
+// Check if already logged in
+(function() {
+  var token = '';
+  try { token = localStorage.getItem('hc_session') || ''; } catch(e) {}
+  if (!token) return;
+  fetch(API + '/api/auth/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: token }),
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.ok) {
+      if (data.role === 'admin') location.href = '/admin.html';
+      else location.href = '/index.html';
+    }
+  })
+  .catch(function() {});
+})();
+
+document.getElementById('passwordInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+document.getElementById('otpInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
+document.getElementById('usernameInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('passwordInput').focus(); });
+</script>
+</body>
+</html>

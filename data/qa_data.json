@@ -1,0 +1,1766 @@
+[
+  {
+    "question": "Hello Con là cửa hàng kinh doanh gì?",
+    "answer": "Hello Con là cửa hàng chuyên kinh doanh các mặt hàng cho mẹ bầu và em bé từ sơ sinh đến 3 tuổi. Các mặt hàng bao gồm: bỉm/tã, sữa bột, thực phẩm chức năng, sữa nước, đồ ăn dặm, đồ dùng cho bé, hóa mỹ phẩm, đồ chơi cho bé, giáo cụ giáo dục sớm, quần áo cho bé, máy móc, chăn ga gối, khăn tắm, khăn sữa,...",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Hello Con là đại lý phân phối chính hãng của những hãng nào?",
+    "answer": "Joie, Combi, Aprica, Ergobaby, Baby Brezza, Burabi, Merries, Moony, Chicco, Babycoccole, Toyroyal, Hegen, Moaz bebe, Fatzbaby, Haenim, Ecomom, Momo Rabbit, Applecrumby,...",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Hello Con có mấy cơ sở? Địa chỉ và hotline từng cơ sở?",
+    "answer": "Có 2 cơ sở. Cơ sở 1: 334 Tô Hiệu (Hải Phòng), hotline/Zalo 0335334334, khai trương 20/11/2020. Cơ sở 2: 65 Vũ Phạm Hàm (Hà Nội), hotline/Zalo 0347656565, khai trương tháng 8/2022.",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Hình thức kinh doanh chủ yếu của Hello Con là gì?",
+    "answer": "Bán hàng trực tiếp tại cửa hàng, nhận giao hàng trong ngày và qua ngày. Cửa hàng không kinh doanh trên các sàn thương mại điện tử như Shopee và Tiktok. Ngoài ra có website hellocon.vn, fanpage Facebook và Instagram.",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Phương châm kinh doanh của cửa hàng với khách hàng là gì?",
+    "answer": "Nhân viên niềm nở - nắm được cơ bản kiến thức sản phẩm - tư vấn có tâm - hỗ trợ nhiệt tình cho khách hàng.",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Văn hóa ứng xử giữa các nhân viên với nhau như thế nào?",
+    "answer": "Đoàn kết hỗ trợ bảo ban lẫn nhau, không nói xấu chia bè phái, cùng nhau chăm chỉ trong công việc để đạt được hiệu quả công việc tốt nhất. Tuyệt đối trung thực với cửa hàng, không được phép gian dối về tiền bạc, hàng hóa dưới mọi hình thức.",
+    "topic": "GIỚI THIỆU VỀ CỬA HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 1 (100k) áp dụng khi nào?",
+    "answer": "Hóa đơn trên 4 triệu trong đó tối thiểu 2 triệu là giá trị sản phẩm không phải bỉm và sữa bột.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 2 (50k bán nguyên giá) áp dụng cho sản phẩm nào?",
+    "answer": "Nhãn hàng Joie (trừ ghế rung, địu Joie), Máy hút sữa Avent, Máy hút sữa xách tay Medela, Xe đẩy Combi, Xe đẩy Aprica, Xe đẩy Chicco, Xe đẩy Evenflo, Xe đẩy Ergobaby, Máy tiệt trùng Avent, Máy xay hấp thức ăn Avent, Quây nhựa Fullset các hãng, Ghế ô tô Reebaby.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 3 (30k bán nguyên giá) áp dụng cho sản phẩm nào?",
+    "answer": "Ghế rung Joie, Giường cũi gỗ các hãng, Máy tiệt trùng UV Moaz bebe bản trên 3 triệu 8.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 4 (50k bán nguyên giá) áp dụng cho sản phẩm nào?",
+    "answer": "Máy pha sữa Baby Brezza bản full, Máy pha sữa Burabi bản full, Máy tiệt trùng Ecomom.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 5 (100k nguyên giá / 50k không nguyên giá) áp dụng cho sản phẩm nào?",
+    "answer": "Máy tiệt trùng Haenim.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 6 (20k bán nguyên giá) áp dụng cho sản phẩm nào?",
+    "answer": "Tủ nhựa trị giá trên 2 triệu, Địu Ergobaby, Địu Joie, Địu Aprica.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 7 (40k) áp dụng khi nào?",
+    "answer": "Hóa đơn trên 2,5 triệu không bao gồm giá trị bỉm, sữa bột, sữa nước. Không áp dụng đồng thời các chương trình thưởng khác.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 4, 5, 7 có áp dụng đồng thời với thưởng số 1 không?",
+    "answer": "Không. Trừ trường hợp hóa đơn sau khi trừ giá trị thưởng số 4 và 5 mà vẫn thỏa mãn hóa đơn trên 4 triệu thì áp dụng đồng thời thưởng số 1.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thưởng số 2, 3, 6 có áp dụng đồng thời với thưởng số 1 không?",
+    "answer": "Có. Thưởng số 1 được áp dụng 1 lần với 1 hóa đơn tại thời điểm mua. Thưởng số 2, 3 không giới hạn số lần thưởng.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cơ chế xác định người nhận thưởng như thế nào?",
+    "answer": "Người bán là người nhận thưởng. Nếu người bán thứ 1 đã dừng mà người bán thứ 2 hoặc 3 bán thêm để đạt điều khoản thưởng thì thưởng thuộc về người chốt cuối cùng.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Để nhận thưởng, nhân viên cần làm gì?",
+    "answer": "Bình luận vào nhóm báo thưởng theo thứ tự: Người bán - mã đơn hàng - giá trị đơn hàng - số tiền được thưởng - chú thích sản phẩm được thưởng (nếu có).",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Vi phạm gian lận thưởng nóng bị phạt bao nhiêu?",
+    "answer": "Nghiêm cấm tách 1 đơn trên 4 triệu thành nhiều đơn để nhận thưởng nhiều lần. Vi phạm sẽ bị phạt 500k/lần nhắc.",
+    "topic": "CƠ CHẾ THƯỞNG NÓNG",
+    "source": "file1"
+  },
+  {
+    "question": "Công thức tính thu nhập nhân viên chính thức như thế nào?",
+    "answer": "Thu nhập = Lương cứng + Tiền công tăng ca + Thưởng nóng + Phụ cấp ăn + % Doanh thu (trừ đi các đơn hoàn) + Thưởng thêm doanh thu + Phụ cấp thạo kiến thức sản phẩm + Bảo hiểm xã hội.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Lương cứng tính như thế nào?",
+    "answer": "Từ công 1 đến công 26: 200.000 đồng/công. Từ công 27: 300.000 đồng/công.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Tiền công tăng ca tính như thế nào?",
+    "answer": "Tiền công tăng ca = lương cứng tính trên 1 công của 26 công x 1,5.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên cần làm tối thiểu bao nhiêu công 1 tháng? Nếu thiếu thì sao?",
+    "answer": "Tối thiểu 26 công/tháng. Thiếu 1 công trừ 100.000 đồng/công thiếu.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Phụ cấp ăn là bao nhiêu?",
+    "answer": "50k/ngày.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Phụ cấp thạo kiến thức sản phẩm là bao nhiêu?",
+    "answer": "Học và trả lời theo bộ câu hỏi có sẵn. Mức phụ cấp từ 1.000.000 đồng đến 1.250.000 đồng.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Điều kiện để được đóng bảo hiểm xã hội là gì?",
+    "answer": "Người lao động chính thức làm đủ 26 công/tháng và đạt phụ cấp thạo việc 1.250.000đ. Nếu 2 tháng liên tiếp không đạt thì không được đóng tháng tiếp theo.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Mức lương đóng bảo hiểm xã hội là bao nhiêu?",
+    "answer": "5.500.000 đồng. Cửa hàng chi trả 1.182.500đ (không trừ vào lương). Người lao động đóng 577.500đ (cấn trừ vào lương).",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Thu nhập nhân viên thử việc tháng đầu tính như thế nào?",
+    "answer": "Thu nhập = Lương cứng + Tiền công tăng ca + Thưởng nóng + Phụ cấp ăn trưa. Nếu có 2 đơn thưởng nóng trở lên, lương cứng tính 100%. Dưới 2 đơn thưởng nóng, lương cứng tính 85%.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Các quyền lợi khác khi làm việc tại Hello Con là gì?",
+    "answer": "Phụ cấp thâm niên sau 1 năm: +400.000đ/tháng. Thưởng tháng thứ 13. Đi làm ngày lễ được nhân lương. Quà Tết thiếu nhi, Trung thu, Tết Nguyên Đán. Mua sắm với giá chiết khấu dành cho nhân viên.",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên muốn nghỉ việc cần thông báo trước bao lâu?",
+    "answer": "Tối thiểu 1 tháng. Phần cọc 2 triệu tháng lương đầu sẽ được hoàn lại (trừ chi phí sản phẩm mất mát nếu có).",
+    "topic": "CÁCH TÍNH THU NHẬP",
+    "source": "file1"
+  },
+  {
+    "question": "Sau 7 ngày đầu, nhân viên cần thành thạo thao tác gì trên máy tính?",
+    "answer": "Thanh toán bán hàng tại quầy, Tạo đơn đổi trả hàng cho khách hàng, Chốt ca, In đơn hàng Hải Phòng đánh đơn trên máy in Epson, In mã vạch trên máy in Godex, In vận đơn trên máy Xprinter.",
+    "topic": "TIÊU CHÍ ĐÁNH GIÁ SAU 7 NGÀY LÀM QUEN CÔNG VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Sau 7 ngày, nhân viên cần biết gì về cửa hàng?",
+    "answer": "Biết vị trí toàn bộ các nhóm hàng trong cửa hàng. Học thuộc lòng câu in đậm chương trình tích điểm và chương trình ship.",
+    "topic": "TIÊU CHÍ ĐÁNH GIÁ SAU 7 NGÀY LÀM QUEN CÔNG VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Tầng 1 cửa hàng có những khu vực/sản phẩm gì?",
+    "answer": "Kệ máy móc trong danh sách đi sinh (máy hút sữa, máy pha sữa, máy tiệt trùng UV, máy hâm sữa,...); Kệ sữa bột (sữa PTTD, sữa tăng cao/tăng cân, sữa người lớn); Kệ bỉm/tã; Kệ vitamin/thực phẩm chức năng; Kệ đồ ăn dặm; Kệ hóa mỹ phẩm cho bé; Đồ dùng khác cho bé; Đồ dùng ăn dặm; Đồ dùng cho mẹ; Đồ chơi cho bé; Máy móc các hãng.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Tầng 2 cửa hàng có những khu vực/sản phẩm gì?",
+    "answer": "Khu khăn tắm - khăn sữa (nous, La pomme, Mipbi,...); Khu quần áo sơ sinh và lớn hơn (nous, La pomme, Lil, Little Love, Cookie,...); Khu đồ dùng khác (chăn, gối, lót chống thấm, chiếu, đệm,...); Đồ chơi (truyện vải, sách vải, bảng thông thái,...).",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Tầng 3 cửa hàng có những sản phẩm gì?",
+    "answer": "Ghế ô tô, cũi vải, cũi đa năng, tủ nhựa, xe đồ chơi, scooter, thảm xốp, ghế rung, nôi rung, xe lắc, xe tập đi,... Có kho nhỏ để hàng.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Tầng 4 cửa hàng dùng để làm gì?",
+    "answer": "Kho gồm các kệ để bỉm và các đồ khác.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Khi bán sữa bột cần lưu ý gì?",
+    "answer": "PHẢI HỎI THÁNG TUỔI/TUỔI CỦA KHÁCH HÀNG ĐỂ XÁC NHẬN LẤY SẢN PHẨM ĐÚNG ĐỘ TUỔI. NHẮC KHÁCH SỮA BỘT CỬA HÀNG KHÔNG HỖ TRỢ ĐỔI TRẢ KHI ĐÃ MUA.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Khi bán bỉm cần lưu ý gì?",
+    "answer": "Phải hỏi số cân nặng của bé để lấy size bỉm đúng và khách lấy bỉm dán hay bỉm quần. Trẻ dưới 2 tháng tuổi có xu hướng tăng cân nhanh nên tư vấn size lớn hơn.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Khi bán vitamin/thực phẩm chức năng cần lưu ý gì?",
+    "answer": "Phải hỏi rõ số tháng tuổi của bé để lấy đúng loại. Kiểm tra date của sản phẩm trước khi đưa cho khách.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Khi bán quần áo cần lưu ý gì?",
+    "answer": "Hỏi kỹ khách số tháng, cân nặng để chọn. Khách không thử trực tiếp ở cửa hàng. Nếu mua về không vừa, hàng chưa dùng, giữ nguyên tag mác, túi mang qua đổi.",
+    "topic": "SƠ ĐỒ CỬA HÀNG 65 VŨ PHẠM HÀM, HÀ NỘI",
+    "source": "file1"
+  },
+  {
+    "question": "Câu giới thiệu chương trình tích điểm bắt buộc phải nói cho khách mới là gì?",
+    "answer": "BÊN EM CÓ CHƯƠNG TRÌNH TÍCH ĐIỂM KHÔNG GIỚI HẠN, ÁP DỤNG TẤT CẢ CÁC SẢN PHẨM KỂ CẢ BỈM SỮA ĐANG TRONG CHƯƠNG TRÌNH KHUYẾN MÃI.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Tích điểm tính như thế nào?",
+    "answer": "Mỗi 200 đồng mua sắm đổi về 1 điểm tích lũy. 1000 điểm tương đương giảm 1000 đồng cho lần mua tiếp theo.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Có mấy hạng thành viên? Chi tiết từng hạng?",
+    "answer": "3 hạng: Bạc (chi tiêu trên 20 triệu - giảm 0.5% cho hóa đơn từ 2 triệu), Vàng (chi tiêu trên 50 triệu - giảm 1%), Kim Cương (chi tiêu trên 80 triệu - giảm 1.5%).",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Chương trình tích điểm và hạng thẻ có ngoại lệ sản phẩm nào không?",
+    "answer": "Không có ngoại lệ. Áp dụng với MỌI SẢN PHẨM, MỌI MẶT HÀNG, kể cả bỉm, sữa và sản phẩm đang khuyến mãi.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Khi khách thanh toán, nhân viên cần làm gì liên quan tích điểm?",
+    "answer": "Thông báo số điểm tích lũy của khách và số tiền được trừ theo hạng thẻ (nếu có). Hỏi ý kiến khách có muốn trừ điểm hay không.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Kiểm tra điểm tích lũy/hạng thẻ của khách bằng cách nào?",
+    "answer": "Cách 1: Nhập SĐT tích điểm vào danh sách đơn hàng, mở 1 đơn bất kỳ, điểm hiện bên phải tên khách. Cách 2: Nhập SĐT vào phần thanh toán bán hàng tại quầy, điểm hiện góc trên bên phải.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Khách không muốn cho số điện thoại tích điểm thì xử lý thế nào?",
+    "answer": "Cách 1: Thông báo điểm tích không có thời hạn, không bị mất theo thời gian. Cách 2: Số điện thoại giúp đổi trả và bảo hành. Cách 3: Với khách cũ, thông báo số điểm/tiền được trừ.",
+    "topic": "CHƯƠNG TRÌNH TÍCH ĐIỂM",
+    "source": "file1"
+  },
+  {
+    "question": "Câu giới thiệu chính sách giao hàng bắt buộc nói cho khách mới là gì?",
+    "answer": "Ngoài tích điểm, bên em có chính sách miễn phí giao hàng nhận ngay cho hóa đơn trên 350 nghìn, trong bán kính 7km. Nếu nhà mình xa hơn, bên em chỉ phụ thu thêm 6 nghìn 1km thôi ạ. Địa chỉ nhà mình hay ship về đâu ạ để em kiểm tra?",
+    "topic": "CHÍNH SÁCH GIAO HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Chính sách giao hàng nhận ngay trong 2 tiếng như thế nào?",
+    "answer": "Miễn phí với đơn trên 350k trong bán kính 7km. Ngoài 7km phụ thu 6k/km. Đơn dưới 350k tính phí theo đơn vị vận chuyển.",
+    "topic": "CHÍNH SÁCH GIAO HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Chính sách giao hàng qua ngày như thế nào?",
+    "answer": "Đơn từ 1.500.000đ hỗ trợ 30k phí ship, 3.000.000đ hỗ trợ 60k. Đơn dưới 1.500.000đ đồng giá ship 30k. Hàng cồng kềnh phụ thu thêm.",
+    "topic": "CHÍNH SÁCH GIAO HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên đặt giao hàng nhận ngay chỉ được chọn ship gì?",
+    "answer": "Chỉ được chọn ship Grab, lựa chọn hình thức có chi phí rẻ nhất. Trường hợp đặc biệt (mưa bão, cận Tết) có thể chọn thêm Ahamove hoặc HeyU.",
+    "topic": "CHÍNH SÁCH GIAO HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Quy định về đơn ứng COD là gì?",
+    "answer": "Shipper chỉ được ứng bằng tiền mặt hoặc chuyển khoản. Để shipper quẹt thẻ bị phạt 500k/lần. Đơn ứng trên 2 triệu nhờ khách chuyển khoản trước. Grab ứng tối đa 2 triệu, Ahamove tối đa 10 triệu, HeyU tối đa 7 triệu.",
+    "topic": "CHÍNH SÁCH GIAO HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Câu chào khách khi vào cửa hàng là gì?",
+    "answer": "Hello Con xin chào ạ\\! Anh/Chị/Cô/Chú/Ông cần tìm sản phẩm nào ạ?",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Quy trình thanh toán tại quầy gồm những bước nào?",
+    "answer": "Chào khách → Tư vấn sản phẩm/CTKM → Tít mã hàng/nhập mã, chiết khấu, điền số lượng → Xin SĐT tích điểm → Giới thiệu tích điểm & ship (khách mới) hoặc xác nhận tên, hỏi trừ điểm (khách cũ) → Hỏi hình thức thanh toán → Xếp hàng vào túi → Tạm biệt: Hello Con xin cảm ơn\\!",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Nếu khách không cho số điện thoại thì nhập số nào?",
+    "answer": "Khách vãng lai 0123456789. Quên xin số hoặc không điền số vãng lai bị phạt 30k/đơn.",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Có những hình thức thanh toán nào?",
+    "answer": "Tiền mặt, Quẹt thẻ, MBBank, VNpay. Khách có thể thanh toán nhiều hình thức trong 1 đơn. Chỉ MBBank và VNpay không thanh toán được cùng nhau.",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Nếu giấy in máy quẹt thẻ hết thì làm sao?",
+    "answer": "Phải in lại hóa đơn trên máy quẹt thẻ (Chọn mũi tên lên > Ấn 72). Tiền chỉ nhận được khi có hóa đơn máy quẹt thẻ chạy ra.",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Câu tạm biệt khách khi đưa hóa đơn là gì?",
+    "answer": "Hello Con xin cảm ơn\\!",
+    "topic": "QUY TRÌNH THANH TOÁN TRỰC TIẾP TẠI QUẦY",
+    "source": "file1"
+  },
+  {
+    "question": "Khi hàng mới về, nhân viên cần làm gì đầu tiên?",
+    "answer": "Trả phí vận chuyển (nếu có), báo phí cho quản lý, ghi chú rõ số thùng nhận về và loại hàng.",
+    "topic": "QUY TRÌNH XỬ LÝ HÀNG VỀ",
+    "source": "file1"
+  },
+  {
+    "question": "Cách kiểm hàng mới về như thế nào?",
+    "answer": "Nếu có phiếu xuất kho: kiểm đúng tên sản phẩm, đúng số lượng. Nếu không có: tự thống kê theo tên sản phẩm.",
+    "topic": "QUY TRÌNH XỬ LÝ HÀNG VỀ",
+    "source": "file1"
+  },
+  {
+    "question": "Báo hàng về lên nhóm Zalo theo cú pháp nào?",
+    "answer": "Đồ dùng: Tên hàng + màu + số lượng. Đồ ăn/uống/thuốc/hóa mỹ phẩm: Tên hàng + số lượng + hạn dùng (thống kê đầy đủ date nào bao nhiêu).",
+    "topic": "QUY TRÌNH XỬ LÝ HÀNG VỀ",
+    "source": "file1"
+  },
+  {
+    "question": "Có 2 loại tem cần dán cho hàng mới về là gì?",
+    "answer": "Tem vỡ (loại tem nhỏ đánh dấu sản phẩm cửa hàng, không bóc ra nguyên vẹn) và Tem giá.",
+    "topic": "QUY TRÌNH XỬ LÝ HÀNG VỀ",
+    "source": "file1"
+  },
+  {
+    "question": "Những sản phẩm nào cần dán tem vỡ?",
+    "answer": "Đồ dùng máy móc sử dụng nguồn điện, xe đẩy, vitamin/thực phẩm chức năng, thuốc ho, muối vi lượng, sữa bột không có tem phụ tiếng Việt. Sản phẩm đã có tem phụ tiếng Việt không cần dán tem vỡ.",
+    "topic": "QUY TRÌNH XỬ LÝ HÀNG VỀ",
+    "source": "file1"
+  },
+  {
+    "question": "Quy trình chốt ca gồm mấy bước?",
+    "answer": "6 bước: 1. Đối soát đơn giao hàng trên Sapo. 2. Chụp tổng kết máy POS quẹt thẻ (ca tối phải in). 3. Đếm tiền mặt, cộng chuyển khoản, kiểm VNPay. 4. Nhắn chị Dung số tiền các loại. 5. Đối chiếu thực tế với trên máy. 6. Chụp sổ quỹ, bình luận chốt ca.",
+    "topic": "QUY TRÌNH CHỐT CA",
+    "source": "file1"
+  },
+  {
+    "question": "Ca tối quên in tổng kết máy POS bị phạt bao nhiêu?",
+    "answer": "30.000 đồng/lần quên in.",
+    "topic": "QUY TRÌNH CHỐT CA",
+    "source": "file1"
+  },
+  {
+    "question": "Nếu chốt ca thiếu tiền mặt thì xử lý thế nào?",
+    "answer": "Nhân viên ca làm đó chia đều trách nhiệm để bù vào. Nếu thừa tiền mặt, cửa hàng làm phiếu thu.",
+    "topic": "QUY TRÌNH CHỐT CA",
+    "source": "file1"
+  },
+  {
+    "question": "Nguyên tắc cơ bản khi trả lời khách online là gì?",
+    "answer": "Không viết tắt. Phản hồi khách nhanh nhất có thể. Chào hỏi: Hello Con xin chào ạ\\!",
+    "topic": "QUY TRÌNH TRẢ LỜI KHÁCH FANPAGE/ZALO/ZALO OA",
+    "source": "file1"
+  },
+  {
+    "question": "Khi khách chưa biết mua ở cơ sở nào thì hỏi gì?",
+    "answer": "Bên em có cơ sở Hà Nội và Hải Phòng, mình muốn mua hàng tại cơ sở nào ạ?",
+    "topic": "QUY TRÌNH TRẢ LỜI KHÁCH FANPAGE/ZALO/ZALO OA",
+    "source": "file1"
+  },
+  {
+    "question": "Có mấy trường hợp khi trả lời khách online? Chi tiết?",
+    "answer": "3 trường hợp: TH1: Khách đã có nhu cầu mua SP cụ thể → Gửi báo giá, CTKM. TH2: Khách chưa có nhu cầu mua, tìm SP → Gửi báo giá, CTKM và 3 ưu điểm nổi bật. TH3: Khách hỏi SP mình không có → Gửi SP có chức năng tương tự hoặc cùng tầm giá kèm CTKM.",
+    "topic": "QUY TRÌNH TRẢ LỜI KHÁCH FANPAGE/ZALO/ZALO OA",
+    "source": "file1"
+  },
+  {
+    "question": "Sau khi chốt sản phẩm, cần mời khách mua thêm gì theo độ tuổi con?",
+    "answer": "Dưới 4 tháng: D3, Men, khăn, bỉm, sữa, DHA, thẻ kích thích thị giác, quần áo, đồ chơi. 4-6 tháng: thêm sắt, hoa quả nghiền, bột ăn dặm, ghế hơi tập ngồi, sách vải. 6-9 tháng: thêm xe tập đi, xe đẩy, ghế ăn dặm, đồ dùng chế biến, bánh, sữa chua, váng sữa. Trên 9 tháng: thêm vitamin tổng hợp, tăng đề kháng, phô mai sấy. Trên 1 tuổi: thêm Scooter, đồ chơi trí tuệ, xe đạp 3 bánh.",
+    "topic": "QUY TRÌNH TRẢ LỜI KHÁCH FANPAGE/ZALO/ZALO OA",
+    "source": "file1"
+  },
+  {
+    "question": "Đóng gói đơn qua ngày cần lưu ý gì?",
+    "answer": "Đóng bằng thùng/hộp bìa cứng. Hàng dễ vỡ/lon sữa: bọc kín từng SP, gia cố mút xốp, chèn khít khoảng trống. Hàng chứa chất lỏng: dán 2-3 lớp băng keo cố định nắp, bọc bao chống thấm. Dán cảnh báo 'Hàng dễ vỡ' bên ngoài.",
+    "topic": "QUY CHUẨN ĐÓNG GÓI",
+    "source": "file1"
+  },
+  {
+    "question": "4 bước đóng gói cơ bản là gì?",
+    "answer": "B1: Dán 2-3 lớp băng keo quanh nắp, quấn xốp bong bóng 6 mặt. B2: Chèn kín khe hở bằng mút/bìa/giấy. B3: Dán kín thùng carton bằng băng keo. B4: Dán phiếu giao hàng hoặc viết mã vận đơn bên ngoài.",
+    "topic": "QUY CHUẨN ĐÓNG GÓI",
+    "source": "file1"
+  },
+  {
+    "question": "Giao hàng nhận ngay trong ngày dùng gì để đóng gói?",
+    "answer": "Sử dụng túi đúng kích thước: túi số 1 (vitamin/đồ nhỏ), số 2 (1 lon sữa), số 3 (2 lon sữa), số 4 (3 lon sữa), số 5 loại 15kg (2 bịch bỉm), số 6 loại 20kg (3 bịch bỉm).",
+    "topic": "QUY CHUẨN ĐÓNG GÓI",
+    "source": "file1"
+  },
+  {
+    "question": "Trước khi giao hàng sản phẩm điện, xe đẩy, ghế ô tô cần làm gì?",
+    "answer": "Sản phẩm điện: cắm thử điện xem có vào không, dán tem vỡ bảo hành. Sản phẩm có nhiều phụ kiện: kiểm tra đầy đủ phụ kiện. Xe đẩy/ghế ô tô: kiểm tra thao tác gấp mở.",
+    "topic": "QUY CHUẨN ĐÓNG GÓI",
+    "source": "file1"
+  },
+  {
+    "question": "Gửi nhầm hàng giữa các khách thì nhân viên chịu trách nhiệm gì?",
+    "answer": "Nhân viên chịu toàn bộ chi phí hàng hoàn và gửi lại hàng đúng cho các khách.",
+    "topic": "QUY CHUẨN ĐÓNG GÓI",
+    "source": "file1"
+  },
+  {
+    "question": "Địa chỉ liên hệ bảo hành đổi trả là gì?",
+    "answer": "Hà Nội: 65 Vũ Phạm Hàm, hotline 0347.65.65.65. Hải Phòng: 334 Tô Hiệu, hotline 0335.334.334. Online: Hotline 0335.334.334, Zalo OA, Fanpage Hello Con.",
+    "topic": "BẢO HÀNH / ĐỔI TRẢ HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Quy trình bảo hành gồm mấy bước?",
+    "answer": "B1: Kiểm tra SP có phải của Hello Con không (tem vỡ hoặc đơn trên Sapo). Nếu đúng, xin video lỗi gửi chị Dung. B2: Kiểm tra thời hạn bảo hành (Fatzbaby, Moaz, Avent, Joie: 1 năm; Haenim, Ecomom: từ 3 năm). SP xách tay không bảo hành, chỉ tìm nơi sửa. B3: SP bảo hành xong, gọi khách qua lấy.",
+    "topic": "BẢO HÀNH / ĐỔI TRẢ HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Chính sách đổi trả hàng của Hello Con như thế nào?",
+    "answer": "Đổi trả trong vòng 30 ngày kể từ ngày mua. Hàng phải còn nguyên đai nguyên kiện. Không áp dụng cho SP đã ghi phiếu bảo hành hoặc kích hoạt bảo hành. Quần áo nous mất túi, quần áo hãng khác mất mã/tem không hỗ trợ.",
+    "topic": "BẢO HÀNH / ĐỔI TRẢ HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Những sản phẩm nào không được đổi trả?",
+    "answer": "SP cận date giá KM sâu, sữa bột, đồ ăn dặm trong tủ lạnh, máy móc, đồ đã dùng, quần áo đã mặc/giặt.",
+    "topic": "BẢO HÀNH / ĐỔI TRẢ HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Hình thức hoàn tiền khi đổi trả như thế nào?",
+    "answer": "Đơn dưới 1 triệu: hoàn tiền mặt luôn nếu đủ tiền. Đơn trên 1 triệu: nhắn nhóm Đại gia đình Hello Con số tài khoản khách, mã đơn, số tiền cần hoàn.",
+    "topic": "BẢO HÀNH / ĐỔI TRẢ HÀNG",
+    "source": "file1"
+  },
+  {
+    "question": "Đơn Web là gì? Tần suất kiểm tra?",
+    "answer": "Đơn Web là đơn hàng bắt đầu bằng mã WEB+ số. Trong 1 tiếng, nhân viên kiểm tra 1 lần ở các mục Đặt hàng/Chờ thanh toán/Chờ đóng gói trong Danh sách đơn hàng trên SAPO.",
+    "topic": "QUY TRÌNH XỬ LÝ ĐƠN WEB",
+    "source": "file1"
+  },
+  {
+    "question": "Xử lý đơn Web gồm mấy bước?",
+    "answer": "B1: Kiểm tra tồn kho. B2: Kiểm tra khoảng cách tính phí ship. B3: Gọi điện chốt lại đơn (số nhận hàng, địa chỉ, thời gian, tổng đơn). B4: Đặt ship hoặc hủy đơn nếu khách hủy.",
+    "topic": "QUY TRÌNH XỬ LÝ ĐƠN WEB",
+    "source": "file1"
+  },
+  {
+    "question": "Chính sách ship đơn tỉnh như thế nào?",
+    "answer": "Đơn trên 1.350k: miễn phí ship hàng không cồng kềnh, hàng cồng kềnh hỗ trợ tối đa 35k. Đơn dưới 1.350k: đồng giá ship 35k hàng không cồng kềnh. Thời gian giao 3-7 ngày tùy khu vực.",
+    "topic": "QUY TRÌNH XỬ LÝ ĐƠN WEB",
+    "source": "file1"
+  },
+  {
+    "question": "Câu đầu tiên khi nhận cuộc gọi là gì?",
+    "answer": "Dạ Hello Con xin chào ạ\\! Em có thể hỗ trợ được gì cho anh chị ạ?",
+    "topic": "QUY TRÌNH XỬ LÝ KHÁCH GỌI ĐẾN HOTLINE",
+    "source": "file1"
+  },
+  {
+    "question": "Có mấy trường hợp khách gọi đến? Xử lý từng trường hợp?",
+    "answer": "TH1: Cần bảo hành/hướng dẫn dùng SP → nhờ quay video gửi qua hotline. TH2: Tìm đặt hàng → tư vấn, xin kết bạn Zalo. TH3: Khiếu nại thiếu/vỡ → xin lỗi, kết bạn Zalo kiểm tra.",
+    "topic": "QUY TRÌNH XỬ LÝ KHÁCH GỌI ĐẾN HOTLINE",
+    "source": "file1"
+  },
+  {
+    "question": "Giọng nói khi trả lời hotline cần lưu ý gì?",
+    "answer": "Giọng thật nhẹ nhàng, ngôn ngữ lịch sự dạ vâng, lắng nghe khách hàng.",
+    "topic": "QUY TRÌNH XỬ LÝ KHÁCH GỌI ĐẾN HOTLINE",
+    "source": "file1"
+  },
+  {
+    "question": "Giờ làm việc của cửa hàng như thế nào?",
+    "answer": "Ca sáng từ 08h00, ca chiều từ 14h00 (cả 2 cơ sở). Chấm công muộn bị phạt 50.000đ/lần. Muộn không xin phép quá 5 lần/tháng: trừ 1 công.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Quy định trang phục khi đi làm là gì?",
+    "answer": "Quần đen, không trang trí màu sắc, không rách + áo phông có tay + đồng phục tạp dề hoặc áo đồng phục cửa hàng.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên xưng hô với khách hàng như thế nào?",
+    "answer": "Người lớn tuổi: xưng cháu với ông/bà/bác. Khách trẻ: xưng anh/chị. Tuyệt đối không xưng bạn/cậu/mày/thằng/con.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên có được sử dụng điện thoại cá nhân khi tiếp khách không?",
+    "answer": "Không. Không được nghe ĐT cá nhân, nhắn tin riêng hoặc sử dụng mạng xã hội khi đang tiếp khách hoặc có khách mua sắm gần đó.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên có được đổi tiền mặt trong khay tiền cho người ngoài không?",
+    "answer": "Không. Để tránh bị đổi phải tiền giả.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Quy định về thiết bị điện cuối ngày/đầu ngày?",
+    "answer": "Sáng: không bật đèn tầng 2,3; bật máy lọc không khí 2 tầng. Chiều tối: bật đèn biển hiệu, đèn rọi vàng tầng 2, đèn tầng 3. 9h30 tối: tắt điều hoà. Trước về: tắt máy lọc, máy tính, cầu dao tầng 2-3, đèn ngoài trời.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Nhân viên muốn nghỉ ngày nào trong tuần cần báo trước bao lâu?",
+    "answer": "Cần báo trước 1 tuần. Trường hợp khẩn cấp: bản thân hoặc người thân phải đi cấp cứu.",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Vi phạm nghiêm trọng nào dẫn đến nghỉ không lương?",
+    "answer": "Tiết lộ thông tin bảo mật cửa hàng (doanh số, cách hoạt động, chế độ lương thưởng,...). Không thành thật, xúi giục nghỉ việc, phát ngôn xấu, bịa chuyện gây mâu thuẫn (nhắc nhở 2 lần, lần 3 nghỉ không lương).",
+    "topic": "NGUYÊN TẮC CƠ BẢN KHI LÀM VIỆC",
+    "source": "file1"
+  },
+  {
+    "question": "Phạt chuyên cần gồm những gì?",
+    "answer": "Không đủ 28 công/tháng: 50% tiền công/công thiếu. Thiếu vân tay chấm công: 20k/lần. Nghỉ không báo trước không sắp xếp người: 500% tiền công/lần. Trên 8 lần/tháng chấm công muộn: 100k/tháng. Muộn trên 1 phút: 20k/lần. Trang phục sai: 20k/lần.",
+    "topic": "CÁC HÌNH THỨC PHẠT",
+    "source": "file1"
+  },
+  {
+    "question": "Phạt quy trình công việc gồm những gì?",
+    "answer": "Tem dán sai/thiếu: 40k/tem. Đơn thiếu SĐT tạo 'Khách lẻ': 30k/đơn. Thanh toán thiếu/thừa: 200k/đơn (hoặc 50% giá trị nếu trên 200k). Lấy nhầm hàng: 20k/SP + tự trả phí ship đổi. Ca tối không in tổng kết POS: 30k/lần. Không thông báo tích điểm/ship cho khách mới: 30k/hóa đơn. Đóng sai hàng không báo: 500k/lần. Quẹt thẻ cá nhân/cho shipper: 500k/lần + phí quẹt thẻ.",
+    "topic": "CÁC HÌNH THỨC PHẠT",
+    "source": "file1"
+  },
+  {
+    "question": "Phạt vệ sinh cửa hàng gồm những gì?",
+    "answer": "Ca sáng không lau tủ lạnh/cửa kính/nóc ban thờ/thang/hút bụi bàn thu ngân: 20k/mục. Để mắc quần áo trống: 10k/lần. Kệ tầng 1-2-3 bẩn: 20k/nhân viên. Bàn ghế thu ngân chưa gọn trước về: 20k/lần.",
+    "topic": "CÁC HÌNH THỨC PHẠT",
+    "source": "file1"
+  },
+  {
+    "question": "Phạt trả lời khách online gồm những gì?",
+    "answer": "Không nhờ khách CK trước để đơn ứng ship dưới 2 triệu: 20k/lần. Không chào/cảm ơn khách: 5k/lần. Không mời thêm hoặc không gửi CTKM tổng: 10k/lần.",
+    "topic": "CÁC HÌNH THỨC PHẠT",
+    "source": "file1"
+  },
+  {
+    "question": "Khách nói 'Sao hàng nhà em đắt thế?' thì trả lời sao?",
+    "answer": "Các sản phẩm có nhiều nguồn hàng chị ạ. Các sản phẩm tại Hello Con bên em đều là chính hãng, chất lượng. Chị yên tâm giá thành tương xứng chất lượng ạ. Nếu là máy móc có bảo hành thì: anh/chị yên tâm bên em đồng hành cùng mình trong suốt quá trình dùng sản phẩm ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách nói 'Sao bên em chương trình sữa nào cũng chỉ bán combo?' thì trả lời sao?",
+    "answer": "Các con dưới 3 tuổi, nhu cầu về sữa nhiều nên bên em thường xuyên chạy chương trình khuyến mãi để các mẹ tiết kiệm được nhiều hơn ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Hóa đơn ứng trên 2 triệu mà khách muốn thanh toán tiền mặt tại nhà thì xử lý sao?",
+    "answer": "Gọi cho khách: 'Hello Con xin chào ạ\\! Em gọi điện cho chị từ cửa hàng mẹ và bé Hello Con. Chị ơi bên em thuê ship ngoài nên shipper không có ứng được nhiều. Chị có thể chuyển khoản trước giúp bên em khoảng xxxK trước, phần còn lại chị gửi tiền mặt cho shipper chị nhé\\!'",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách mới từ chối chuyển khoản trước thì nói sao?",
+    "answer": "Dạ bên em là tài khoản tên cửa hàng, không phải tài khoản tên cá nhân nên chị yên tâm ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách nói 'sẽ qua cửa hàng mua' (có thể từ chối khéo) thì xử lý sao?",
+    "answer": "Bên em miễn phí giao hàng trong bán kính 7km với hóa đơn trên 350k. Anh/chị cho em xin địa chỉ cụ thể để bên em kiểm tra ạ?",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách từ chối nhiệt kế điện tử giá cao, chỉ cần loại rẻ thì tư vấn sao?",
+    "answer": "Nhiệt kế đa năng điện tử ngoài đo nhiệt độ cơ thể còn đo được nhiệt độ pha sữa, nước tắm cho con, rất tiện ạ. Mình không cần phải mua các loại nhiệt kế khác nữa ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách mua Aptamil Úc/Blackmores/A2 hỏi có phải hàng chính hãng không thì nói sao?",
+    "answer": "Dưới đáy lon sữa có in mã QR kèm thông tin ngày SX/lô SX/hạn SD. SP chính hãng khi quét sẽ có thông tin trùng dưới đáy lon ạ. Với Aptamil Úc xanh còn có thêm mã QR ở nắp thiếc bên trong, chỉ quét được 1 lần ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách đã bóc hàng nhất định đòi trả thì xử lý sao?",
+    "answer": "Dạ chị thông cảm, hàng bên em hỗ trợ đổi khi còn nguyên đai nguyên kiện vì khi nhận lại hàng bên em còn bán cho khách khác. Cũng như mình, các khách khác khi mua đều muốn mua hàng mới, nguyên đai nguyên kiện từ hãng ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách mua 1 lon dù đã giới thiệu combo thì xử lý sao?",
+    "answer": "Khi chị mua combo sẽ tiết kiệm được .... đồng. Tiết kiệm hơn mà date xa, bé lại hay dùng. Anh/Chị lấy luôn ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách hỏi thông tin mà mình chưa nhớ rõ thì nói sao?",
+    "answer": "Em xin phép kiểm tra lại thông tin cho chắc chắn ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách tìm mua SP mà nhà mình không có thì xử lý sao?",
+    "answer": "Hỏi khách 'Bé nhà mình đang dùng sản phẩm này ạ?'. Rồi giới thiệu khách sang SP có chức năng tương tự.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách hỏi thông tin mà nhân viên không biết (hàng hết/KM thùng sữa/bảo hành,...) thì nói sao?",
+    "answer": "Dạ để em hỏi quản lý rồi gọi/báo lại cho mình ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách mới chưa mua bao giờ muốn kiểm tra hàng trước khi nhận thì nói sao?",
+    "answer": "Dạ hàng bên em trước khi giao cho mình đã được kiểm tra dưới camera cửa hàng ạ. Bên cạnh đó, cửa hàng bên em là cửa hàng bán trực tiếp nên trong quá trình dùng có bất kỳ vấn đề gì cần bảo hành thì mình cứ báo cho bên em. Chị yên tâm ạ.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách đòi bớt tiền vô lý thì xử lý sao?",
+    "answer": "Anh/Chị thông cảm cuối ca trước khi về bên em có chốt ca, nếu thiếu bao nhiêu chính em phải bù ngần đó. Anh/Chị thông cảm.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách phàn nàn phản hồi bất kỳ vấn đề gì thì câu đầu tiên phải nói gì?",
+    "answer": "Xin lỗi khách trước: 'Bên em/Thay mặt bạn nhân viên đó, em rất xin lỗi chị vì trải nghiệm vừa qua. Bên em...' Nếu không xử lý được thì gọi chị Dung.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách chuyển khoản bị lỗi, báo đã bị trừ tiền mà cửa hàng chưa nhận được thì xử lý sao?",
+    "answer": "Gọi anh Ngọc check (MBBank). Nói với khách: 'Bên em xin lỗi vì sự bất tiện. Phía ngân hàng bên em chưa nhận được. Anh/Chị có thể gọi tổng đài ngân hàng xin mã 6 số chuyển khoản thành công giúp em?' Xin SĐT Zalo và số tài khoản ngân hàng để liên lạc và hoàn tiền nếu nhận được.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Khách mua SP không có tem phụ tiếng Việt muốn kiểm tra chính hãng thì làm sao?",
+    "answer": "Khẳng định: 'Bên em cam kết chỉ bán hàng chính hãng nên mình yên tâm ạ'. SP có mã QR: quét thử trước rồi báo khách. Không quét được: nhắn chị Dung. SP không có QR: báo chị Dung cách kiểm tra.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Con khách vào cửa hàng quậy phá thì xử lý sao?",
+    "answer": "Nói: 'Ngoan, không làm hỏng của cô nhé'. Bế hoặc nói ở lại với cô. Nếu con không sợ, nhờ khách trông hộ con.",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Con khách đòi mua SP mà khách không muốn mua thì nói sao?",
+    "answer": "Nói: 'Đồ này cô trưng bày thôi, cô không bán, để lại cho cô nhé.'",
+    "topic": "BỘ TRẢ LỜI - XỬ LÝ TÌNH HUỐNG HAY GẶP",
+    "source": "file1"
+  },
+  {
+    "question": "Các hãng máy hút sữa nào có loại rảnh tay (cốc hút áp ngực)?",
+    "answer": "Medela (các dòng có chữ 'Hand-free'), Momcozy (tất cả các mã), Fatzbaby (Twinfree), Moaz bebe, Beborn, Spectra (có mã tùy thời điểm).",
+    "topic": "MÁY HÚT SỮA",
+    "source": "file1"
+  },
+  {
+    "question": "Các hãng máy hút sữa nào có loại bình hút cần giữ tay/mặc áo hút sữa?",
+    "answer": "Medela (Sonata - hút khỏe nhất, Pump in Style, Freestyle), Hegen (Softround), Fatzbaby (Resonance, Handy - hút bằng tay), Moaz bebe, Beborn, Spectra (có mã tùy thời điểm).",
+    "topic": "MÁY HÚT SỮA",
+    "source": "file1"
+  },
+  {
+    "question": "Chính sách bảo hành máy hút sữa từng hãng?",
+    "answer": "Medela: xách tay không bảo hành, chỉ tìm chỗ sửa. Momcozy: BH có điều kiện. Hegen, Fatzbaby, Moaz bebe, Beborn, Spectra: BH 1 năm.",
+    "topic": "MÁY HÚT SỮA",
+    "source": "file1"
+  },
+  {
+    "question": "Khi cho trẻ mới tập ăn bột cần lưu ý gì khi tư vấn?",
+    "answer": "Hỏi trẻ mấy tháng? Có bị dị ứng đạm bò hay không? Nếu trẻ dị ứng đạm bò thì tư vấn bột không có chứa sữa. Nếu trẻ không bị dị ứng gì thì tư vấn các loại bột từ 4 tháng trở lên để trẻ làm quen dần. Khi mới ăn, bột pha sẽ hơi loãng cho trẻ làm quen. Sau đó tăng dần độ đặc như theo công thức của bột.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Bánh ăn dặm cho trẻ mới tập ăn dặm (5-6 tháng) khác gì bánh cho trẻ trên 1 tuổi?",
+    "answer": "Bánh cho trẻ 5-6 tháng mới tập ăn thường nhạt, dễ tan trong miệng, bánh to bản cho trẻ dễ cầm nắm. Bánh cho trẻ trên 1 tuổi thường đậm vị hơn.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Khách tìm mua sữa tắm cần hỏi câu hỏi gì?",
+    "answer": "Hỏi bé trên hay dưới 1 tuổi? Nếu bé dưới 1 tuổi thì tìm loại không cần tráng lại bằng nước sạch hay cần tráng lại? Với các loại sữa tắm cần tráng lại (cho cả trên và dưới 1 tuổi) cần hỏi tìm dòng dạng gel/sữa hay dạng tạo bọt.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Khách tìm mua nước rửa bình cho bé cần hỏi câu hỏi gì?",
+    "answer": "Khách tìm loại dạng gel hay tạo bọt.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Sữa chua cho bé có thể ăn mấy lần 1 tuần? Váng sữa cho bé có thể ăn mấy lần 1 tuần?",
+    "answer": "Sữa chua có thể ăn mỗi ngày để bổ sung lợi khuẩn cho đường ruột. Còn váng sữa có thể ăn 2-3 lần 1 tuần.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Chọn gối cho trẻ mới đẻ cần lưu ý gì?",
+    "answer": "Trẻ mới đẻ không cần gối, chỉ cần tấm lót đầu mỏng hoặc lót gối mỏng.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Sữa Enfagrow có phải sữa cao năng lượng không? Đặc điểm khác biệt giữa bản Mỹ và bản Canada là gì?",
+    "answer": "Enfagrow tại Hello Con không phải loại cao năng lượng. Bản Canada có 2 loại chất xơ, giúp hạn chế táo bón.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Khách không yên tâm khi các hãng lớn (Joie, Combi,...) đều sản xuất ở Trung Quốc, cần nói gì?",
+    "answer": "Anh chị yên tâm khi sản xuất đều theo tiêu chuẩn an toàn của hãng. Trung Quốc là công xưởng của cả thế giới.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Chậu tắm/rửa mặt có những loại nào? Cần sắm mấy chiếc?",
+    "answer": "Có loại gấp gọn và không gấp gọn. Mỗi loại nên sắm 2 cái. Chậu tắm: 1 cái tắm, 1 cái tráng lại. Chậu rửa mặt: 1 cái chuyên để khăn sữa lau mặt, 1 cái để rửa mông vệ sinh cho bé.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Có các loại mì nào cho bé?",
+    "answer": "Mì somen sợi ngắn mảnh nhỏ cho bé trên 5 tháng. Mì udon sợi to hơn cho bé trên 7 tháng. Mì nui cho bé trên 8 tháng. Mì tôm cho bé trên 12-18 tháng tùy loại. Bé mới tập ăn thô nên chọn mì somen sợi mảnh nhỏ cho bé tập làm quen.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 1",
+    "source": "file1"
+  },
+  {
+    "question": "Nước muối Physiodose xanh lá khác gì màu hồng? Physiodose hồng khác gì Gifrer hồng?",
+    "answer": "Màu hồng vệ sinh mắt, mũi, tai cho bé. Màu xanh lá cũng như hồng, ngoài ra vệ sinh được thêm vết thương. Đầu Physiodose nhọn dễ đóng hơn nhưng dễ bị hở. Đầu Gifrer tròn, khó đẩy lại hơn nhưng kín hơn.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Gạc Papie có mấy loại? Khác nhau thế nào? Khác gì gạc Sachi?",
+    "answer": "Có 2 loại: Trên 1 tuổi và dưới 1 tuổi. Gạc trên 1 tuổi có thêm Xylitol giúp chống sâu răng. Gạc Papie dưới 1 tuổi khác gạc Sachi ở bảng thành phần dẫn đến mùi khác nhau.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Máy tiệt trùng bình sữa có mấy loại?",
+    "answer": "Có 2 loại: Tiệt trùng bằng hơi nước, tiệt trùng bằng đèn UV.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Máy pha sữa Burabi khác cơ bản nhất máy pha sữa Baby Brezza ở điểm gì?",
+    "answer": "Burabi pha được các loại sữa ở nhiệt độ 70 độ. Còn Baby Brezza pha tối đa ở 45 độ.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Khi tư vấn khách tìm sữa tăng cân cho bé cần khẳng định điều gì?",
+    "answer": "Sữa tăng cân do cơ địa của bé hợp sữa.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Thế nào là sữa cao năng lượng? Loại nào cho dưới 1 tuổi và trên 1 tuổi?",
+    "answer": "Hàm lượng dinh dưỡng vượt trội với mức năng lượng từ 100 kcal/100ml trở lên, cao hơn sữa thông thường (khoảng 68 kcal/100ml). Dưới 1 tuổi: Infatrini (0-dưới 18 tháng). Trên 1 tuổi: Pediasure, Blackmores JNR, Kid Essentials.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Chọn 5 lon sữa khác loại và đọc cách pha sữa - Cần lưu ý gì?",
+    "answer": "Lưu ý: Nhiệt độ pha, tỉ lệ pha (1 muỗng + ... nước), cho nước vào bình sữa trước hay sữa vào trước.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Sữa nước Grow Plus bạc khác gì Grow Plus vàng Colos Immunel?",
+    "answer": "Bạc tăng cao và phát triển não bộ. Vàng Colos Immunel tăng cường đề kháng và tiêu hóa tốt. Ngoài ra còn có các loại vị dâu, vị chuối,...",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Nước muối vi lượng Cold Calm và Coryzalia khác nhau ở điểm gì?",
+    "answer": "Giống nhau đều ở công dụng. Khác nhau: Cold Calm cho trẻ trên 6 tháng. Coryzalia cho trẻ 1 tháng đến 11 tuổi.",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Khi bé mọc răng bị ngứa lợi, khó chịu cần tư vấn mua sản phẩm nào?",
+    "answer": "Muối vi lượng Camilia mọc răng và Gel bôi giảm đau lợi (Dentinox hoặc Chicco).",
+    "topic": "BỘ CÂU HỎI THƯỞNG - BỘ 2",
+    "source": "file1"
+  },
+  {
+    "question": "Câu hỏi đầu tiên khi tư vấn vitamin cho các mẹ mang bầu là gì?",
+    "answer": "Chị bầu mấy tháng rồi ạ?",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Thứ tự tư vấn Vitamin tổng hợp - sắt - canxi - DHA tương ứng các tháng bầu như thế nào?",
+    "answer": "Dưới 3 tháng: vitamin tổng hợp và axit folic (nếu hàm lượng axit folic trong vitamin tổng hợp dưới 500mg). Trên 3 tháng: vitamin tổng hợp thêm DHA hoặc sắt nếu chóng mặt. Trên 5 tháng: ngoài những loại trước đó, tùy xét nghiệm vi chất, tư vấn thêm Canxi, ưu tiên canxi hữu cơ. Tuyệt đối không tư vấn Canxi Ostelin là canxi vô cơ cho mẹ bầu.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cách uống vitamin tổng hợp, sắt, canxi, DHA trong ngày cho hợp lý?",
+    "answer": "Vitamin tổng hợp uống sáng-trưa. Canxi uống trước 4h chiều, tuyệt đối không uống cùng nước có nhiều vitamin C. Sắt uống cùng nước có vitamin C để tăng hấp thu, cách canxi ít nhất 2 tiếng. DHA uống thời điểm nào cũng được, tốt nhất sau bữa ăn nhiều dầu mỡ. Tham khảo: Sáng-Trưa uống vitamin tổng hợp kèm Canxi. Tầm 2-3h chiều uống sắt kèm nước cam/bưởi. Tối uống DHA.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Elevit bầu có thể uống ở các giai đoạn nào?",
+    "answer": "Chuẩn bị mang bầu và bầu.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Pregnacare sau sinh có mấy loại?",
+    "answer": "Có 2 loại: New Mum (không kèm DHA), Breast-feeding (kèm DHA).",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Loại vitamin tổng hợp nào kinh tế nhất? Loại nào cao cấp đắt nhất?",
+    "answer": "Kinh tế nhất: Nature Made của Mỹ (ngày 1 viên, 1 lọ uống được 5 tháng). Cao cấp nhất: Orthomol của Đức.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Vì sao Orthomol đắt mà vẫn nhiều mẹ mua?",
+    "answer": "Vì loại này đã kèm thêm men, hỗ trợ đường ruột cho mẹ. Các loại khác không có.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Liều dùng Pregnacare (Max, Breast-feeding) các loại có kèm viên DHA như thế nào?",
+    "answer": "2 viên vitamin tổng hợp và 1 viên DHA.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cách uống vitamin bầu hoặc sau sinh Elevit?",
+    "answer": "Ngày 1 viên.",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Phân loại các sản phẩm (sắt, canxi, DHA,...) khi tư vấn cho các mẹ như thế nào?",
+    "answer": "Phân loại theo sản phẩm hữu cơ hoặc vô cơ. Phân loại theo dạng bột, dạng viên uống/ngậm, dạng nước,...",
+    "topic": "VITAMIN BẦU - SAU SINH, CÁCH UỐNG",
+    "source": "file1"
+  },
+  {
+    "question": "Vì sao trẻ từ mới sinh đến 3 tuổi phải bổ sung vitamin D3?",
+    "answer": "Vì vitamin D3 tăng cường hấp thu canxi, giúp trẻ cứng cáp hệ xương và tăng cường hệ miễn dịch.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Vitamin D3 có phân loại khi tư vấn chọn cho khách như thế nào?",
+    "answer": "D3 chia thành D3 thuần hoặc D3 kèm K2 (MK7). Ngoài ra, D3 chia theo độ tuổi dùng, mỗi hãng có hướng dẫn độ tuổi khác nhau. D3 có dạng giọt nhỏ, dạng giọt ống bóp, dạng xịt, dạng viên ngậm, dạng ống. D3 có xuất xứ từ nhiều nước hoặc chiết xuất từ tảo, dầu thông, dầu dừa, dầu hướng dương,...",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Có các loại D3 hữu cơ nào ở Hello Con?",
+    "answer": "Nordic, Mommy's Bliss, Baby drop (DDrops), Mary Ruth's, Livewise.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Liều dùng D3 cho trẻ sơ sinh đến dưới 1 tuổi là bao nhiêu?",
+    "answer": "400IU/400IE.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Trẻ từ mấy tháng nên dùng D3K2, vì sao?",
+    "answer": "Trên 6 tháng vì trẻ khi mới sinh bác sĩ đã dùng vitamin K rồi. Do đó, trẻ từ sơ sinh chỉ nên dùng D3 thuần.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Có các loại DHA nào không tanh?",
+    "answer": "Fitobimbi, Livewise, Bioamicus, Nature Aid.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Thời điểm uống D3, DHA, Men vi sinh phân bổ như thế nào?",
+    "answer": "Buổi sáng dùng D3 và men. DHA thời điểm nào cũng được, tốt nhất là buổi tối.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Các loại men vi sinh cho trẻ sơ sinh khác nhau thế nào?",
+    "answer": "Số lượng chủng men và số lượng lợi khuẩn.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Khi đọc liều dùng các sản phẩm cho trẻ cần lưu ý gì?",
+    "answer": "Độ tuổi (month viết tắt M là tháng, year viết tắt Y là năm tuổi), cân nặng (kg hoặc pound), lượng dùng mỗi lần và số lần dùng mỗi ngày (once là 1 lần, twice là 2 lần, 3 times là 3 lần,...).",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Phân loại sản phẩm (D3, Men, DHA,...) khi tư vấn cho bé dùng như thế nào?",
+    "answer": "Phân loại theo hữu cơ hoặc vô cơ. Theo dạng bột, xịt, viên uống/ngậm, nước,... D3 phân loại theo nguồn gốc chiết xuất (dầu hướng dương, dầu dừa, dầu thông,...). DHA phân loại theo nguồn gốc (thực vật hoặc dầu cá), tanh hoặc không tanh. Men vi sinh theo số lượng chủng men.",
+    "topic": "TƯ VẤN D3, DHA, MEN VI SINH, SIRO",
+    "source": "file1"
+  },
+  {
+    "question": "Nhiệt độ pha các loại sữa non và sữa công thức có chứa sữa non hoặc lợi khuẩn tiêu hóa là bao nhiêu?",
+    "answer": "Tối đa 40 độ C.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Tỉ lệ khi pha các loại sữa Aptamil là bao nhiêu?",
+    "answer": "Ap Đức bạc, Anh Anh là 1 thìa gạt + 30ml nước. Ap Úc bạc và Ap New Zealand là 1 thìa gạt + 50ml nước.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Aptamil Anh có nhiệt độ pha cao nhất trong số các dòng Aptamil là bao nhiêu?",
+    "answer": "70 độ C.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Nhiệt độ pha các loại sữa công thức không chứa sữa non hoặc lợi khuẩn theo khuyến cáo WHO?",
+    "answer": "70 độ C.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Aptamil có mấy dòng? Dòng nào kinh tế nhất? Cao cấp nhất? Dòng nào chứa men lợi khuẩn?",
+    "answer": "5 dòng: Advanced Anh, Profutura Đức, Synbiotic Úc, Essensis Úc, Profutura New Zealand. Kinh tế nhất: New Zealand. Cao cấp nhất: Essensis Úc. Chứa lợi khuẩn: Đức, Úc, New Zealand.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Aptamil Essensis khác gì Aptamil Synbiotic? Tại sao giá cao hơn?",
+    "answer": "Aptamil Essensis là đạm hữu cơ A2 dễ hấp thu hơn đạm A1 của Aptamil Synbiotic. Aptamil Essensis có chứa lợi khuẩn như trong sữa mẹ.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Hello Con có các hãng sữa hữu cơ nào?",
+    "answer": "Hipp, Kendamil, Aptamil Essensis, Earth Best, Horizon, Bellamy.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Hello Con có các hãng sữa chứa đạm A2 nào?",
+    "answer": "Bubs, Aptamil Essensis, Bellamy, A2 Platinum.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Trẻ bất dung nạp Lactose có các loại sữa nào?",
+    "answer": "Aptamil, Meiji HP.",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Khi tư vấn sữa cho bé phải lưu ý gì?",
+    "answer": "Số tháng tuổi của bé và đặc điểm của bé (có bất dung nạp Lactose không, bị dị ứng đạm bò không).",
+    "topic": "CÁCH PHA CÁC LOẠI SỮA BỘT",
+    "source": "file1"
+  },
+  {
+    "question": "Những loại bỉm nào mỏng?",
+    "answer": "Bỉm thỏ Momo Rabbit (không phải dòng ban đêm), bỉm ngựa Applecrumby dòng ban ngày hoặc PureBasics, Bỉm Gooby ngày, bỉm Moony dán, Bỉm Elprairie air thin. Trong đó bỉm thỏ và bỉm ngựa là dòng cao cấp, vừa mỏng mềm vừa thấm hút tốt.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Những hãng bỉm nào có dòng ban đêm?",
+    "answer": "Momo Rabbit, Applecrumby, Gooby.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Những hãng bỉm nào có size dán đến cỡ XL mà Hello Con bán?",
+    "answer": "Bỉm ngựa Applecrumby.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Tại sao Moony trắng cao cấp hơn Moony xanh?",
+    "answer": "Moony trắng (Moony Natural) là bông hữu cơ.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Khi tư vấn bỉm cần lưu ý gì?",
+    "answer": "Cân nặng và chiều cao của bé. Nếu cân nặng trong khoảng cân của size bỉm nhưng mặc vẫn bị hằn chun hoặc chật thì tư vấn lên 1 cỡ.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cửa hàng có chính sách đổi bỉm như thế nào?",
+    "answer": "Đổi lên size miễn phí trong vòng 30 ngày. Trong 90 ngày, sẽ mất phí nếu giá bỉm tăng giá.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cùng 1 hãng bỉm, combo bỉm có được mua nhiều size không?",
+    "answer": "Có.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Cửa hàng Hello Con bán các hãng bỉm nào?",
+    "answer": "Merries, Moony, Applecrumby, Momo Rabbit, Elprairie, Gooby.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Với trẻ sơ sinh, dòng bỉm nào kinh tế nhất, dòng nào cao cấp nhất?",
+    "answer": "Kinh tế nhất: Moony dòng xanh (mua 3 bịch chỉ còn 250k/bịch, NB 90 miếng tính ra gần 3.000đ/miếng). Cao cấp nhất: Applecrumby (mua 3 bịch còn khoảng 145k/bịch, 20 miếng tính ra hơn 7.000đ/miếng).",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Bỉm Applecrumby có mấy loại, sự khác nhau?",
+    "answer": "3 loại: Dòng ban ngày (màu xanh dương, chữ Slim) siêu mỏng 2mm. Dòng ban đêm (màu hồng tím, chữ Overnight) dày nhất, thấm hút nhiều nhất. Dòng ngày đêm PureBasics (màu trắng xanh lá) siêu mỏng 2mm.",
+    "topic": "CÁC SIZE - LOẠI BỈM CÁC HÃNG",
+    "source": "file1"
+  },
+  {
+    "question": "Quy trình bổ sung hàng hóa trên kệ gồm mấy bước?",
+    "answer": "Bước 1: Gõ tên nhóm SP hoặc tên nhãn hàng vào danh sách SP trên điện thoại/tài khoản bán hàng. Bước 2: Nếu đã có, so sánh date - mã nào date ngắn hơn thì bày ra mặt trước bán trước. Nếu chưa có, mang hàng xuống bày bổ sung, mỗi mã chỉ bày 1 mặt.",
+    "topic": "QUY TRÌNH BỔ SUNG HÀNG HÓA TRÊN KỆ",
+    "source": "file1"
+  },
+  {
+    "question": "Các lưu ý khi đọc date sản phẩm?",
+    "answer": "Date hoa quả nghiền Fruto: 1 năm từ ngày SX, in theo Năm-Tháng-Ngày. Date sữa chua Gogo: in ngược Năm-Ngày-Tháng. Date Chicco: đọc theo bảng mã trên tem phụ tiếng Việt. Một số SP chỉ có hạn mở nắp (như Noodle & Boo). Một số bắt đầu bằng EXP. Một số tính + số năm từ ngày SX. SP Đức (Bubchen, Penaten,...) có mã chữ, cần check cách đọc trên Google.",
+    "topic": "LƯU Ý VỀ DATE SẢN PHẨM",
+    "source": "file1"
+  },
+  {
+    "question": "Khi cho trẻ mới tập ăn bột cần lưu ý gì khi tư vấn?",
+    "answer": "Trả lời: Hỏi trẻ mấy tháng? Có bị dị ứng đạm bò hay không? Nếu trẻ dị ứng đạm bò thì tư vấn bột không có chứa sữa. Nếu trẻ không bị dị ứng gì thì tư vấn các loại bột từ 4 tháng trở lên để trẻ làm quen dần. Khi mới ăn, bột pha sẽ hơi loãng cho trẻ làm quen. Sau đó tăng dần độ đặc như theo công thức của bột.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Bánh ăn dặm cho trẻ mới tập ăn dặm ( 5-6 tháng) khác gì bánh cho trẻ trên 1 tuổi?",
+    "answer": "Trả lời: Bánh cho trẻ 5-6 tháng mới tập ăn thường nhạt, dễ tan trong miệng, bánh to bản cho trẻ dễ cầm nắm. Bánh cho trẻ trên 1 tuổi thường đậm vị hơn.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Khách tìm mua sữa tắm cần hỏi câu hỏi gì?",
+    "answer": "Trả lời: Hỏi bé trên hay dưới 1 tuổi? Nếu bé dưới 1 tuổi thì tìm loại không cần tráng lại bằng nước sạch hay cần tráng lại? Với các loại sữa tắm cần tráng lại ( cho cả trên và dưới 1 tuổi) cần hỏi tìm dòng dạng gel/ sữa hay dạng tạo bọt.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Khách tìm mua nước rửa bình cho bé cần hỏi câu hỏi gì?",
+    "answer": "Trả lời: Khách tìm loại dạng gel hay tạo bọt.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Sữa chua cho bé có thể ăn mấy lần 1 tuần? Váng sữa cho bé có thể ăn mấy lần 1 tuần?",
+    "answer": "Trả lời: Sữa chua có thể ăn mỗi ngày để bổ sung lợi khuẩn cho đường ruột. Còn váng sữa có thể ăn 2-3 lần 1 tuần.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Chọn gối cho trẻ mới đẻ cần lưu ý gì?",
+    "answer": "Trả lời: Trẻ mới đẻ không cần gối, chỉ cần tấm lót đầu mỏng hoặc lót gối mỏng.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Sữa Enfagrow có phải sữa cao năng lượng không? Đặc điểm khác biệt giữa bản Mỹ và bản Canada là gì?",
+    "answer": "Trả lời: Enfagrow tại Hello Con không phải loại cao năng lượng. Bản Canada có 2 loại chất xơ, giúp hạn chế tạo bón.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Khách không yên tâm khi các hãng lớn ( kể cả như Joie, Combi,...) đều sản xuất sản phẩm ở Trung Quốc, cần nói gì với khách?",
+    "answer": "Trả lời: Anh chị yên tâm khi sản xuất đều theo tiêu chuẩn an toàn của hãng. Trung Quốc là công xưởng của cả thế giới.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Chậu tắm/ rửa mặt có những loại nào?  Cần sắm mấy chiếc?",
+    "answer": "Trả lời: Có loại gấp gọn và không gấp gọn. Mỗi loại nên sắm 2 cái. Với chậu tắm, 1 cái để tắm, 1 cái để tráng lại. Với chậu rửa mặt, 1 cái chuyên để khăn sữa lau mặt, 1 cái dùng để rửa mông vệ sinh mông cho bé.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Có các loại mì nào cho bé?",
+    "answer": "Trả lời: Mì somen sợi ngắn mảnh, nhỏ cho bé trên 5 tháng. Mì udon sợ to hơn cho bé trên 7 tháng. Mì nui cho bé trên 8 tháng. Mì tôm cho bé trên 12-18 tháng trở lên tùy loại. Bé mới tập ăn thô, ăn mì nên chọn mì somen sợi mảnh nhỏ cho bé tập làm quen.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "1, Nước muối Physiodose xanh lá khác gì màu hồng? Nước muối Physiodose hồng khác gì Gifrer hồng?",
+    "answer": "Trả lời: Màu hồng vệ sinh mắt, mũi, tai cho bé. Màu xanh lá cũng như màu hồng, ngoài ra vệ sinh được thêm vết thương. Đầu của Physiodose nhọn dễ đóng hơn nhưng dễ bị hở. Đầu của Gifrer tròn, khó đậy lại hơn nhưng kín hơn.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "2, Gạc Papie có mấy loại? Khác nhau như thế nào? Khác gì so với gạc Sachi.",
+    "answer": "Trả lời: Có 2 loại: Trên 1 tuổi và dưới 1 tuổi. Gạc trên 1 tuổi có thêm Xylitol giúp chống sâu răng. Gạc Papie dưới 1 tuổi khác gạc Sachi ở bảng thành phần dẫn đến mùi sẽ khác nhau.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "3, Máy tiệt trùng bình sữa có mấy loại?",
+    "answer": "Trả lời: Có 2 loại: Tiệt trùng bằng hơi nước, tiệt trùng bằng đèn UV.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "4, Máy pha sữa Burabi khác cơ bản nhất máy pha sữa Baby Brezza ở điểm gì?",
+    "answer": "Trả lời: Burabi pha được các loại sữa ở nhiệt độ 70 độ. Còn Baby Brezza pha tối đa ở 45 độ.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "5, Khi tư vấn khách tìm sữa tăng cân cho bé cần khẳng định điều gì cho khách hàng?",
+    "answer": "Trả lời: Sữa tăng cân do cơ địa của bé hợp sữa.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "6, Thế nào là sữa cao năng lượng? Có loại sữa cao năng lượng cho dưới 1 tuổi và trên 1 tuổi.",
+    "answer": "Trả lời: Hàm lượng dinh dưỡng vượt trội với mức năng lượng từ 100 kcal/100ml trở lên, cao hơn sữa thông thường (khoảng 68 kcal/100ml). Dưới 1 tuổi có Infatrini dùng cho trẻ 0 đến dưới 18 tháng. Trên 1 tuổi có Pediasure, Blackmores JNR, Kid Essentials.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Chọn 5 lon sữa khác loại và đọc cách pha sữa.",
+    "answer": "Lưu ý: Nhiệt độ pha, tỉ lệ pha ( 1 muỗng +... nước), cho nước vào bình sữa trước hay sữa vào bình sữa trước.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Sữa nước Grow plus bạc khác gì Grow plus vàng Colos Immunel?",
+    "answer": "Trả lời: Bạc tăng cao và phát triển não bộ. Vàng Colos Immunel tăng cường đề kháng và tiêu hóa tốt. Ngoài ra còn có các loại vị dâu, vị chuối,...",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "9, Nước muối vi lượng Cold Calm và Coryzalia khác nhau ở điểm gì?",
+    "answer": "Trả lời: Giống nhau đều ở công dụng. Khác nhau ở Cold calm cho trẻ trên 6 tháng. Coryzalia cho trẻ 1 tháng đến 11 tuổi.",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "10,. Khi bé mọc răng bị ngứa lợi, khó chịu cần tư vấn mua các sản phẩm nào?",
+    "answer": "Trả lời: Muối vi lượng Camilia mọc răng và Gel bôi giảm đau lợi ( Dentinox hoặc Chicco).",
+    "topic": "Bộ câu hỏi thưởng",
+    "source": "file2"
+  },
+  {
+    "question": "Câu hỏi đầu tiên khi tư vấn vitamin cho các mẹ mang bầu là gì?",
+    "answer": "Trả lời: Chị bầu mấy tháng rồi ạ?",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Thứ tự tư vấn Vitamin tổng hợp - sắt - canxi - DHA tương ứng các tháng bầu như thế nào?",
+    "answer": "Trả lời: Dưới 3 tháng, vitamin tổng hợp và axit folic ( nếu hàm lượng axit folic trong vitamin tổng hợp dưới 500mg). Trên 3 tháng, vitamin tổng hợp thêm DHA hoặc sắt nếu chóng mặt. Trên 5 tháng, ngoài những loại trước đó, tùy theo xét nghiệm vi chất của khách, tư vấn dùng thêm Canxi, ưu tiên canxi hữu cơ. Tuyệt đối không tư vẫn Canxi Ostelin là canxi vô cơ cho mẹ bầu.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Cách uống vitamin tổng hợp, sắt, canxi, DHA như thế nào trong ngày cho hợp lý?",
+    "answer": "Trả lời: Vitamin tổng hợp nên uống sáng - trưa. Canxi uống trước 4h chiều, tuyệt đối không uống cùng nước có nhiều vitamin C. Sắt, uống cùng nước có nhiều vitamin C để tăng hấp thu, uống cách canxi ít nhất 2 tiếng. DHA uống thời điểm nào cũng được, tốt nhất là sau bữa ăn nhiều dầu mỡ. Do đó, có thể tham khảo lịch: Sáng - Trưa uống vitamin tổng hợp kèm Canxi. Tầm 2-3 giờ chiều uống sắt kèm 1 cốc nước cam/ bưởi. Tối uống DHA.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Elevit bầu có thể uống ở các giai đoạn nào?",
+    "answer": "Trả lời: Chuẩn bị mang bầu và bầu.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Pregnacare sau sinh có mấy loại?",
+    "answer": "Trả lời: Có 2 loại. Loài New Mum ( không kèm DHA), Loại Breast-feeding ( kèm DHA)",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Loại vitamin tổng hợp nào kinh tế nhất? Loại nào cao cấp đắt tiền nhất?",
+    "answer": "Trả lời: Kinh tế nhất là Nature Made của Mỹ ( ngày 1 viên, 1 lọ uống được 5 tháng). Cao cấp nhất là Orthomol của Đức.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Vì sao Orthomol đắt mà vẫn nhiều mẹ mua?",
+    "answer": "Trả lời: Vì loại này đã kèm thêm men, hỗ trợ đường ruột cho mẹ. Các loại khác không có.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Liều dùng Pregnacare (Max, Breast-feeding) các loại có kèm viên DHA như thế nào?",
+    "answer": "Trả lời: 2 viên vitamin tổng hợp và 1 viên DHA.",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Cách uống vitamin bầu hoặc sau sinh Elevit?",
+    "answer": "Trả lời: Ngày 1 viên",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Phân loại các sản phẩm ( sắt, canxi, DHA,...) khi tư vấn cho các mẹ như thế nào?",
+    "answer": "Trả lời: Phân loại theo sản phẩm hữu cơ hoặc vô cơ. Phân loại theo dạng bột, dạng viên uống/ngậm, dạng nước,...",
+    "topic": "Vitamin bầu - sau sinh, cách uố",
+    "source": "file2"
+  },
+  {
+    "question": "Vì sao trẻ từ mới sinh đến 3 tuổi phải bổ sung vitamin D3?",
+    "answer": "Trả lời: Vì vitamin D3 tăng cường hấp thu canxi, giúp trẻ cứng cáp hệ xương và tăng cường hệ miễn dịch",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Vitamin D3 có phân loại khi tư vấn chọn cho khách như thế nào?",
+    "answer": "Trả lời: D3 chia thành D3 thuần hoặc D3 kèm K2 ( MK7). Ngoài ra, D3 chia theo độ tuổi dùng, mỗi một hãng có hướng dẫn độ tuổi khác nhau. D3 có dạng giọt nhỏ, dạng giọt ống bóp, dạng xịt, dạng viên ngậm, dạng ống. D3 có xuất xứ từ nhiều nước hoặc chiết xuất từ tảo, dầu thông, dầu dừa, dầu hướng dương,...",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Có các loại D3 hữu cơ nào ở Hello Con?",
+    "answer": "Trả lời: Nordic, Mommy's Bliss, Baby drop ( DDrops), Mary Ruth's, Livewise.",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Liều dùng D3 cho trẻ sơ sinh đến dưới 1 tuổi là bao nhiêu?",
+    "answer": "Trả lời: 400IU/ 400IE",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Trẻ từ mấy tháng nên dùng D3K2, vì sao?",
+    "answer": "Trả lời: Trên 6 tháng vì trẻ khi mới sinh bác sĩ đã dùng vitamin K rồi. Do đó, trẻ từ sơ sinh chỉ nên dùng D3 thuần.",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Có các loại DHA nào không tanh?",
+    "answer": "Trả lời: Fitobimbi, Livewise, Bioamicus, Nature Aid",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Thời điểm uống D3, DHA, Men vi sinh phân bổ như thế nào?",
+    "answer": "Trả lời: Buổi sáng dùng D3 và men. DHA thời điểm nào cũng được, tốt nhất là buổi tối.",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Các loại men vi sinh cho trẻ sơ sinh khác nhau thế nào?",
+    "answer": "Trả lời: Số lượng chủng men và số lượng lợi khuẩn.",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Khi đọc liều dùng các sản phẩm cho trẻ cần lưu ý gì?",
+    "answer": "Trả lời: Độ tuổi của trẻ ( month viết tắt M là tháng, year viết tắt Y là năm tuổi), cân nặng (kg hoặc pound), lượng dùng mỗi lần và số lần dùng mỗi ngày (once là một lần, twice là 2 lần, 3 times là 3 lần, .... times  là .... lần)",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Phân loại các sản phẩm ( D3, Men, DHA,...) khi tư vấn cho bé dùng như thế nào?",
+    "answer": "Trả lời: Phân loại theo sản phẩm hữu cơ hoặc vô cơ. Phân loại theo dạng bột, dạng xịt, dạng viên uống/ngậm, dạng nước,...Ngoài ra D3 phân loại theo nguồn gốc chiết xuất ( dầu hướng dương, dầu dừa, dầu thông,...). DHA phân loại theo nguồn gốc ( thực vật hoặc dầu cá), phân loại theo loại tanh hoặc không tanh. Men vi sinh theo số lượng chủng men.",
+    "topic": "Tư vấn D3, DHA, men vi sinh, si",
+    "source": "file2"
+  },
+  {
+    "question": "Bình sữa kèm núm: Cho bé bú sữa",
+    "answer": "Đối với chất liệu bình: Nhựa PP (không chịu được nhiệt độ cao, nhanh phải thay, ưu điểm chi phí rẻ), nhựa PPSU ( ưu điểm chịu nhiệt cao, bền), thủy tinh ( nhược điểm dễ vỡ, chi phí hơi cao). Đối với núm vú: Mỗi cỡ bình kèm theo size núm số tháng tương ứng. Nếu bé bú mệt thì nên tăng size núm. Size núm phân theo số tháng tuổi tùy theo mỗi hãng.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Sữa công thức",
+    "answer": "Sữa tăng cân do cơ địa của bé. Phân loại sữa theo: sữa bò hoặc dê, dòng hữu cơ hoặc không hữu cơ, sữa cho trẻ bất dung nạp lactose, sữa cho trẻ dị ứng đạm bò, sữa pha 40 độ ( thường kèm lợi khuẩn) hoặc 70 độ",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Hộp chia sữa",
+    "answer": "Khách chọn theo màu và kiểu khách thích. Ngoài ra khách có thể mua túi chia sữa bột.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Quần áo sơ sinh",
+    "answer": "Phân loại theo bộ cài lệch hoặc cài thằng, theo hãng, chất liệu dày mỏng tùy thời tiết khi đẻ. Chia size theo bảng size của mỗi hãng. Ngoài lấy size NB ( newborn) khách nên lấy thêm size 0-3M hoặc 3-6M vì trong tháng đầu bé nhanh lớn.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Áo liền quần ( bộ body)",
+    "answer": "Phân theo hãng, chất liệu dày mỏng tùy thời tiết khi đẻ. Chia size theo bảng size của mỗi hãng. Ngoài lấy size NB ( newborn) khách nên lấy thêm size 0-3M hoặc 3-6M vì trong tháng đầu bé nhanh lớn.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Bao tay, bao chân",
+    "answer": "Phân theo hãng, chất liệu dày mỏng tùy hãng.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Mũ che thóp, đội đầu",
+    "answer": "Phân theo hãng, chất liệu dày mỏng tùy hãng.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Yếm",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Áo gile ( cho bé mùa thu - đông)",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Khăn sữa/ Khăn quấn/ Khăn ủ/ Khăn tắm",
+    "answer": "Phân loại theo chất liệu như xô, sợi tre,...",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Chiếu lót/ Tấm lót: Để không bị giây bẩn ra giường",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Chăn cho bé",
+    "answer": "Phân loại theo chất liệu như xô, cotton, len lưới,... Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Chũn quấn cho bé: Để bé đỡ giật mình, tạo cảm giác an toàn khi ngủ. Tùy độ hợp tác mỗi bé",
+    "answer": "Phân loại theo hở chân hoặc kín chân. Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Gối chặn chống giật mình",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Gối nằm/ Tấm lót đầu cho bé: Không chọn loại cao vì ảnh hưởng đến cột sống của bé",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Nôi đưa",
+    "answer": "Khách chọn kiểu và chất liệu khách thích. Hàng hãng Joie  và Mastela có bảo hành 1 năm",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Cũi trẻ em: An toàn khi bé ngủ riêng",
+    "answer": "Khách chọn kiểu và chất liệu khách thích. Hàng hãng Joie gấp gọn du lịch, có bảo hành 1 năm.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Quây vải - đệm cũi: Để tay bé không đập vào thành cũi",
+    "answer": "Khách chọn kiểu và chất liệu khách thích.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Gối chống trào ngược: Gối có phần đầu cao hơn phần thân giúp giảm tình trạng trào ngược, nôn trớ ở trẻ sau khi ăn.",
+    "answer": "Khách chọn kiểu và chất liệu khách thích. Hãng Dono và Rotobebe là 2 hãng Hàn Quốc cao cấp.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Giá úp bình sữa: Úp bình sữa, dụng cụ ăn dặm,...",
+    "answer": "Có loại của Moaz và Fatz kèm theo đèn UV. Các loại cơ bản khác, giá thành rẻ thì không có.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Túi ủ bình sữa, bình giữ nhiệt: Giữ sữa ở nhiệt độ ấm",
+    "answer": "Có 2 hãng phổ biến là Moaz Bebe và Fatz với giá thành hợp lý, bảo hành 1 năm.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Bộ cọ rửa bình sữa: Cọ rửa bình sữa và núm ti",
+    "answer": "Phân loại theo chất liệu: Mút xốp, sợi nilon, silicon. Trong đó silicon là bền nhất. Mút xốp của các hãng xịn như Moyuum, Grossmimi của Hàn Quốc có độ bền cao, không nhanh tan như mấy loại rẻ khác.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Nhiệt kế: Đo thân nhiệt của bé, đề phòng con sốt bất chợt",
+    "answer": "Phân loại: Chỉ đo thân nhiệt, tích hợp đo thân nhiệt - nước - môi trường",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Thìa nhỏ silicon: Cho bé uống vitamin, về sau dùng ăn dặm",
+    "answer": "Tư vấn thìa Combi ( hãng của Nhật) kèm hộp đựng cho sạch sẽ vệ sinh khi mang ra ngoài.",
+    "topic": "Danh sách đồ đi sinh",
+    "source": "file2"
+  },
+  {
+    "question": "Nhiệt độ pha các loại sữa non và sữa công thức có chứa sữa non hoặc lợi khuẩn tiêu hóa là bao nhiêu?",
+    "answer": "Trả lời: Tối đa 40 độ C.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Tỉ lệ khi pha các loại sữa Aptamil là bao nhiêu?",
+    "answer": "Trả lời: Ap Đức bạc, Anh Anh là 1 thìa gạt + 30ml nước. Ap Úc bạc và Ap New Zealand là 1 thìa gạt + 50ml nước.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Aptamil Anh có nhiệt độ pha cao nhất trong số các dòng Aptamil là bao nhiêu?",
+    "answer": "Trả lời: 70 độ C.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Nhiệt độ pha các loại sữa công thức không chứa sữa non hoặc lợi khuẩn là bao nhiêu theo khuyến cáo của WHO?",
+    "answer": "Trả lời: 70 độ C.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Aptamil có mấy dòng? Dòng nào kinh tế nhất? Dòng nào cao cấp nhất? Dòng nào có chứa men lợi khuẩn?",
+    "answer": "Trả lời: Aptamil có 5 dòng: Advanced Anh, Profutura Đức, Synbiotic Úc, Essensis Úc, Profutura New Zealand. Dòng kinh tế nhất là New Zealand. Dòng cao cấp nhất là Essensis Úc. Dòng có chứa lợi khuẩn là Đức, Úc, New Zealand.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Aptamil Essensis khác gì Aptamil Synbiotic? Tại sao giá cao hơn nhiều?",
+    "answer": "Trả lời: Aptamil Essensis là đạm hữu cơ A2 dễ hấp thu hơn đạm A1 của Aptamil Synbiotic. Aptamil Essensis có chứa lợi khuẩn như trong sữa mẹ.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Hello Con có các hãng sữa hữu cơ nào?",
+    "answer": "Trả lời: Hipp, Kendamil, Aptamil Essensis, Earth Best, Horizon, Bellamy",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Hello Con có các hãng sữa chứa đạm A2 nào?",
+    "answer": "Trả lời: Bubs, Aptamil Essensis, Bellamy, A2 Platinum",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Trẻ bất dung nạp Lactose có các loại sữa nào?",
+    "answer": "Trả lời: Aptamil, Meiji HP.",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Khi tư vấn sữa cho bé phải lưu ý gì?",
+    "answer": "Trả lời: Số tháng tuổi của bé và đặc điểm của bé ( có bị bất dung nạp Lactose hay không, bị dị ứng đạm bò không)",
+    "topic": "Cách pha các loại sữa bột, sữa ",
+    "source": "file2"
+  },
+  {
+    "question": "Những loại bỉm nào mỏng?",
+    "answer": "Trả lời: Bỉm thỏ Momo Rabbit không phải dòng ban đêm, bỉm ngựa Applecrumby dòng ban ngày hoặc dòng PureBasics, Bỉm Gooby ngày, bỉm Moony dán, Bỉm Elprairie air thin. Trong đó có bỉm thỏ và bỉm ngựa là dòng cao cấp, vừa mỏng mềm vừa thấm hút tốt.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Những hãng bỉm nào có dòng ban đêm?",
+    "answer": "Trả lời: Momo Rabbit, Applecrumby, Gooby",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Những hãng bỉm nào có size dán đến cỡ XL mà Hello Con bán?",
+    "answer": "Trả lời:  Bỉm ngựa Applecrumby",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Tại sao Moony trắng cao cấp hơn Moony xanh, Merries First Premium cao cấp hơn Merries thường?",
+    "answer": "Trả lời: Moony trắng ( Moony Natural) là bông hữu cơ.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Khi tư vấn bỉm cần lưu ý gì?",
+    "answer": "Trả lời: Cân nặng và chiều cao của bé. Nếu cân nặng của bé trong khoảng cân của size bỉm nhưng mặc vẫn bị hằn chun hoặc chật thì tư vấn lên 1 cỡ.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Cửa hàng có chính sách đổi bỉm như thế nào?",
+    "answer": "Trả lời: Đổi lên size miễn phí trong vòng 30 ngày. Trong 90 ngày, sẽ mất phí nếu giá bỉm tăng giá.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Cùng 1 hãng bỉm, khi áp dụng chương trình combo bỉm có được mua nhiều size không?",
+    "answer": "Trả lời: Có.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Cửa hàng Hello Con có bán các hãng bỉm nào?",
+    "answer": "Trả lời: Merries, Moony, Applecrumby, Momo Rabbit, Elprairie, Gooby",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Với trẻ sơ sinh, dòng bỉm nào tính ra kinh tế ( rẻ nhất), dòng nào cao cấp ( đắt nhất) khi tính chi phí trên 1 miếng bỉm?",
+    "answer": "Trả lời: Moony dòng xanh kinh tế nhất ( mua 3 bịch chỉ còn 250k/bịch, 1 bịch NB 90 miếng tính ra chỉ có gần 3.000 đồng/ miếng). Dòng cao cấp nhất là Applecrumby ( mua 3 bịch còn khoảng 145k/bịch, 1 bịch 20 miếng tính ra hơn 7.000 đồng/miếng)",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Bỉm Applecrumby có mấy loại, sự khác nhau giữa các loại?",
+    "answer": "Trả lời: Có 3 loại là dòng ban ngày ( màu xanh dương, bao bì có chữ Slim), dòng ban đêm ( màu hồng tím, bao bì có chữ Overnight), dòng ngày đêm ( màu trắng xanh lá, bao bì có chữ Purebasics). Dòng ngày và dòng ngày đêm Purebasics siêu mỏng 2mm. Dòng đêm dùng chuyên ban đêm, dày nhất, lượng thấm hút cũng nhiều nhất so với 2 loại còn lại.",
+    "topic": "Các size - loại bỉm các hãng",
+    "source": "file2"
+  },
+  {
+    "question": "Khi bán xe đẩy cần hỏi những câu hỏi gì cho khách?",
+    "answer": "Bé nhà mình mấy tháng tuổi rồi ạ? Bé có cân nặng như thế nào? Bé ngồi vững chưa ạ.",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Các hãng nào tại Hello Con có xe đẩy 2 chiều?",
+    "answer": "Combi, Aprica, Joie, Hello Con HC03, Vovo, Babyvovo, Tobe, Baobaohao, Viing, Belecco,",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Các hãng xe nào gấp gọn có trọng lượng nhẹ nhất tại Hello Con?",
+    "answer": "Combi, Aprica, Hello Con HC001, Tobe",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Các hãng xe nào có bảo hành chính hãng tại Việt Nam?",
+    "answer": "Các hãng cao cấp trên thế giới như Combi, Aprica, Joie, Ergobaby, Evenflo",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Xe đẩy không có bảo hành chính hãng tại Việt Nam thì được cửa hàng bảo hành như thế nào?",
+    "answer": "Khi thanh toán xong sản phẩm, khách hàng kiểm tra kỹ sản phẩm và dùng trong 3 ngày có vấn đề gì báo lại cửa hàng luôn để cửa hàng đổi trả",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Khi bán ghế ăn dặm cho bé cần hỏi những câu hỏi gì cho khách?",
+    "answer": "Bé nhà mình mấy tháng tuổi rồi ạ? Bé ngồi vững chưa ạ?",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Khi bán ghế ô tô cho bé cần hỏi những câu hỏi gì cho khách?",
+    "answer": "Bé nhà mình mấy tháng tuổi rồi ạ? Bé có chiều cao - cân nặng thế nào ạ?",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Nếu con khách chưa ngồi vững thì cần tư vấn ghế ô tô/ xe đẩy/ ghế ăn dặm có đặc điểm như thế nào?",
+    "answer": "Phần lưng ngả được",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Hello Con có bán những hãng ghế ô tô nào? có bảo hành không?",
+    "answer": "Joie thương hiệu của Anh Quốc. Reebaby của Trung Quốc. Đều bảo hành 1 năm.",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Ghế ô tô Joie có 2 tiêu chuẩn phân loại khác nhau như thế nào?",
+    "answer": "ECE R44 theo cân nặng và ECE R129 theo chiều cao",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Có các hãng ghế ăn dặm nào có thể tách ra thành 2 phần: 1 bàn và 1 ghế ngồi rời khi bé lớn?",
+    "answer": "Joie, Mastela, Evenflo.",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Joie dòng Pact",
+    "answer": "https://www.youtube.com/watch?v=2mSpwNjJrFw",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Joie dòng Muze",
+    "answer": "https://www.youtube.com/watch?v=MphSKmVHttw",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Joie dòng Litetrax",
+    "answer": "https://www.youtube.com/watch?v=hhAXBGOFCAQ",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Combi Handy 4cas",
+    "answer": "https://www.youtube.com/watch?v=_fbpSUHy8Q8",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đạp 3 bánh Playkid",
+    "answer": "https://www.youtube.com/watch?v=p0j7xL5lFVk",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy gấp gọn Hello Con HC03",
+    "answer": "https://www.facebook.com/HelloConCuaHangMeVaBe/videos/806996730772349",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Chicco",
+    "answer": "https://www.facebook.com/HelloConCuaHangMeVaBe/videos/1403788390283192",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy gấp gọn Hello Con HC001",
+    "answer": "https://www.facebook.com/HelloConCuaHangMeVaBe/videos/1025566145342132",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp xe đẩy Bibibot B5",
+    "answer": "https://www.youtube.com/watch?v=aU92108fYbU",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp các dòng ghế Joie Mimzy Snacker",
+    "answer": "https://www.youtube.com/shorts/YqXdNaFBBxs",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp các dòng ghế Joie Mimzy 2 trong 1",
+    "answer": "https://www.youtube.com/watch?v=vmsL1pzpuhM",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Ergobaby",
+    "answer": "https://www.youtube.com/watch?v=Xk-hhVlr_EY",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở xe đẩy Evenflo Ultra Lightweight",
+    "answer": "https://www.youtube.com/watch?v=VCM7dtY37qU",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách điều chỉnh ghế ô tô Joie dòng steadi",
+    "answer": "https://www.youtube.com/watch?v=CwOOSXRzGJw",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách điều chỉnh ghế ô tô Joie dòng Stages - Every Stages",
+    "answer": "https://www.youtube.com/watch?v=INQd2rjjXnU",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách điều chỉnh ghế ô tô Joie dòng Elevate",
+    "answer": "https://www.youtube.com/watch?v=q073sY09OLg",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở các dòng ghế ăn dặm Honper và tương tự",
+    "answer": "https://www.youtube.com/watch?v=Tpg75hQlpTw",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  },
+  {
+    "question": "Cách gấp mở ghế ăn dặm Apramo và tương tự",
+    "answer": "https://www.facebook.com/HelloConCuaHangMeVaBe/videos/2164005314048259",
+    "topic": "Xe đẩy - Ghế ăn dặm - Ghế ô tô",
+    "source": "file2"
+  }
+]

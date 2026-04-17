@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q&A Đào tạo NV bán hàng – Mẹ & Bé</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🤱 Q&A Đào tạo nhân viên bán hàng</h1>
+    <div class="sub">Ngành mẹ bầu &amp; trẻ sơ sinh · Hello Con</div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" href="/">👤 Nhân viên</a>
+    <a class="nav-link" href="/admin" id="adminLink" style="display:none;">🛠️ Admin</a>
+    <button class="nav-link" onclick="location.reload(true)" style="background:none;border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:13px;padding:6px 12px;" title="Tải lại trang">🔄 Tải lại</button>
+    <span class="nav-link" id="userDisplay" style="font-size:13px;"></span>
+    <button class="nav-link" onclick="doLogout()" style="background:none;border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:13px;padding:6px 12px;">🚪 Thoát</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-box">
+    <label>Bạn cần hỏi gì khi tư vấn khách?</label>
+    <div class="search-input-row">
+      <input id="searchInput" placeholder="Ví dụ: khách chê đắt, bé táo bón khi uống sữa, chọn bỉm size NB hay S..." autofocus>
+      <button class="btn btn-primary" onclick="doSearch()">🔍 Tìm</button>
+    </div>
+  </div>
+  <div id="searchResults"></div>
+</div>
+
+<script>
+var API = '';
+var lastQueryTokens = [];
+var lastResults = {};
+var sessionToken = '';
+var validEmployeeNames = [];
+try { sessionToken = localStorage.getItem('hc_session') || ''; } catch(e) {}
+
+(async function() {
+  if (!sessionToken) { location.href = '/login.html'; return; }
+  try {
+    var res = await fetch(API + '/api/auth/verify', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: sessionToken }),
+    });
+    var data = await res.json();
+    if (!data.ok) { location.href = '/login.html'; return; }
+    document.getElementById('userDisplay').textContent = '👤 ' + (data.displayName || data.username);
+    if (data.role === 'admin') { document.getElementById('adminLink').style.display = ''; }
+    // Load danh sach ten NV hop le
+    try {
+      var namesRes = await fetch(API + '/api/employee-names');
+      var namesData = await namesRes.json();
+      validEmployeeNames = namesData.names || [];
+    } catch(e2) {}
+  } catch(e) { location.href = '/login.html'; }
+})();
+
+function doLogout() {
+  try { localStorage.removeItem('hc_session'); } catch(e) {}
+  location.href = '/login.html';
+}
+
+function removeDiacritics(str) {
+  return (str||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0111/g,'d').replace(/\u0110/g,'D');
+}
+function escapeHtml(s) {
+  return String(s||'').replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; });
+}
+function highlight(text, tokens) {
+  if (!text) return '';
+  var safe = escapeHtml(text);
+  if (!tokens || !tokens.length) return safe;
+  var parts = safe.split(/(\s+)/);
+  var set = new Set(tokens);
+  return parts.map(function(p) {
+    if (!p || /^\s+$/.test(p)) return p;
+    var norm = removeDiacritics(p).toLowerCase().replace(/[^a-z0-9]/g,'');
+    if (!norm) return p;
+    var match = set.has(norm);
+    if (!match && norm.length >= 4) { for (var t of set) { if (t.length >= 4 && (norm.includes(t) || t.includes(norm))) { match = true; break; } } }
+    return match ? '<mark class="hl">' + p + '</mark>' : p;
+  }).join('');
+}
+
+async function doSearch() {
+  var input = document.getElementById('searchInput');
+  var query = input.value.trim();
+  var resultsDiv = document.getElementById('searchResults');
+  if (!query) { resultsDiv.innerHTML = ''; return; }
+  resultsDiv.innerHTML = '<div class="cost-banner info">⏳ Đang tìm...</div>';
+  try {
+    var res = await fetch(API + '/api/search', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: query, topK: 10 }),
+    });
+    var data = await res.json();
+    lastQueryTokens = data.tokens || [];
+    var results = data.results || [];
+    lastResults = {};
+    results.forEach(function(r) { lastResults[r.id] = r; });
+    renderResults(query, results);
+  } catch (err) {
+    resultsDiv.innerHTML = '<div class="cost-banner" style="background:#fee2e2;border-color:#fca5a5;color:#991b1b;">❌ Lỗi: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+function renderResults(query, results) {
+  var resultsDiv = document.getElementById('searchResults');
+  var html = '<div class="cost-banner free">🟢 Tìm kiếm nội bộ – KHÔNG tốn token</div>';
+  if (results.length === 0) {
+    html += renderNoResult(query);
+    resultsDiv.innerHTML = html;
+    return;
+  }
+  html += '<div class="muted" style="margin-bottom:10px;">Tìm thấy <b>' + results.length + '</b> câu liên quan:</div>';
+  var maxScore = results[0].score || 1;
+  for (var i = 0; i < results.length; i++) {
+    var r = results[i];
+    var isTop = i === 0;
+    var percent = Math.round(r.score * 100);
+    var barWidth = Math.round((r.score / maxScore) * 100);
+    var badge = r.source === 'A' ? '<span class="badge badge-a">Bộ A</span>' : (r.status === 'pending' ? '<span class="badge badge-pending">Chờ duyệt</span>' : '<span class="badge badge-b">Bộ B</span>');
+    var topicBadge = r.topic ? '<span class="badge badge-topic">' + escapeHtml(r.topic) + '</span>' : '';
+    var hlQ = highlight(r.question, lastQueryTokens);
+    html += '<div class="result-item ' + (isTop ? 'top' : '') + '" id="result_' + r.id + '">' +
+      '<div class="rank" onclick="toggleAnswer(' + r.id + ')" style="cursor:pointer;">' + (i+1) + '</div>' +
+      '<div class="body">' +
+        '<div class="q-row" onclick="toggleAnswer(' + r.id + ')" style="cursor:pointer;"><div class="q">' + (isTop ? '<span class="top-label">PHÙ HỢP NHẤT</span>' : '') + hlQ + '</div>' +
+        '<div class="meta">' + topicBadge + badge + '</div></div>' +
+        '<div class="relevance-row"><div class="bar"><div class="bar-fill" style="width:' + barWidth + '%"></div></div>' +
+        '<div class="percent">' + percent + '%</div></div>' +
+        '<div class="inline-answer" id="answer_' + r.id + '" style="display:none;"></div>' +
+      '</div></div>';
+  }
+  html += renderNoResult(query, true);
+  resultsDiv.innerHTML = html;
+}
+
+function renderNoResult(query, atBottom) {
+  var label = atBottom ? 'Không câu nào đúng ý?' : 'Không có câu hỏi liên quan.';
+  var safeQ = escapeHtml(JSON.stringify(query));
+  return '<div class="no-result"><p>' + label + '</p>' +
+    '<button class="btn btn-warning" onclick="askAI(' + safeQ + ')">🤖 Yêu cầu AI trả lời</button>' +
+    '<div class="muted" style="margin-top:10px;color:#92400e;">⚠️ Tốn token AI</div></div>';
+}
+
+function showAnswer(div, answer, topic, askedCount) {
+  var hlA = highlight(answer, lastQueryTokens).replace(/\n/g, '<br>');
+  div.style.display = 'block';
+  div.innerHTML = '<div style="padding:12px 0;border-top:1px solid #e5e7eb;margin-top:8px;">' +
+    '<div style="font-size:14px;line-height:1.7;color:#374151;">' + hlA + '</div>' +
+    '<div class="source-note" style="margin-top:8px;">🟢 Từ kho câu hỏi · ' +
+      (topic ? '<span class="badge badge-topic" style="margin-right:4px;">' + escapeHtml(topic) + '</span>' : '') +
+      'Đã hỏi ' + (askedCount||0) + ' lần</div></div>';
+}
+
+function toggleAnswer(id) {
+  var div = document.getElementById('answer_' + id);
+  if (!div) return;
+  if (div.style.display !== 'none') { div.style.display = 'none'; return; }
+  if (div.innerHTML) { div.style.display = 'block'; return; }
+  // Uu tien cache tu ket qua tim kiem
+  var cached = lastResults[id];
+  if (cached && cached.answer) {
+    showAnswer(div, cached.answer, cached.topic, cached.asked_count);
+    return;
+  }
+  // Fallback: goi API neu cache khong co answer
+  div.style.display = 'block';
+  div.innerHTML = '<div class="muted">⏳ Đang tải...</div>';
+  fetch(API + '/api/qa/' + id)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.answer) {
+        showAnswer(div, data.answer, data.topic, data.asked_count);
+      } else {
+        div.innerHTML = '<div class="muted">Không có câu trả lời</div>';
+      }
+    })
+    .catch(function() {
+      div.innerHTML = '<div class="muted">❌ Lỗi tải câu trả lời</div>';
+    });
+}
+
+function askAI(query) {
+  var resultsDiv = document.getElementById('searchResults');
+  var safeQ = escapeHtml(JSON.stringify(query));
+  var html = resultsDiv.innerHTML;
+  html += '<div id="aiFlowArea"><div class="answer-card" style="border-left-color:#f59e0b;">' +
+    '<h3>⚠️ Bạn đã kiểm tra kĩ các câu hỏi có sẵn chưa?</h3>' +
+    '<div class="answer-text">Hãy chắc chắn không có câu trả lời phù hợp trong kho trước khi hỏi AI.</div>' +
+    '<div style="display:flex;gap:10px;margin-top:14px;">' +
+      "<button class=\"btn btn-secondary\" onclick=\"document.getElementById('aiFlowArea').remove();\">🔍 Kiểm tra lại</button>" +
+      '<button class="btn btn-warning" onclick="askAIStep2(' + safeQ + ')">✅ Đã kiểm tra, tạo câu trả lời</button>' +
+    '</div></div></div>';
+  resultsDiv.innerHTML = html;
+}
+
+function askAIStep2(query) {
+  var area = document.getElementById('aiFlowArea');
+  if (!area) return;
+  var savedName = '';
+  try { savedName = localStorage.getItem('hc_employee_name') || ''; } catch(e) {}
+  var safeQ = escapeHtml(JSON.stringify(query));
+  var hasEmployeeList = validEmployeeNames.length > 0;
+  var nameNote = hasEmployeeList
+    ? '<div style="margin-top:8px;font-size:13px;color:#92400e;">⚠️ Bạn phải nhập đúng họ và tên của mình và chịu trách nhiệm. Nếu ghi tên người khác sẽ bị coi là gian dối.</div>'
+    : '';
+  area.innerHTML = '<div class="answer-card" style="border-left-color:#3b82f6;">' +
+    '<h3>👤 Điền họ tên của bạn</h3>' +
+    '<input type="text" id="employeeNameInput" placeholder="Ví dụ: Nguyễn Văn A" value="' + escapeHtml(savedName) + '"' +
+      ' style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:8px;font-size:15px;margin-top:10px;">' +
+    nameNote +
+    '<div id="nameWarning" style="display:none;margin-top:8px;padding:10px 14px;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;font-size:13px;color:#991b1b;"></div>' +
+    '<div style="display:flex;gap:10px;margin-top:14px;">' +
+      '<button class="btn btn-secondary" onclick="askAI(' + safeQ + ')">← Quay lại</button>' +
+      '<button class="btn btn-primary" onclick="askAISubmit(' + safeQ + ')">🤖 Gửi cho AI</button>' +
+    '</div></div>';
+  setTimeout(function() { var inp = document.getElementById('employeeNameInput'); if (inp && !inp.value) inp.focus(); }, 100);
+}
+
+async function askAISubmit(query) {
+  var nameInput = document.getElementById('employeeNameInput');
+  var employeeName = (nameInput ? nameInput.value : '').trim();
+  var warnDiv = document.getElementById('nameWarning');
+  if (!employeeName || employeeName.length < 2) {
+    if (warnDiv) { warnDiv.style.display = 'block'; warnDiv.innerHTML = '❌ Vui lòng nhập họ và tên (ít nhất 2 ký tự).'; }
+    if (nameInput) nameInput.focus();
+    return;
+  }
+  // Client-side validation: check against employee names list
+  if (validEmployeeNames.length > 0) {
+    var nameNorm = employeeName.toLowerCase().trim();
+    var found = validEmployeeNames.some(function(n) { return n.toLowerCase().trim() === nameNorm; });
+    if (!found) {
+      if (warnDiv) {
+        warnDiv.style.display = 'block';
+        warnDiv.innerHTML = '❌ <b>Họ tên không đúng!</b> Bạn phải nhập đúng họ và tên đã đăng ký với admin.<br>Vui lòng kiểm tra lại hoặc liên hệ admin.';
+      }
+      if (nameInput) { nameInput.style.borderColor = '#ef4444'; nameInput.focus(); }
+      return;
+    }
+  }
+  if (warnDiv) warnDiv.style.display = 'none';
+  if (nameInput) nameInput.style.borderColor = '#e5e7eb';
+  try { localStorage.setItem('hc_employee_name', employeeName); } catch(e) {}
+  var area = document.getElementById('aiFlowArea');
+  if (!area) return;
+  area.innerHTML = '<div class="answer-card ai"><h3>🤖 Đang gọi AI... <span class="loader purple"></span></h3></div>';
+  try {
+    var res = await fetch(API + '/api/ask-ai', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: query, employeeName: employeeName }),
+    });
+    var data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Lỗi');
+    var topicOptions = '';
+    var topics = data.topics || [];
+    for (var t = 0; t < topics.length; t++) {
+      var sel = (topics[t] === data.suggestedTopic) ? ' selected' : '';
+      topicOptions += '<option value="' + escapeHtml(topics[t]) + '"' + sel + '>' + escapeHtml(topics[t]) + '</option>';
+    }
+    var topicSelect = '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #e5e7eb;">' +
+      '<label style="font-size:13px;font-weight:600;">Chủ đề:</label>' +
+      '<div style="display:flex;gap:8px;align-items:center;margin-top:6px;">' +
+        '<select id="topicSelect_' + data.id + '" style="flex:1;padding:8px;border:1px solid #d1d5db;border-radius:6px;">' +
+          '<option value="">(Không chọn)</option>' + topicOptions + '</select>' +
+        '<button class="btn btn-sm btn-secondary" onclick="addNewTopic(' + data.id + ')">+ Thêm</button>' +
+        '<button class="btn btn-sm btn-success" onclick="saveTopic(' + data.id + ')">Lưu</button>' +
+      '</div>' +
+      '<div id="topicMsg_' + data.id + '" style="font-size:12px;color:#059669;margin-top:4px;"></div></div>';
+    area.innerHTML = '<div class="answer-card ai">' +
+      '<div class="answer-header"><h3>' + escapeHtml(data.question) + '</h3><span class="badge badge-ai">AI</span></div>' +
+      '<div class="answer-text">' + escapeHtml(data.answer) + '</div>' +
+      '<div class="source-note">🟣 Token: ' + data.inputTokens + ' in + ' + data.outputTokens + ' out · Model: ' + escapeHtml(data.model) + '<br>NV: ' + escapeHtml(employeeName) + ' · Chờ admin duyệt.</div>' +
+      topicSelect + '</div>';
+  } catch (err) {
+    area.innerHTML = '<div class="answer-card" style="border-left-color:#ef4444;"><h3>❌ Lỗi</h3><div class="answer-text">' + escapeHtml(err.message) + '</div></div>';
+  }
+}
+
+function addNewTopic(qaId) {
+  var newTopic = prompt('Nhập chủ đề mới:');
+  if (!newTopic || !newTopic.trim()) return;
+  newTopic = newTopic.trim();
+  var sel = document.getElementById('topicSelect_' + qaId);
+  if (!sel) return;
+  for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value.toLowerCase() === newTopic.toLowerCase()) { sel.value = sel.options[i].value; return; } }
+  var opt = document.createElement('option'); opt.value = newTopic; opt.textContent = newTopic; sel.appendChild(opt); sel.value = newTopic;
+}
+async function saveTopic(qaId) {
+  var sel = document.getElementById('topicSelect_' + qaId);
+  var msgDiv = document.getElementById('topicMsg_' + qaId);
+  if (!sel) return;
+  try {
+    var res = await fetch(API + '/api/qa/' + qaId + '/topic', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic: sel.value }) });
+    var data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    if (msgDiv) msgDiv.textContent = '✅ Đã lưu: ' + (sel.value || '(trống)');
+  } catch (err) { if (msgDiv) { msgDiv.style.color = '#dc2626'; msgDiv.textContent = '❌ ' + err.message; } }
+}
+
+document.getElementById('searchInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') doSearch(); });
+</script>
+</body>
+</html>

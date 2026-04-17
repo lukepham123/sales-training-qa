@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin – Q&A Đào tạo NV bán hàng</title>
+<link rel="stylesheet" href="/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+.section-box { background:white;padding:24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px; }
+.section-box h3 { margin:0 0 14px 0;font-size:16px; }
+.form-group { margin-bottom:14px; }
+.form-group label { display:block;font-size:13px;font-weight:600;color:#4b5563;margin-bottom:6px; }
+.form-group input[type="text"],.form-group input[type="password"],.form-group select,.form-group textarea {
+  width:100%;padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-family:inherit;font-size:14px;outline:none;transition:border 0.15s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:#ec4899; }
+.form-group textarea { min-height:100px;resize:vertical; }
+.form-row { display:flex;gap:12px;align-items:flex-end; }
+.form-row > * { flex:1; }
+.result-box { margin-top:12px;padding:14px;border-radius:8px;font-size:13px;border:1px solid #e5e7eb;background:#f9fafb;white-space:pre-wrap;line-height:1.6; }
+.result-box.success { background:#f0fdf4;border-color:#86efac;color:#166534; }
+.result-box.error { background:#fef2f2;border-color:#fca5a5;color:#991b1b; }
+.key-display { display:inline-block;font-family:monospace;background:#f3f4f6;padding:6px 12px;border-radius:6px;font-size:13px;color:#374151;letter-spacing:0.5px; }
+.tabs { display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid #e5e7eb;flex-wrap:wrap; }
+.tab { padding:10px 16px;cursor:pointer;font-size:13px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s; }
+.tab:hover { color:#ec4899; }
+.tab.active { color:#be185d;border-bottom-color:#ec4899;font-weight:600; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.chat-container { display:flex;flex-direction:column;height:500px; }
+.chat-messages { flex:1;overflow-y:auto;padding:16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px 8px 0 0; }
+.chat-msg { margin-bottom:12px;display:flex;gap:10px; }
+.chat-msg.user { justify-content:flex-end; }
+.chat-msg .bubble { max-width:75%;padding:10px 14px;border-radius:12px;font-size:14px;line-height:1.5;white-space:pre-wrap; }
+.chat-msg.user .bubble { background:#ec4899;color:white;border-bottom-right-radius:4px; }
+.chat-msg.bot .bubble { background:white;color:#1f2937;border:1px solid #e5e7eb;border-bottom-left-radius:4px; }
+.chat-msg .meta { font-size:11px;color:#9ca3af;margin-top:4px; }
+.chat-input-row { display:flex;gap:8px;padding:12px;background:white;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px; }
+.chat-input-row input { flex:1;padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;outline:none; }
+.chat-input-row input:focus { border-color:#ec4899; }
+.history-table { width:100%;border-collapse:collapse;font-size:13px; }
+.history-table th { background:#f3f4f6;padding:10px 12px;text-align:left;font-weight:600;color:#374151;border-bottom:2px solid #e5e7eb; }
+.history-table td { padding:10px 12px;border-bottom:1px solid #f3f4f6;vertical-align:top; }
+.history-table tr:hover td { background:#fdf2f8; }
+.date-group { background:#f9fafb;padding:10px 22px;font-weight:600;font-size:14px;color:#374151;border-bottom:1px solid #e5e7eb; }
+.search-filter { margin-bottom:14px; }
+.search-filter input { width:100%;padding:10px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;outline:none; }
+.search-filter input:focus { border-color:#ec4899; }
+.tg-recipient { display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #f3f4f6; }
+.tg-recipient:last-child { border-bottom:none; }
+.user-row { display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6; }
+.user-row:last-child { border-bottom:none; }
+.topic-autocomplete { position:relative; }
+.topic-suggestions { position:absolute;top:100%;left:0;right:0;background:white;border:1px solid #e5e7eb;border-radius:0 0 8px 8px;max-height:200px;overflow-y:auto;z-index:10;display:none; }
+.topic-suggestions .topic-opt { padding:8px 12px;cursor:pointer;font-size:13px; }
+.topic-suggestions .topic-opt:hover { background:#fce7f3; }
+.otp-overlay { position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:100;display:flex;align-items:center;justify-content:center; }
+.otp-modal { background:white;border-radius:16px;padding:28px;max-width:420px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);text-align:center; }
+.otp-modal h3 { margin:0 0 8px;font-size:18px; }
+.otp-modal .qr-wrap { margin:16px auto;display:inline-block;padding:12px;background:white;border:2px solid #e5e7eb;border-radius:12px; }
+.otp-modal .secret-text { font-family:monospace;font-size:14px;background:#f3f4f6;padding:8px 14px;border-radius:8px;letter-spacing:1px;word-break:break-all;margin:10px 0; }
+.otp-modal input { width:100%;padding:14px;border:2px solid #e5e7eb;border-radius:8px;font-size:22px;text-align:center;letter-spacing:8px;margin:12px 0;outline:none; }
+.otp-modal input:focus { border-color:#ec4899; }
+.otp-modal .btn-row { display:flex;gap:10px;justify-content:center;margin-top:14px; }
+
+/* ===== ADMIN MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .tabs { overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0; }
+  .tabs::-webkit-scrollbar { display:none; }
+  .tab { white-space:nowrap;flex-shrink:0;padding:8px 12px;font-size:12px; }
+  .section-box { padding:16px; }
+  .section-box h3 { font-size:14px; }
+  .form-row { flex-direction:column;gap:8px; }
+  .form-group input[type="text"],.form-group input[type="password"],.form-group select,.form-group textarea { font-size:14px;padding:8px 10px; }
+  .chat-container { height:400px; }
+  .chat-msg .bubble { max-width:90%;font-size:13px;padding:8px 12px; }
+  .chat-input-row { flex-direction:column;gap:6px;padding:8px; }
+  .chat-input-row input { font-size:14px; }
+  .history-table { display:block;overflow-x:auto;-webkit-overflow-scrolling:touch; }
+  .history-table th,.history-table td { padding:8px 6px;font-size:12px;white-space:nowrap; }
+  .user-row { flex-direction:column;align-items:flex-start;gap:8px; }
+  .tg-recipient { flex-wrap:wrap; }
+  .otp-modal { padding:20px;max-width:340px; }
+  .otp-modal h3 { font-size:16px; }
+  .otp-modal input { font-size:18px;letter-spacing:6px;padding:12px; }
+}
+@media (max-width: 480px) {
+  .tab { padding:7px 10px;font-size:11px; }
+  .chat-container { height:350px; }
+  .chat-msg .bubble { max-width:95%;font-size:12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🛠️ Trang quản trị</h1>
+    <div class="sub">Quản lý Q&A, cài đặt AI, người dùng</div>
+  </div>
+  <div class="header-right">
+    <span id="modelBadge" class="badge-model hidden"></span>
+    <div class="nav-links">
+      <a class="nav-link" href="/">👤 Nhân viên</a>
+      <a class="nav-link active" href="/admin">🛠️ Admin</a>
+      <button class="nav-link" onclick="location.reload(true)" style="background:none;border:1px solid rgba(255,255,255,0.3);border-radius:8px;cursor:pointer;font-size:13px;padding:6px 12px;color:white;">🔄 Tải lại</button>
+      <button class="nav-link" onclick="doLogout()" style="background:none;border:1px solid rgba(255,255,255,0.3);border-radius:8px;cursor:pointer;font-size:13px;padding:6px 12px;color:white;">🚪 Thoát</button>
+    </div>
+  </div>
+</div>
+
+<div id="adminContent" class="container">
+  <div class="stats">
+    <div class="stat-card"><div class="label">Bộ A (đã duyệt)</div><div class="value green" id="statA">0</div></div>
+    <div class="stat-card"><div class="label">Bộ B đã duyệt</div><div class="value" id="statBApproved">0</div></div>
+    <div class="stat-card"><div class="label">Chờ duyệt</div><div class="value red" id="statPending">0</div></div>
+    <div class="stat-card"><div class="label">Lần gọi AI</div><div class="value purple" id="statAICalls">0</div></div>
+  </div>
+  <div class="cost-banner info" id="tokenInfo"></div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('pending')">📥 Chờ duyệt</div>
+    <div class="tab" onclick="switchTab('approvedA')">🅰️ Bộ A</div>
+    <div class="tab" onclick="switchTab('approvedB')">🅱️ Bộ B</div>
+    <div class="tab" onclick="switchTab('import')">📤 Import Excel</div>
+    <div class="tab" onclick="switchTab('chat')">🤖 Chat AI</div>
+    <div class="tab" onclick="switchTab('knowledge')">🧠 Kiến thức AI</div>
+    <div class="tab" onclick="switchTab('history')">📋 Lịch sử NV</div>
+    <div class="tab" onclick="switchTab('costdash')">💰 Dashboard</div>
+    <div class="tab" onclick="switchTab('users')">👥 Người dùng</div>
+    <div class="tab" onclick="switchTab('settings')">⚙️ Cài đặt</div>
+  </div>
+
+  <!-- Chờ duyệt -->
+  <div class="tab-panel active" id="panel-pending">
+    <div class="search-filter"><input id="searchPending" placeholder="🔍 Tìm câu hỏi chờ duyệt..." oninput="filterPending()" autocomplete="nope" data-form-type="other"></div>
+    <div id="pendingList" class="admin-list"></div>
+  </div>
+
+  <!-- Bộ A (đã duyệt) -->
+  <div class="tab-panel" id="panel-approvedA">
+    <div class="filters" id="topicFiltersA"></div>
+    <div class="search-filter"><input id="searchApprovedA" placeholder="🔍 Tìm câu hỏi Bộ A..." oninput="filterApprovedSource('A')" autocomplete="nope" data-form-type="other"></div>
+    <div class="section-box" style="margin-bottom:16px;">
+      <h3>📂 Chỉnh chủ đề hàng loạt bằng Excel</h3>
+      <p class="muted" style="margin-top:0;">Tải file mẫu chứa danh sách câu hỏi Bộ A, chỉnh cột "Chủ đề" rồi import lại.</p>
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+        <button class="btn btn-secondary btn-sm" onclick="downloadTopicTemplate()">📥 Tải file mẫu</button>
+        <label class="btn btn-primary btn-sm" style="cursor:pointer;">📤 Import chủ đề
+          <input type="file" id="topicExcelFile" accept=".xlsx,.xls" style="display:none;" onchange="doImportTopicExcel()">
+        </label>
+      </div>
+      <div id="topicImportResult" class="result-box hidden"></div>
+    </div>
+    <div style="margin-bottom:12px;"><button class="btn btn-success btn-sm" onclick="downloadApprovedExcel('A')">📥 Tải Excel Bộ A</button></div>
+    <div id="approvedListA" class="admin-list"></div>
+  </div>
+
+  <!-- Bộ B (đã duyệt) -->
+  <div class="tab-panel" id="panel-approvedB">
+    <div class="filters" id="topicFiltersB"></div>
+    <div class="search-filter"><input id="searchApprovedB" placeholder="🔍 Tìm câu hỏi Bộ B..." oninput="filterApprovedSource('B')" autocomplete="nope" data-form-type="other"></div>
+    <div style="margin-bottom:12px;"><button class="btn btn-success btn-sm" onclick="downloadApprovedExcel('B')">📥 Tải Excel Bộ B</button></div>
+    <div id="approvedListB" class="admin-list"></div>
+  </div>
+
+  <!-- Import -->
+  <div class="tab-panel" id="panel-import">
+    <div class="section-box">
+      <h3>📤 Import câu hỏi từ file Excel</h3>
+      <p class="muted" style="margin-top:0;">Tải file mẫu, điền câu hỏi và câu trả lời, rồi import vào bộ A (đã duyệt).</p>
+      <div style="margin-bottom:14px;"><a href="/mau_import_cau_hoi.xlsx" download class="btn btn-secondary btn-sm" style="text-decoration:none;">📥 Tải file Excel mẫu</a></div>
+      <div class="form-group"><label>Chọn file Excel (.xlsx)</label><input type="file" id="excelFile" accept=".xlsx,.xls" style="padding:8px;"></div>
+      <button class="btn btn-primary" id="btnImport" onclick="doImportExcel()">📤 Import vào bộ A</button>
+      <div id="importResult" class="result-box hidden"></div>
+    </div>
+    <div class="section-box">
+      <h3>📋 Lịch sử Import</h3>
+      <div id="importHistoryContent"></div>
+    </div>
+  </div>
+  <!-- Chat AI -->
+  <div class="tab-panel" id="panel-chat">
+    <div class="section-box">
+      <h3>🤖 Chat với AI Agent</h3>
+      <p class="muted" style="margin-top:0;">Dạy kiến thức cho AI bằng cách trò chuyện. Nói "hãy nhớ...", "lưu lại...", "từ giờ trở đi..." để AI ghi nhớ. Kiến thức đã lưu xem ở tab 🧠 Kiến thức AI.</p>
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-msg bot"><div><div class="bubble">Xin chào! Tôi là AI Agent của Hello Con.</div><div class="meta">AI Agent</div></div></div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Nhập lệnh hoặc câu hỏi..." onkeydown="if(event.key==='Enter')sendChat()">
+          <button class="btn btn-primary" onclick="sendChat()">Gửi</button>
+        </div>
+      </div>
+    </div>
+    <div class="section-box" style="margin-top:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="margin:0;">📋 Danh sách dặn dò AI</h3>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-secondary btn-sm" onclick="loadReminders()">🔄 Làm mới</button>
+          <button class="btn btn-secondary btn-sm" onclick="downloadReminders()">📥 Tải Excel</button>
+        </div>
+      </div>
+      <div id="remindersList"><div class="muted">Đang tải...</div></div>
+    </div>
+  </div>
+
+  <!-- Kiến thức AI -->
+  <div class="tab-panel" id="panel-knowledge">
+    <div class="section-box">
+      <h3>🧠 Bộ nhớ kiến thức AI</h3>
+      <p class="muted" style="margin-top:0;margin-bottom:14px;">Kiến thức bạn dạy ở đây sẽ được AI sử dụng khi trả lời nhân viên.</p>
+      <div style="background:#f0fdf4;border:1px solid #86efac;padding:12px 16px;border-radius:8px;margin-bottom:16px;font-size:13px;color:#166534;">
+        💡 <b>Cách dùng:</b> Thêm kiến thức về sản phẩm, cách tư vấn, tình huống bán hàng, chính sách... AI sẽ ưu tiên dùng kiến thức này khi trả lời.
+      </div>
+      <div style="background:white;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:16px;">
+        <div class="form-group" style="margin-bottom:10px;">
+          <label>Chủ đề</label>
+          <select id="newKnowledgeTopic" style="width:100%;padding:8px;border:1px solid #d1d5db;border-radius:6px;">
+            <option value="">Chọn chủ đề...</option>
+            <option value="San pham">Sản phẩm</option>
+            <option value="Tu van">Tư vấn</option>
+            <option value="Tinh huong">Tình huống</option>
+            <option value="Chinh sach">Chính sách</option>
+            <option value="Khuyen mai">Khuyến mại</option>
+            <option value="Khac">Khác</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:10px;">
+          <label>Nội dung kiến thức</label>
+          <textarea id="newKnowledgeContent" rows="4" placeholder="Ví dụ: Khi khách hỏi về sữa Meiji, hãy giải thích rằng..."></textarea>
+        </div>
+        <button class="btn btn-success" onclick="addKnowledge()">➕ Thêm kiến thức</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span class="muted" id="knowledgeCount">Đang tải...</span>
+        <button class="btn btn-secondary btn-sm" onclick="loadKnowledge()">🔄 Làm mới</button>
+        <button class="btn btn-secondary btn-sm" onclick="downloadKnowledge()">📥 Tải Excel</button>
+      </div>
+      <div id="knowledgeList"></div>
+    </div>
+  </div>
+
+  <!-- Lịch sử NV -->
+  <div class="tab-panel" id="panel-history">
+    <div class="section-box">
+      <h3>📋 Lịch sử nhân viên hỏi AI</h3>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+        <button class="btn btn-secondary btn-sm" onclick="loadHistory()">🔄 Làm mới</button>
+        <button class="btn btn-success btn-sm" onclick="downloadEmployeeHistory()">📥 Tải Excel</button>
+        <label class="muted" style="font-size:13px;">Số dòng/trang:</label>
+        <select id="historyPageSize" onchange="historyPageSize=parseInt(this.value);historyPage=1;loadHistory();" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <span class="muted" id="historyInfo" style="font-size:13px;"></span>
+      </div>
+      <div id="historyContent" style="overflow-x:auto;"></div>
+      <div id="historyPagination" style="display:flex;gap:6px;justify-content:center;align-items:center;margin-top:12px;flex-wrap:wrap;"></div>
+    </div>
+  </div>
+
+  <!-- Chi phí -->
+  <div class="tab-panel" id="panel-costdash">
+    <div class="section-box">
+      <h3>💰 Chi phí theo nhân viên</h3>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+        <label class="muted" style="font-size:13px;">Từ:</label>
+        <input type="date" id="costFrom" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">
+        <label class="muted" style="font-size:13px;">Đến:</label>
+        <input type="date" id="costTo" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">
+        <button class="btn btn-primary btn-sm" onclick="loadCostDash()">📊 Xem</button>
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('costFrom').value='';document.getElementById('costTo').value='';loadCostDash(true);">🔄 Tất cả</button>
+      </div>
+      <div id="costSummary" style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;"></div>
+      <div id="costChart" style="margin-bottom:20px;"></div>
+      <div id="costTable" style="overflow-x:auto;"></div>
+    </div>
+  </div>
+
+  <!-- Người dùng -->
+  <div class="tab-panel" id="panel-users">
+    <div class="section-box">
+      <h3>👥 Quản lý người dùng</h3>
+      <div class="form-row" style="margin-bottom:14px;">
+        <div class="form-group"><label>Tên đăng nhập</label><input type="text" id="newUsername" placeholder="username"></div>
+        <div class="form-group"><label>Tên hiển thị</label><input type="text" id="newDisplayName" placeholder="Nguyen Van A"></div>
+        <div class="form-group"><label>Mật khẩu</label><input type="password" id="newPassword" placeholder="****"></div>
+        <div class="form-group"><label>Vai trò</label><select id="newRole"><option value="employee">Nhân viên</option><option value="admin">Admin</option></select></div>
+        <div class="form-group"><label>&nbsp;</label><button class="btn btn-success" onclick="createUser()">➕ Thêm</button></div>
+      </div>
+      <div id="usersList"></div>
+    </div>
+    <div class="section-box">
+      <h3>🔒 Đổi mật khẩu Admin</h3>
+      <div class="form-row" style="margin-bottom:10px;">
+        <div class="form-group"><label>Mật khẩu cũ</label><input type="password" id="oldPwInput"></div>
+        <div class="form-group"><label>Mật khẩu mới</label><input type="password" id="newPwInput"></div>
+        <div class="form-group"><label>&nbsp;</label><button class="btn btn-primary" onclick="doChangePassword()">🔑 Đổi</button></div>
+      </div>
+      <div id="changePwResult" class="result-box hidden"></div>
+    </div>
+    <div class="section-box">
+      <h3>👥 Danh sách nhân viên</h3>
+      <p class="muted" style="margin-top:0;">Chỉ nhân viên có tên trong danh sách mới được hỏi AI.</p>
+      <div style="display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;flex-wrap:wrap;">
+        <div class="form-group" style="flex:2;min-width:180px;margin-bottom:0;"><label>Họ và tên</label><input type="text" id="newEmployeeName" placeholder="Nguyễn Văn A"></div>
+        <div class="form-group" style="flex:1;min-width:130px;margin-bottom:0;"><label>Số điện thoại</label><input type="text" id="newEmployeePhone" placeholder="0901234567"></div>
+        <button class="btn btn-success" onclick="addEmployee()" style="height:42px;">➕ Thêm</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span class="muted" id="employeeCount">Đang tải...</span>
+      </div>
+      <div id="employeesList"></div>
+    </div>
+  </div>
+
+  <!-- Cài đặt -->
+  <div class="tab-panel" id="panel-settings">
+    <div class="section-box">
+      <h3>⚙️ Cài đặt AI</h3>
+      <div class="form-group"><label>Provider</label><select id="settingProvider" onchange="onProviderChange()"></select></div>
+      <div class="form-group"><label>Model</label><select id="settingModel"></select></div>
+      <div class="form-group"><label>API Key hiện tại</label><div class="key-display" id="currentKeyDisplay">...</div></div>
+      <div class="form-group"><label>API Key mới (nếu muốn đổi)</label><input type="text" id="settingApiKey" placeholder="Dán API key mới..."></div>
+      <button class="btn btn-primary" onclick="doSaveSettings()">💾 Lưu cài đặt</button>
+      <div id="settingsResult" class="result-box hidden"></div>
+    </div>
+    <div class="section-box">
+      <h3>📱 Telegram Bot</h3>
+      <div class="form-group"><label>Bot Token hiện tại</label><div class="key-display" id="currentTgToken">...</div></div>
+      <div class="form-group"><label>Bot Token mới</label><input type="text" id="settingTgBotToken" placeholder="Dán Bot Token..."></div>
+      <button class="btn btn-primary" onclick="doSaveTgToken()">💾 Lưu Token</button>
+      <div id="tgTokenResult" class="result-box hidden"></div>
+      <h4 style="margin-top:20px;">👥 Danh sách người nhận</h4>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+        <input type="text" id="newTgChatId" placeholder="Chat ID" style="flex:1;min-width:120px;padding:8px;border:1px solid #d1d5db;border-radius:6px;">
+        <input type="text" id="newTgLabel" placeholder="Tên (tùy chọn)" style="flex:1;min-width:120px;padding:8px;border:1px solid #d1d5db;border-radius:6px;">
+        <button class="btn btn-success btn-sm" onclick="addTgRecipient()">➕ Thêm</button>
+      </div>
+      <div id="tgRecipientsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var ADMIN_PW = '';
+var allProviders = [];
+var pendingCache = [], approvedCacheA = [], approvedCacheB = [], searchTokens = [];
+window.empQuestionsCache = [];
+var _otpEnabledCache = null; // null = not checked yet
+
+function escapeHtml(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function apiCall(url, opts) {
+  opts = opts || {};
+  var headers = opts.headers || {};
+  headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+  var token = localStorage.getItem('hc_session');
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  else if (ADMIN_PW) headers['x-admin-password'] = ADMIN_PW;
+  return fetch(url, Object.assign({}, opts, { headers: headers })).then(function(r) {
+    if (r.headers.get('content-type') && r.headers.get('content-type').includes('spreadsheet')) {
+      return r.blob().then(function(blob) { return { download: true, blob: blob }; });
+    }
+    return r.json().then(function(d) { if (!r.ok) throw new Error(d.error || 'Lỗi ' + r.status); return d; });
+  });
+}
+
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload = function() { resolve(reader.result.split(',')[1]); };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function checkAuth() {
+  var token = localStorage.getItem('hc_session');
+  if (token) {
+    apiCall('/api/auth/me').then(function(d) {
+      if (d.role !== 'admin') { alert('Bạn không có quyền admin'); localStorage.removeItem('hc_session'); location.reload(); }
+      else init();
+    }).catch(function() { localStorage.removeItem('hc_session'); showLogin(); });
+  } else showLogin();
+}
+
+function showLogin() {
+  document.getElementById('adminContent').style.display = 'none';
+  var overlay = document.createElement('div');
+  overlay.id = 'loginOverlay';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:200;display:flex;align-items:center;justify-content:center;';
+  overlay.innerHTML = '<div style="background:white;padding:32px;border-radius:16px;max-width:360px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.2);">' +
+    '<h2>🔐 Đăng nhập Admin</h2>' +
+    '<input type="text" id="loginUsername" placeholder="Tên đăng nhập" style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:8px;margin:8px 0;font-size:14px;">' +
+    '<input type="password" id="loginPassword" placeholder="Mật khẩu" style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:8px;margin:8px 0;font-size:14px;" onkeydown="if(event.key===\'Enter\')doLogin()">' +
+    '<div id="loginOtpWrap" style="display:none;"><input type="text" id="loginOtp" placeholder="Mã OTP (6 số)" maxlength="6" inputmode="numeric" style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:8px;margin:8px 0;font-size:14px;text-align:center;letter-spacing:4px;" onkeydown="if(event.key===\'Enter\')doLogin()"></div>' +
+    '<div id="loginErr" style="color:#dc2626;font-size:13px;min-height:20px;"></div>' +
+    '<button class="btn btn-primary" onclick="doLogin()" style="width:100%;margin-top:8px;">Đăng nhập</button></div>';
+  document.body.appendChild(overlay);
+  setTimeout(function() { document.getElementById('loginUsername').focus(); }, 200);
+}
+
+function doLogin() {
+  var un = document.getElementById('loginUsername').value.trim();
+  var pw = document.getElementById('loginPassword').value.trim();
+  var otp = (document.getElementById('loginOtp') || {}).value || '';
+  if (!un || !pw) { document.getElementById('loginErr').textContent = 'Nhập tên đăng nhập và mật khẩu'; return; }
+  apiCall('/api/auth/login', { method:'POST', body:JSON.stringify({username:un,password:pw,otp:otp.trim()}) })
+    .then(function(d) {
+      if (d.requireOtp) { document.getElementById('loginOtpWrap').style.display = ''; document.getElementById('loginOtp').focus(); document.getElementById('loginErr').textContent = 'Nhập mã OTP từ Google Authenticator'; return; }
+      localStorage.setItem('hc_session', d.token);
+      localStorage.setItem('hc_role', d.role || 'admin');
+      localStorage.setItem('hc_display', d.displayName || un);
+      var el = document.getElementById('loginOverlay'); if (el) el.remove();
+      document.getElementById('adminContent').style.display = '';
+      init();
+    }).catch(function(err) {
+      var msg = err.message || '';
+      if (msg.includes('OTP')) { document.getElementById('loginOtpWrap').style.display = ''; document.getElementById('loginOtp').focus(); }
+      document.getElementById('loginErr').textContent = msg;
+    });
+}
+
+function doLogout() { localStorage.removeItem('hc_session'); localStorage.removeItem('hc_role'); localStorage.removeItem('hc_display'); location.href = '/login.html'; }
+
+function init() { loadAll(); loadSettings(); loadUsers(); loadKnowledge(); loadEmployees(); }
+
+async function loadAll() {
+  try {
+    var [stats, pend, apprA, apprB, empQ] = await Promise.all([
+      apiCall('/api/admin/stats'),
+      apiCall('/api/admin/pending'),
+      apiCall('/api/admin/approved?source=A'),
+      apiCall('/api/admin/approved?source=B'),
+      apiCall('/api/admin/employee-questions?limit=200').catch(function() { return {items:[]}; }),
+    ]);
+    window.empQuestionsCache = empQ.items || [];
+    renderStats(stats);
+    pendingCache = pend.items || [];
+    approvedCacheA = apprA.items || [];
+    approvedCacheB = apprB.items || [];
+    // Build topics list for inline edit dropdown
+    var topicsSet = {};
+    approvedCacheA.forEach(function(it) { if (it.topic) topicsSet[it.topic] = 1; });
+    approvedCacheB.forEach(function(it) { if (it.topic) topicsSet[it.topic] = 1; });
+    pendingCache.forEach(function(it) { if (it.topic) topicsSet[it.topic] = 1; });
+    window._topicsList = Object.keys(topicsSet).sort();
+    renderPending(pendingCache);
+    renderApprovedSource('A', approvedCacheA);
+    renderApprovedSource('B', approvedCacheB);
+    renderTopicFiltersSource('A', approvedCacheA);
+    renderTopicFiltersSource('B', approvedCacheB);
+  } catch (err) { console.error(err); }
+}
+
+function switchTab(name) {
+  var tabMap = {pending:'Chờ',approvedA:'Bộ A',approvedB:'Bộ B',import:'Import',chat:'Chat',knowledge:'Kiến thức',history:'Lịch sử',costdash:'Dashboard',users:'Người',settings:'Cài đặt',employees:'Nhân viên'};
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.classList.toggle('active', t.textContent.includes(tabMap[name]||''));
+  });
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  var panel = document.getElementById('panel-' + name);
+  if (panel) panel.classList.add('active');
+  if (name === 'history') loadHistory();
+  if (name === 'costdash') loadCostDash();
+  if (name === 'chat') loadReminders();
+}
+
+function renderStats(s) {
+  document.getElementById('statA').textContent = s.a || 0;
+  document.getElementById('statBApproved').textContent = s.bApproved || 0;
+  document.getElementById('statPending').textContent = s.pending || 0;
+  document.getElementById('statAICalls').textContent = s.aiCalls || 0;
+  if (s.model) { var mb = document.getElementById('modelBadge'); mb.textContent = '🤖 ' + s.model; mb.classList.remove('hidden'); }
+  var ti = document.getElementById('tokenInfo');
+  var costInfo = '';
+  if (s.totalCostUsd !== undefined) {
+    costInfo = ' · 💵 $' + s.totalCostUsd.toFixed(4) + ' (~' + Math.round(s.totalCostVnd || 0).toLocaleString('vi-VN') + 'đ)';
+  }
+  ti.innerHTML = '📊 Token đã dùng: <b>' + (s.totalInputTokens||0).toLocaleString() + '</b> input + <b>' + (s.totalOutputTokens||0).toLocaleString() + '</b> output' + costInfo;
+}
+
+function highlight(text, tokens) {
+  if (!tokens || !tokens.length) return escapeHtml(text);
+  var escaped = escapeHtml(text);
+  tokens.forEach(function(t) {
+    if (t.length < 2) return;
+    var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    escaped = escaped.replace(re, '<mark>$1</mark>');
+  });
+  return escaped;
+}
+
+function filterPending() {
+  var q = document.getElementById('searchPending').value.trim();
+  if (!q) { searchTokens = []; renderPending(pendingCache); return; }
+  searchTokens = q.toLowerCase().split(/\s+/);
+  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'pending',topK:50}) })
+    .then(function(data) {
+      searchTokens = data.tokens || [];
+      renderPending(data.results || [], true);
+    }).catch(function() { renderPending(pendingCache); });
+}
+
+function renderPending(items, isSearch) {
+  var div = document.getElementById('pendingList');
+  if (!items.length) { div.innerHTML = '<div class="empty">🎉 Không có câu hỏi nào' + (isSearch ? ' phù hợp' : ' chờ duyệt') + '</div>'; return; }
+
+  if (isSearch) {
+    div.innerHTML = items.map(function(item) {
+      var hlQ = highlight(item.question, searchTokens);
+      var hlA = highlight(item.answer, searchTokens);
+      return renderPendingItem(item, hlQ, hlA);
+    }).join('');
+    return;
+  }
+
+  // Group by date, then by employee name
+  var dateGroups = {};
+  items.forEach(function(item) {
+    var date = (item.created_at || '').split(' ')[0] || 'Không rõ';
+    if (!dateGroups[date]) dateGroups[date] = [];
+    dateGroups[date].push(item);
+  });
+  var dates = Object.keys(dateGroups).sort().reverse();
+  var html = '';
+  dates.forEach(function(date) {
+    html += '<div class="date-group">📅 ' + escapeHtml(date) + ' (' + dateGroups[date].length + ' câu)</div>';
+    var empGroups = {};
+    dateGroups[date].forEach(function(item) {
+      var empName = findEmployeeForPending(item);
+      if (!empGroups[empName]) empGroups[empName] = [];
+      empGroups[empName].push(item);
+    });
+    var empNames = Object.keys(empGroups).sort();
+    empNames.forEach(function(name) {
+      if (empNames.length > 1 || name !== 'Không rõ') {
+        html += '<div style="padding:6px 22px;background:#fdf2f8;font-size:13px;font-weight:600;color:#be185d;border-bottom:1px solid #fce7f3;">👤 ' + escapeHtml(name) + ' (' + empGroups[name].length + ' câu)</div>';
+      }
+      empGroups[name].forEach(function(item) {
+        html += renderPendingItem(item, escapeHtml(item.question), escapeHtml(item.answer));
+      });
+    });
+  });
+  div.innerHTML = html;
+}
+
+function findEmployeeForPending(item) {
+  if (window.empQuestionsCache && window.empQuestionsCache.length > 0) {
+    var qNorm = (item.question || '').trim().toLowerCase();
+    for (var i = 0; i < window.empQuestionsCache.length; i++) {
+      var eq = window.empQuestionsCache[i];
+      if ((eq.question || '').trim().toLowerCase() === qNorm) return eq.employee_name || 'Không rõ';
+    }
+  }
+  return 'Không rõ';
+}
+
+function renderPendingItem(item, hlQ, hlA) {
+  var topicBadge = item.topic ? '<span class="badge badge-topic">' + escapeHtml(item.topic) + '</span>' : '';
+  var sourceBadge = '<span class="badge badge-' + (item.source === 'A' ? 'a' : 'ai') + '">' + (item.source === 'A' ? 'Bộ A' : 'AI') + '</span>';
+  return '<div class="admin-item"><div class="q-line">' + sourceBadge + ' ' + topicBadge + ' ' + hlQ + '</div>' +
+    '<div class="a-line">' + hlA + '</div>' +
+    '<div class="meta">' + escapeHtml(item.created_at||'') + (item.score ? ' · score:' + item.score : '') + '</div>' +
+    '<div class="actions">' +
+      '<button class="btn btn-success btn-sm" onclick="approveQa(' + item.id + ',\'A\')">✅ Duyệt → Bộ A</button>' +
+      '<button class="btn btn-sm" style="background:#8b5cf6;color:white;" onclick="approveQa(' + item.id + ',\'B\')">✅ Duyệt → Bộ B</button>' +
+      '<button class="btn btn-secondary btn-sm" onclick="editQa(' + item.id + ')">✏️ Sửa</button>' +
+      '<button class="btn btn-danger btn-sm" onclick="rejectQa(' + item.id + ')">❌ Xoá</button>' +
+    '</div></div>';
+}
+
+async function approveQa(id, source) {
+  try { await apiCall('/api/admin/approve/' + id, { method:'POST', body:JSON.stringify({source:source||'A'}) }); await loadAll(); } catch (err) { alert('Lỗi: ' + err.message); }
+}
+
+async function rejectQa(id) {
+  if (!confirm('Xoá câu hỏi này?')) return;
+  try { await apiCall('/api/admin/reject/' + id, { method:'DELETE' }); await loadAll(); } catch (err) { alert('Lỗi: ' + err.message); }
+}
+
+function editQa(id) {
+  var item = pendingCache.find(function(p) { return p.id === id; }) || approvedCacheA.find(function(a) { return a.id === id; }) || approvedCacheB.find(function(a) { return a.id === id; });
+  if (!item) return;
+  // Find the admin-item element containing this id's buttons
+  var btns = document.querySelectorAll('.admin-item .actions button');
+  var parentItem = null;
+  for (var i = 0; i < btns.length; i++) {
+    if (btns[i].getAttribute('onclick') && btns[i].getAttribute('onclick').indexOf('editQa(' + id + ')') !== -1) {
+      parentItem = btns[i].closest('.admin-item');
+      break;
+    }
+  }
+  if (!parentItem) return;
+  var topicOptions = '<option value="">(Không chọn)</option>';
+  var topics = window._topicsList || [];
+  for (var t = 0; t < topics.length; t++) {
+    var sel = (topics[t] === (item.topic || '')) ? ' selected' : '';
+    topicOptions += '<option value="' + escapeHtml(topics[t]) + '"' + sel + '>' + escapeHtml(topics[t]) + '</option>';
+  }
+  if (item.topic && topics.indexOf(item.topic) === -1) {
+    topicOptions += '<option value="' + escapeHtml(item.topic) + '" selected>' + escapeHtml(item.topic) + '</option>';
+  }
+  parentItem.innerHTML =
+    '<div style="padding:14px;background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;">' +
+      '<label style="font-size:12px;font-weight:600;color:#92400e;">Câu hỏi:</label>' +
+      '<textarea id="editQ_' + id + '" style="width:100%;min-height:60px;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin:4px 0 10px;resize:vertical;">' + escapeHtml(item.question) + '</textarea>' +
+      '<label style="font-size:12px;font-weight:600;color:#92400e;">Câu trả lời:</label>' +
+      '<textarea id="editA_' + id + '" style="width:100%;min-height:120px;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin:4px 0 10px;resize:vertical;">' + escapeHtml(item.answer) + '</textarea>' +
+      '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">' +
+        '<label style="font-size:12px;font-weight:600;color:#92400e;">Chủ đề:</label>' +
+        '<select id="editT_' + id + '" style="flex:1;min-width:150px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">' + topicOptions + '</select>' +
+        '<input type="text" id="editTNew_' + id + '" placeholder="Hoặc nhập mới..." style="flex:1;min-width:150px;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;margin-top:12px;">' +
+        '<button class="btn btn-success btn-sm" onclick="saveEditQa(' + id + ')">💾 Lưu</button>' +
+        '<button class="btn btn-secondary btn-sm" onclick="loadAll()">✕ Huỷ</button>' +
+      '</div>' +
+    '</div>';
+  setTimeout(function() { document.getElementById('editQ_' + id).focus(); }, 100);
+}
+function saveEditQa(id) {
+  var q = document.getElementById('editQ_' + id).value.trim();
+  var a = document.getElementById('editA_' + id).value.trim();
+  var tSel = document.getElementById('editT_' + id).value;
+  var tNew = document.getElementById('editTNew_' + id).value.trim();
+  var topic = tNew || tSel || null;
+  if (!q || !a) { alert('Câu hỏi và trả lời không được để trống'); return; }
+  apiCall('/api/admin/edit/' + id, { method:'PUT', body:JSON.stringify({question:q,answer:a,topic:topic}) })
+    .then(function() { loadAll(); }).catch(function(err) { alert('Lỗi: ' + err.message); });
+}
+
+// Approved A / B
+function filterApprovedSource(source) {
+  var inputId = source === 'A' ? 'searchApprovedA' : 'searchApprovedB';
+  var cache = source === 'A' ? approvedCacheA : approvedCacheB;
+  var q = document.getElementById(inputId).value.trim();
+  if (!q) { renderApprovedSource(source, cache); return; }
+  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'approved',topK:50}) })
+    .then(function(data) {
+      searchTokens = data.tokens || [];
+      var filtered = (data.results || []).filter(function(r) { return r.source === source; });
+      renderApprovedSource(source, filtered, true);
+    }).catch(function() { renderApprovedSource(source, cache); });
+}
+
+function renderTopicFiltersSource(source, items) {
+  var topics = {};
+  items.forEach(function(it) { if (it.topic) topics[it.topic] = (topics[it.topic]||0) + 1; });
+  var div = document.getElementById('topicFilters' + source);
+  var cacheVar = source === 'A' ? 'approvedCacheA' : 'approvedCacheB';
+  var btns = '<button class="btn btn-sm btn-secondary" onclick="renderApprovedSource(\'' + source + '\',' + cacheVar + ')" style="margin:2px;">Tất cả (' + items.length + ')</button>';
+  Object.keys(topics).sort().forEach(function(t) {
+    btns += '<button class="btn btn-sm btn-secondary" onclick="filterByTopicSource(\'' + source + '\',\'' + escapeHtml(t).replace(/'/g,"\\'") + '\')" style="margin:2px;">' + escapeHtml(t) + ' (' + topics[t] + ')</button>';
+  });
+  div.innerHTML = btns;
+}
+
+function filterByTopicSource(source, topic) {
+  var cache = source === 'A' ? approvedCacheA : approvedCacheB;
+  var filtered = cache.filter(function(it) { return it.topic === topic; });
+  renderApprovedSource(source, filtered);
+}
+
+function renderApprovedSource(source, items, isSearch) {
+  var div = document.getElementById('approvedList' + source);
+  var label = source === 'A' ? 'Bộ A' : 'Bộ B';
+  if (!items.length) { div.innerHTML = '<div class="empty">Chưa có câu hỏi ' + label + ' đã duyệt</div>'; return; }
+  div.innerHTML = items.map(function(item) {
+    var hlQ = isSearch ? highlight(item.question, searchTokens) : escapeHtml(item.question);
+    var hlA = isSearch ? highlight(item.answer, searchTokens) : escapeHtml(item.answer);
+    var topicBadge = item.topic ? '<span class="badge badge-topic">' + escapeHtml(item.topic) + '</span>' : '';
+    return '<div class="admin-item"><div class="q-line">' + topicBadge + ' ' + hlQ + '</div>' +
+      '<div class="a-line">' + hlA + '</div>' +
+      '<div class="meta">' + escapeHtml(item.created_at||'') + ' · Hỏi: ' + (item.asked_count||0) + ' lần' + (item.score ? ' · score:' + item.score : '') + '</div>' +
+      '<div class="actions">' +
+        '<button class="btn btn-secondary btn-sm" onclick="editQa(' + item.id + ')">✏️ Sửa</button>' +
+        '<button class="btn btn-danger btn-sm" onclick="rejectQa(' + item.id + ')">❌ Xoá</button>' +
+      '</div></div>';
+  }).join('');
+}
+
+// Import Excel
+async function doImportExcel() {
+  var fileInput = document.getElementById('excelFile');
+  var resultDiv = document.getElementById('importResult');
+  if (!fileInput.files || !fileInput.files[0]) { alert('Chọn file Excel'); return; }
+  var file = fileInput.files[0];
+  resultDiv.className = 'result-box'; resultDiv.textContent = '⏳ Đang xử lý...'; resultDiv.classList.remove('hidden');
+  document.getElementById('btnImport').disabled = true;
+  try {
+    var base64 = await fileToBase64(file);
+    var data = await apiCall('/api/admin/import-excel', { method:'POST', body:JSON.stringify({data:base64,filename:file.name}) });
+    var msg = '✅ Import thành công!\n📊 Đã thêm: ' + data.imported + ' câu\n⏭️ Trùng: ' + data.skipped;
+    if (data.errors && data.errors.length > 0) msg += '\n⚠️ Lỗi:\n' + data.errors.join('\n');
+    resultDiv.className = 'result-box success'; resultDiv.textContent = msg;
+    fileInput.value = '';
+    await loadAll();
+    loadImportHistory();
+  } catch (err) {
+    resultDiv.className = 'result-box error'; resultDiv.textContent = '❌ ' + err.message;
+  }
+  document.getElementById('btnImport').disabled = false;
+}
+
+async function loadImportHistory() {
+  var div = document.getElementById('importHistoryContent');
+  try {
+    var data = await apiCall('/api/admin/import-history');
+    var items = data.items || [];
+    if (!items.length) { div.innerHTML = '<div class="empty">Chưa có lịch sử import</div>'; return; }
+    var html = '<table class="history-table"><thead><tr><th>File</th><th>Đã thêm</th><th>Trùng</th><th>Lỗi</th><th>Thời gian</th></tr></thead><tbody>';
+    items.forEach(function(it) {
+      html += '<tr><td>' + escapeHtml(it.filename) + '</td><td>' + it.imported_count + '</td><td>' + it.skipped_count + '</td><td>' + it.error_count + '</td><td style="white-space:nowrap;">' + escapeHtml(it.created_at) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    div.innerHTML = html;
+  } catch (err) { div.innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>'; }
+}
+
+// === TOPIC IMPORT (Approved) ===
+async function downloadTopicTemplate() {
+  try { await requireOtpForDownload(); } catch (err) { if (err.message !== 'Đã huỷ') alert('Lỗi: ' + err.message); return; }
+  var items = approvedCacheA;
+  if (!items.length) { alert('Chưa có câu hỏi đã duyệt'); return; }
+  var rows = [['ID', 'Câu hỏi', 'Chủ đề hiện tại', 'Chủ đề mới']];
+  items.forEach(function(it) { rows.push([it.id, it.question, it.topic || '', '']); });
+  apiCall('/api/admin/export-topic-template').then(function(data) {
+    if (data.download && data.blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(data.blob);
+      a.download = 'mau_chinh_chu_de.xlsx';
+      a.click();
+    }
+  }).catch(function() {
+    var csv = rows.map(function(r) { return r.map(function(c) { return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
+    var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mau_chinh_chu_de.csv';
+    a.click();
+  });
+}
+
+async function doImportTopicExcel() {
+  var fileInput = document.getElementById('topicExcelFile');
+  var resultDiv = document.getElementById('topicImportResult');
+  if (!fileInput.files || !fileInput.files[0]) return;
+  var file = fileInput.files[0];
+  resultDiv.className = 'result-box'; resultDiv.textContent = '⏳ Đang xử lý...'; resultDiv.classList.remove('hidden');
+  try {
+    var base64 = await fileToBase64(file);
+    var data = await apiCall('/api/admin/import-topic-excel', { method:'POST', body:JSON.stringify({data:base64, filename:file.name}) });
+    var msg = '✅ Cập nhật chủ đề thành công!\n📊 Đã cập nhật: ' + (data.updated || 0) + ' câu\n⏭️ Bỏ qua: ' + (data.skipped || 0);
+    resultDiv.className = 'result-box success'; resultDiv.textContent = msg;
+    fileInput.value = '';
+    await loadAll();
+  } catch (err) {
+    resultDiv.className = 'result-box error'; resultDiv.textContent = '❌ ' + err.message;
+  }
+}
+
+// === OTP DOWNLOAD GUARD ===
+async function checkOtpEnabled() {
+  if (_otpEnabledCache !== null) return _otpEnabledCache;
+  try {
+    var data = await apiCall('/api/admin/otp/status');
+    _otpEnabledCache = !!(data && data.otpEnabled);
+  } catch (e) { _otpEnabledCache = false; }
+  return _otpEnabledCache;
+}
+
+function requireOtpForDownload() {
+  return new Promise(async function(resolve, reject) {
+    var needOtp = await checkOtpEnabled();
+    if (!needOtp) return resolve(true);
+    // Show OTP modal
+    var old = document.getElementById('otpDownloadOverlay'); if (old) old.remove();
+    var overlay = document.createElement('div');
+    overlay.id = 'otpDownloadOverlay';
+    overlay.className = 'otp-overlay';
+    overlay.innerHTML = '<div class="otp-modal">' +
+      '<h3>🔐 Xác nhận OTP để tải file</h3>' +
+      '<p class="muted">Nhập mã 6 số từ Google Authenticator:</p>' +
+      '<input type="text" id="otpDownloadCode" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="000000">' +
+      '<div id="otpDownloadErr" style="color:#dc2626;font-size:13px;min-height:20px;"></div>' +
+      '<div class="btn-row">' +
+        '<button class="btn btn-secondary" id="otpDownloadCancel">Huỷ</button>' +
+        '<button class="btn btn-success" id="otpDownloadConfirm">✅ Xác nhận</button>' +
+      '</div></div>';
+    document.body.appendChild(overlay);
+    var inp = document.getElementById('otpDownloadCode');
+    setTimeout(function() { inp.focus(); }, 200);
+    document.getElementById('otpDownloadCancel').onclick = function() {
+      overlay.remove(); reject(new Error('Đã huỷ'));
+    };
+    var doConfirm = function() {
+      var code = inp.value.trim();
+      var errDiv = document.getElementById('otpDownloadErr');
+      if (!code || code.length < 6) { errDiv.textContent = 'Nhập đủ 6 số'; return; }
+      var btn = document.getElementById('otpDownloadConfirm');
+      btn.disabled = true; btn.textContent = '⏳...';
+      apiCall('/api/admin/otp/verify-download', { method:'POST', body:JSON.stringify({code:code}) })
+        .then(function() { overlay.remove(); resolve(true); })
+        .catch(function(err) { errDiv.textContent = '❌ ' + err.message; btn.disabled = false; btn.textContent = '✅ Xác nhận'; });
+    };
+    document.getElementById('otpDownloadConfirm').onclick = doConfirm;
+    inp.onkeydown = function(e) { if (e.key === 'Enter') doConfirm(); };
+  });
+}
+
+// === DOWNLOAD APPROVED EXCEL ===
+async function downloadApprovedExcel(source) {
+  try {
+    await requireOtpForDownload();
+    var data = await apiCall('/api/admin/export-approved?source=' + source);
+    if (data && data.download && data.blob) {
+      var url = URL.createObjectURL(data.blob);
+      var a = document.createElement('a'); a.href = url; a.download = 'approved_bo_' + source + '.xlsx'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+  } catch (err) { if (err.message !== 'Đã huỷ') alert('Lỗi tải Excel: ' + err.message); }
+}
+
+// === CHAT ===
+var chatHistory = [];
+async function sendChat() {
+  var input = document.getElementById('chatInput');
+  var message = input.value.trim();
+  if (!message) return;
+  input.value = '';
+  var md = document.getElementById('chatMessages');
+  md.innerHTML += '<div class="chat-msg user"><div><div class="bubble">' + escapeHtml(message) + '</div><div class="meta">Bạn</div></div></div>';
+  md.innerHTML += '<div class="chat-msg bot" id="chatLoading"><div><div class="bubble">Đang suy nghĩ... <span class="loader purple"></span></div></div></div>';
+  md.scrollTop = md.scrollHeight;
+  try {
+    var data = await apiCall('/api/admin/chat', { method:'POST', body:JSON.stringify({message:message,history:chatHistory}) });
+    var el = document.getElementById('chatLoading'); if (el) el.remove();
+    chatHistory.push({role:'user',content:message}); chatHistory.push({role:'assistant',content:data.reply});
+    if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+    var tokenNote = data.inputTokens ? ' · ' + data.inputTokens + '+' + data.outputTokens + ' tok' : '';
+    var saveNote = '';
+    if (data.savedPrompt) {
+      saveNote = '<div style="margin-top:8px;padding:8px 10px;background:#f0fdf4;border:1px solid #86efac;border-radius:6px;font-size:12px;color:#166534;">💾 Đã lưu kiến thức' + (data.savedPrompt.topic ? ' [' + escapeHtml(data.savedPrompt.topic) + ']' : '') + '</div>';
+      loadReminders();
+    }
+    md.innerHTML += '<div class="chat-msg bot"><div><div class="bubble">' + escapeHtml(data.reply) + saveNote + '</div><div class="meta">AI · ' + escapeHtml(data.model||'') + tokenNote + '</div></div></div>';
+    md.scrollTop = md.scrollHeight;
+  } catch (err) {
+    var el2 = document.getElementById('chatLoading'); if (el2) el2.remove();
+    md.innerHTML += '<div class="chat-msg bot"><div><div class="bubble" style="background:#fef2f2;color:#991b1b;">Lỗi: ' + escapeHtml(err.message) + '</div></div></div>';
+  }
+}
+
+// === REMINDERS (DAN DO) ===
+async function loadReminders() {
+  var div = document.getElementById('remindersList');
+  div.innerHTML = '<div class="muted">Đang tải...</div>';
+  try {
+    var data = await apiCall('/api/admin/reminders');
+    var items = data.items || [];
+    if (!items.length) { div.innerHTML = '<div class="empty">Chưa có dặn dò nào. Hãy chat với AI và bảo "lưu lại", "hãy nhớ..." để tạo dặn dò.</div>'; return; }
+    div.innerHTML = items.map(function(r, i) {
+      var topicBadge = r.topic ? '<span class="badge badge-topic">' + escapeHtml(r.topic) + '</span> ' : '';
+      return '<div class="user-row" style="align-items:flex-start;">' +
+        '<div style="flex:1;"><b>' + (i+1) + '.</b> ' + topicBadge + escapeHtml(r.content.length > 200 ? r.content.slice(0,200) + '...' : r.content) +
+        '<div class="muted" style="font-size:11px;margin-top:4px;">🕒 ' + escapeHtml(r.created_at || '') + '</div></div>' +
+        '<button class="btn btn-danger btn-sm" onclick="deleteReminder(' + r.id + ')">🗑️</button></div>';
+    }).join('');
+  } catch (err) { div.innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>'; }
+}
+async function deleteReminder(id) {
+  if (!confirm('Xoá dặn dò này?')) return;
+  try { var data = await apiCall('/api/admin/reminders/' + id, { method:'DELETE' }); loadReminders(); }
+  catch (err) { alert('Lỗi: ' + err.message); }
+}
+async function downloadReminders() {
+  try {
+    await requireOtpForDownload();
+    var data = await apiCall('/api/admin/export-reminders');
+    if (data && data.download && data.blob) {
+      var url = URL.createObjectURL(data.blob);
+      var a = document.createElement('a'); a.href = url; a.download = 'reminders.xlsx'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+  } catch (err) { if (err.message !== 'Đã huỷ') alert('Lỗi tải Excel: ' + err.message); }
+}
+
+// === HISTORY ===
+var historyPage = 1;
+var historyPageSize = 20;
+
+async function loadHistory() {
+  var div = document.getElementById('historyContent');
+  var pagDiv = document.getElementById('historyPagination');
+  var infoSpan = document.getElementById('historyInfo');
+  div.innerHTML = '<div class="muted">Đang tải...</div>';
+  pagDiv.innerHTML = '';
+  try {
+    var data = await apiCall('/api/admin/employee-questions?page=' + historyPage + '&limit=' + historyPageSize);
+    var items = data.items || [];
+    var totalCount = data.totalCount || 0;
+    var totalPages = data.totalPages || 1;
+    historyPage = data.page || 1;
+    infoSpan.textContent = 'Tổng: ' + totalCount + ' câu hỏi';
+    if (!items.length) { div.innerHTML = '<div class="empty">Chưa có</div>'; return; }
+    var html = '<table class="history-table"><thead><tr><th>Nhân viên</th><th>Câu hỏi</th><th>Câu trả lời AI</th><th>Model</th><th>Token</th><th>Chi phí</th><th>Thời gian</th></tr></thead><tbody>';
+    items.forEach(function(it) {
+      var shortA = (it.answer||'').length > 120 ? it.answer.slice(0,120) + '...' : (it.answer||'');
+      var tok = (it.input_tokens||0) + '+' + (it.output_tokens||0);
+      var costUsd = typeof it.cost_usd === 'number' ? '$' + it.cost_usd.toFixed(4) : '-';
+      var costVnd = typeof it.cost_vnd === 'number' ? Math.round(it.cost_vnd).toLocaleString('vi-VN') + 'đ' : '-';
+      html += '<tr><td><b>' + escapeHtml(it.employee_name) + '</b></td><td>' + escapeHtml(it.question) + '</td><td style="color:#4b5563;max-width:300px;">' + escapeHtml(shortA) + '</td><td><code style="font-size:11px;">' + escapeHtml(it.model||'') + '</code></td><td style="font-size:12px;white-space:nowrap;" title="Input + Output tokens">' + tok + '</td><td style="font-size:11px;white-space:nowrap;color:#059669;" title="' + costUsd + '">' + costUsd + '<br><span style="color:#6b7280;">' + costVnd + '</span></td><td style="white-space:nowrap;font-size:12px;">' + escapeHtml(it.created_at||'') + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    div.innerHTML = html;
+    if (totalPages > 1) {
+      var pHtml = '';
+      pHtml += '<button class="btn btn-secondary btn-sm" ' + (historyPage <= 1 ? 'disabled' : '') + ' onclick="historyPage=1;loadHistory();">⏮</button>';
+      pHtml += '<button class="btn btn-secondary btn-sm" ' + (historyPage <= 1 ? 'disabled' : '') + ' onclick="historyPage--;loadHistory();">◀</button>';
+      var startP = Math.max(1, historyPage - 2);
+      var endP = Math.min(totalPages, historyPage + 2);
+      for (var p = startP; p <= endP; p++) {
+        pHtml += '<button class="btn btn-sm ' + (p === historyPage ? 'btn-primary' : 'btn-secondary') + '" onclick="historyPage=' + p + ';loadHistory();">' + p + '</button>';
+      }
+      pHtml += '<button class="btn btn-secondary btn-sm" ' + (historyPage >= totalPages ? 'disabled' : '') + ' onclick="historyPage++;loadHistory();">▶</button>';
+      pHtml += '<button class="btn btn-secondary btn-sm" ' + (historyPage >= totalPages ? 'disabled' : '') + ' onclick="historyPage=' + totalPages + ';loadHistory();">⏭</button>';
+      pHtml += '<span class="muted" style="font-size:12px;margin-left:8px;">Trang ' + historyPage + '/' + totalPages + '</span>';
+      pagDiv.innerHTML = pHtml;
+    }
+  } catch (err) { div.innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>'; }
+}
+
+// === DOWNLOAD EMPLOYEE HISTORY ===
+async function downloadEmployeeHistory() {
+  try {
+    await requireOtpForDownload();
+    var res = await apiCall('/api/admin/export-employee-history');
+    if (res instanceof Blob) { var a = document.createElement('a'); a.href = URL.createObjectURL(res); a.download = 'employee-history.xlsx'; a.click(); return; }
+    // Fallback for fetch
+    var resp = await fetch('/api/admin/export-employee-history', { headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('hc_session') || '') } });
+    if (!resp.ok) throw new Error('Loi tai file');
+    var blob = await resp.blob();
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'employee-history.xlsx'; a.click();
+  } catch (err) { if (err.message !== 'Đã huỷ') alert('Lỗi tải: ' + err.message); }
+}
+
+// === COST DASHBOARD ===
+var costColors = ['#3b82f6','#ef4444','#10b981','#f59e0b','#8b5cf6','#ec4899','#14b8a6','#f97316','#6366f1','#06b6d4','#84cc16','#e11d48'];
+
+async function loadCostDash(showAll) {
+  var fromEl = document.getElementById('costFrom');
+  var toEl = document.getElementById('costTo');
+  if (!showAll && !fromEl.value && !toEl.value) {
+    var today = new Date().toISOString().slice(0,10);
+    fromEl.value = today;
+    toEl.value = today;
+  }
+  var from = fromEl.value;
+  var to = toEl.value;
+  var summaryDiv = document.getElementById('costSummary');
+  var chartDiv = document.getElementById('costChart');
+  var tableDiv = document.getElementById('costTable');
+  summaryDiv.innerHTML = '<div class="muted">⏳ Đang tải...</div>';
+  chartDiv.innerHTML = '';
+  tableDiv.innerHTML = '';
+  try {
+    var qs = '?from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to);
+    var data = await apiCall('/api/admin/employee-cost-stats' + qs);
+    var stats = data.stats || [];
+    // Summary cards
+    var totalQ = stats.reduce(function(s,r) { return s + r.count; }, 0);
+    var totalTok = stats.reduce(function(s,r) { return s + r.total_tokens; }, 0);
+    summaryDiv.innerHTML =
+      '<div class="stat-card" style="min-width:140px;"><div class="stat-number">' + stats.length + '</div><div class="stat-label">Nhân viên</div></div>' +
+      '<div class="stat-card" style="min-width:140px;"><div class="stat-number">' + totalQ + '</div><div class="stat-label">Tổng câu hỏi</div></div>' +
+      '<div class="stat-card" style="min-width:140px;"><div class="stat-number">' + totalTok.toLocaleString() + '</div><div class="stat-label">Tổng token</div></div>' +
+      '<div class="stat-card" style="min-width:160px;"><div class="stat-number" style="color:#059669;">$' + (data.totalCostUsd || 0).toFixed(4) + '</div><div class="stat-label">Tổng USD</div></div>' +
+      '<div class="stat-card" style="min-width:160px;"><div class="stat-number" style="color:#dc2626;">' + Math.round(data.totalCostVnd || 0).toLocaleString() + 'đ</div><div class="stat-label">Tổng VND</div></div>';
+    // Bar chart (pure CSS)
+    if (stats.length > 0) {
+      var maxVnd = Math.max.apply(null, stats.map(function(r) { return r.cost_vnd || 0; }));
+      if (maxVnd === 0) maxVnd = 1;
+      var barHtml = '<div style="font-weight:600;margin-bottom:10px;">📊 Chi phí theo nhân viên (VND)</div>';
+      barHtml += '<div style="display:flex;flex-direction:column;gap:6px;">';
+      for (var i = 0; i < stats.length; i++) {
+        var s = stats[i];
+        var pct = Math.max(2, Math.round((s.cost_vnd / maxVnd) * 100));
+        var color = costColors[i % costColors.length];
+        barHtml += '<div style="display:flex;align-items:center;gap:8px;">' +
+          '<div style="min-width:120px;max-width:160px;font-size:13px;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="' + escapeHtml(s.employee_name) + '">' + escapeHtml(s.employee_name) + '</div>' +
+          '<div style="flex:1;height:24px;background:#f3f4f6;border-radius:6px;overflow:hidden;">' +
+            '<div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:6px;transition:width 0.5s;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;color:white;font-size:11px;font-weight:600;">' +
+              (pct > 15 ? Math.round(s.cost_vnd).toLocaleString() + 'đ' : '') +
+            '</div></div>' +
+          (pct <= 15 ? '<span style="font-size:11px;color:#6b7280;">' + Math.round(s.cost_vnd).toLocaleString() + 'đ</span>' : '') +
+        '</div>';
+      }
+      barHtml += '</div>';
+      chartDiv.innerHTML = barHtml;
+    }
+    // Table
+    if (stats.length > 0) {
+      var tHtml = '<table style="width:100%;border-collapse:collapse;font-size:13px;">' +
+        '<thead><tr style="background:#f9fafb;border-bottom:2px solid #e5e7eb;">' +
+        '<th style="padding:10px 8px;text-align:left;">#</th>' +
+        '<th style="padding:10px 8px;text-align:left;">Nhân viên</th>' +
+        '<th style="padding:10px 8px;text-align:center;">Số lần hỏi</th>' +
+        '<th style="padding:10px 8px;text-align:right;">Input tokens</th>' +
+        '<th style="padding:10px 8px;text-align:right;">Output tokens</th>' +
+        '<th style="padding:10px 8px;text-align:right;">Tổng token</th>' +
+        '<th style="padding:10px 8px;text-align:right;">USD</th>' +
+        '<th style="padding:10px 8px;text-align:right;">VND</th>' +
+        '<th style="padding:10px 8px;text-align:center;">Lần đầu</th>' +
+        '<th style="padding:10px 8px;text-align:center;">Lần cuối</th>' +
+        '</tr></thead><tbody>';
+      for (var j = 0; j < stats.length; j++) {
+        var r = stats[j];
+        var bg = j % 2 === 0 ? 'white' : '#f9fafb';
+        tHtml += '<tr style="background:' + bg + ';border-bottom:1px solid #e5e7eb;">' +
+          '<td style="padding:8px;">' + (j+1) + '</td>' +
+          '<td style="padding:8px;font-weight:500;">' + escapeHtml(r.employee_name) + '</td>' +
+          '<td style="padding:8px;text-align:center;">' + r.count + '</td>' +
+          '<td style="padding:8px;text-align:right;">' + (r.total_input || 0).toLocaleString() + '</td>' +
+          '<td style="padding:8px;text-align:right;">' + (r.total_output || 0).toLocaleString() + '</td>' +
+          '<td style="padding:8px;text-align:right;font-weight:600;">' + (r.total_tokens || 0).toLocaleString() + '</td>' +
+          '<td style="padding:8px;text-align:right;color:#059669;">$' + (r.cost_usd || 0).toFixed(4) + '</td>' +
+          '<td style="padding:8px;text-align:right;color:#dc2626;font-weight:600;">' + Math.round(r.cost_vnd || 0).toLocaleString() + 'đ</td>' +
+          '<td style="padding:8px;text-align:center;font-size:12px;">' + escapeHtml((r.first_ask || '').slice(0,10)) + '</td>' +
+          '<td style="padding:8px;text-align:center;font-size:12px;">' + escapeHtml((r.last_ask || '').slice(0,10)) + '</td>' +
+          '</tr>';
+      }
+      tHtml += '</tbody></table>';
+      tableDiv.innerHTML = tHtml;
+    } else {
+      tableDiv.innerHTML = '<div class="empty">Không có dữ liệu trong khoảng thời gian này.</div>';
+    }
+  } catch (err) {
+    summaryDiv.innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+// === USERS ===
+async function loadUsers() {
+  try { var data = await apiCall('/api/admin/users'); renderUsers(data.items || []); }
+  catch (err) { document.getElementById('usersList').innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>'; }
+}
+function renderUsers(items) {
+  var div = document.getElementById('usersList');
+  if (!items.length) { div.innerHTML = '<div class="empty">Chưa có người dùng</div>'; return; }
+  div.innerHTML = items.map(function(u) {
+    var roleBadge = u.role === 'admin' ? '<span class="badge badge-ai">Admin</span>' : '<span class="badge badge-a">NV</span>';
+    var otpBadge = u.otp_enabled ? '<span class="badge badge-topic">🔐 OTP</span>' : '<span class="muted" style="font-size:11px;">Chưa OTP</span>';
+    var actions = '';
+    if (u.username !== 'admin') actions += '<button class="btn btn-danger btn-sm" onclick="deleteUser(' + u.id + ',\'' + escapeHtml(u.username) + '\')">🗑️</button> ';
+    if (!u.otp_enabled) actions += '<button class="btn btn-secondary btn-sm" onclick="setupOtp(' + u.id + ',\'' + escapeHtml(u.username) + '\')">🔐 Bật OTP</button>';
+    else actions += '<button class="btn btn-secondary btn-sm" onclick="disableOtp(' + u.id + ')">❌ Tắt OTP</button>';
+    return '<div class="user-row"><div style="flex:1;"><b>' + escapeHtml(u.display_name || u.username) + '</b> <span class="muted">(@' + escapeHtml(u.username) + ')</span></div><div>' + roleBadge + ' ' + otpBadge + '</div><div>' + actions + '</div></div>';
+  }).join('');
+}
+async function createUser() {
+  var un = document.getElementById('newUsername').value.trim();
+  var dn = document.getElementById('newDisplayName').value.trim();
+  var pw = document.getElementById('newPassword').value.trim();
+  var role = document.getElementById('newRole').value;
+  if (!un || !pw) { alert('Nhập tên đăng nhập và mật khẩu'); return; }
+  try {
+    var data = await apiCall('/api/admin/users', { method:'POST', body:JSON.stringify({username:un,password:pw,role:role,displayName:dn||un}) });
+    document.getElementById('newUsername').value = ''; document.getElementById('newDisplayName').value = ''; document.getElementById('newPassword').value = '';
+    renderUsers(data.items || []);
+  } catch (err) { alert('Lỗi: ' + err.message); }
+}
+async function deleteUser(id, username) {
+  if (!confirm('Xoá user @' + username + '?')) return;
+  try { var data = await apiCall('/api/admin/users/' + id, { method:'DELETE' }); renderUsers(data.items || []); } catch (err) { alert('Lỗi: ' + err.message); }
+}
+async function setupOtp(userId, username) {
+  try { var data = await apiCall('/api/admin/otp/setup', { method:'POST', body:JSON.stringify({userId:userId}) }); showOtpModal(userId, username, data.secret, data.uri); }
+  catch (err) { alert('Lỗi: ' + err.message); }
+}
+function showOtpModal(userId, username, secret, uri) {
+  var old = document.getElementById('otpOverlay'); if (old) old.remove();
+  var overlay = document.createElement('div'); overlay.id = 'otpOverlay'; overlay.className = 'otp-overlay';
+  overlay.innerHTML = '<div class="otp-modal"><h3>🔐 Bật OTP cho @' + escapeHtml(username) + '</h3><p class="muted">Quét mã QR bằng Google Authenticator:</p><div class="qr-wrap" id="otpQrCode"></div><p class="muted" style="margin:8px 0 4px;font-size:12px;">Hoặc nhập thủ công Secret:</p><div class="secret-text">' + escapeHtml(secret) + '</div><p class="muted" style="margin-top:14px;">Nhập mã 6 số từ app để xác nhận:</p><input type="text" id="otpConfirmCode" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="000000"><div id="otpConfirmErr" style="color:#dc2626;font-size:13px;min-height:20px;"></div><div class="btn-row"><button class="btn btn-secondary" onclick="closeOtpModal()">Huỷ</button><button class="btn btn-success" id="btnConfirmOtp" onclick="confirmOtp(' + userId + ',\'' + secret.replace(/'/g,"\\'") + '\')">✅ Xác nhận</button></div></div>';
+  document.body.appendChild(overlay);
+  try { new QRCode(document.getElementById('otpQrCode'), { text: uri, width: 200, height: 200, colorDark: '#1f2937', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M }); }
+  catch(e) { document.getElementById('otpQrCode').innerHTML = '<div class="muted">Không tạo được QR.</div>'; }
+  setTimeout(function() { document.getElementById('otpConfirmCode').focus(); }, 200);
+}
+function closeOtpModal() { var el = document.getElementById('otpOverlay'); if (el) el.remove(); }
+async function confirmOtp(userId, secret) {
+  var code = (document.getElementById('otpConfirmCode').value || '').trim();
+  var errDiv = document.getElementById('otpConfirmErr');
+  var btn = document.getElementById('btnConfirmOtp');
+  if (!code || code.length < 6) { errDiv.textContent = 'Nhập đủ 6 số'; return; }
+  btn.disabled = true; btn.textContent = '⏳...';
+  try { await apiCall('/api/admin/otp/confirm', { method:'POST', body:JSON.stringify({userId:userId,secret:secret,code:code}) }); closeOtpModal(); _otpEnabledCache = null; alert('✅ Đã bật OTP thành công!'); loadUsers(); }
+  catch (err) { errDiv.textContent = '❌ ' + err.message; btn.disabled = false; btn.textContent = '✅ Xác nhận'; }
+}
+async function disableOtp(userId) {
+  if (!confirm('Tắt OTP cho user này?')) return;
+  try { await apiCall('/api/admin/otp/disable', { method:'POST', body:JSON.stringify({userId:userId}) }); _otpEnabledCache = null; loadUsers(); } catch (err) { alert('Lỗi: ' + err.message); }
+}
+async function doChangePassword() {
+  var oldPw = document.getElementById('oldPwInput').value.trim();
+  var newPw = document.getElementById('newPwInput').value.trim();
+  var resultDiv = document.getElementById('changePwResult');
+  resultDiv.classList.add('hidden');
+  if (!oldPw || !newPw) { alert('Nhập đầy đủ mật khẩu cũ và mới'); return; }
+  try {
+    await apiCall('/api/admin/change-password', { method:'PUT', body:JSON.stringify({oldPassword:oldPw,newPassword:newPw}) });
+    resultDiv.className = 'result-box success'; resultDiv.textContent = '✅ Đổi mật khẩu thành công!'; resultDiv.classList.remove('hidden');
+    document.getElementById('oldPwInput').value = ''; document.getElementById('newPwInput').value = '';
+  } catch (err) { resultDiv.className='result-box error'; resultDiv.textContent='❌ ' + err.message; resultDiv.classList.remove('hidden'); }
+}
+
+// === SETTINGS ===
+async function loadSettings() {
+  try {
+    var data = await apiCall('/api/admin/settings');
+    allProviders = data.availableProviders || [];
+    var provSelect = document.getElementById('settingProvider');
+    provSelect.innerHTML = '';
+    allProviders.forEach(function(p) { var opt = document.createElement('option'); opt.value = p.id; opt.textContent = p.label; if (p.id === data.provider) opt.selected = true; provSelect.appendChild(opt); });
+    onProviderChange(data.model);
+    document.getElementById('currentKeyDisplay').textContent = data.apiKeyMasked || '(chưa cấu hình)';
+    document.getElementById('settingApiKey').value = '';
+    document.getElementById('currentTgToken').textContent = data.telegramBotToken || '(chưa cấu hình)';
+    document.getElementById('settingTgBotToken').value = '';
+    document.getElementById('settingsResult').classList.add('hidden');
+    renderTgRecipients(data.telegramRecipients || []);
+  } catch (err) { document.getElementById('currentKeyDisplay').textContent = 'Lỗi: ' + err.message; }
+}
+function onProviderChange(selectedModel) {
+  var prov = document.getElementById('settingProvider').value;
+  var modelSelect = document.getElementById('settingModel');
+  modelSelect.innerHTML = '';
+  var provData = allProviders.find(function(p) { return p.id === prov; });
+  if (!provData) return;
+  provData.models.forEach(function(m) { var opt = document.createElement('option'); opt.value = m.id; opt.textContent = m.label; if (m.id === selectedModel) opt.selected = true; modelSelect.appendChild(opt); });
+}
+async function doSaveSettings() {
+  var provider = document.getElementById('settingProvider').value;
+  var model = document.getElementById('settingModel').value;
+  var apiKey = document.getElementById('settingApiKey').value.trim();
+  var resultDiv = document.getElementById('settingsResult');
+  resultDiv.classList.add('hidden');
+  var payload = {};
+  if (provider) payload.provider = provider;
+  if (model) payload.model = model;
+  if (apiKey) payload.apiKey = apiKey;
+  try {
+    var data = await apiCall('/api/admin/settings', { method:'PUT', body:JSON.stringify(payload) });
+    resultDiv.className = 'result-box success'; resultDiv.textContent = '\u2705 \u0110\u00e3 l\u01b0u! Provider: ' + data.provider + ' \u00b7 Model: ' + data.model; resultDiv.classList.remove('hidden');
+    document.getElementById('settingApiKey').value = ''; loadAll(); setTimeout(function() { loadSettings(); }, 500);
+  } catch (err) { resultDiv.className='result-box error'; resultDiv.textContent='\u274c ' + err.message; resultDiv.classList.remove('hidden'); }
+}
+async function doSaveTgToken() {
+  var token = document.getElementById('settingTgBotToken').value.trim();
+  var resultDiv = document.getElementById('tgTokenResult');
+  resultDiv.classList.add('hidden');
+  if (!token) { alert('Nh\u1eadp Bot Token'); return; }
+  try { await apiCall('/api/admin/settings', { method:'PUT', body:JSON.stringify({telegramBotToken:token}) }); resultDiv.className = 'result-box success'; resultDiv.textContent = '\u2705 \u0110\u00e3 l\u01b0u Bot Token!'; resultDiv.classList.remove('hidden'); document.getElementById('settingTgBotToken').value = ''; setTimeout(function() { loadSettings(); }, 500); }
+  catch (err) { resultDiv.className='result-box error'; resultDiv.textContent='\u274c ' + err.message; resultDiv.classList.remove('hidden'); }
+}
+function renderTgRecipients(items) {
+  var div = document.getElementById('tgRecipientsList');
+  if (!items.length) { div.innerHTML = '<div class="muted">Ch\u01b0a c\u00f3 ng\u01b0\u1eddi nh\u1eadn n\u00e0o</div>'; return; }
+  div.innerHTML = items.map(function(r) {
+    return '<div class="tg-recipient"><span style="flex:1;"><b>' + escapeHtml(r.chat_id) + '</b>' + (r.label ? ' \u2013 ' + escapeHtml(r.label) : '') + '</span><span class="badge ' + (r.enabled ? 'badge-a' : 'badge-pending') + '">' + (r.enabled ? 'B\u1eadt' : 'T\u1eaft') + '</span><button class="btn btn-danger btn-sm" onclick="removeTgRecipient(' + r.id + ')">\u2715</button></div>';
+  }).join('');
+}
+async function addTgRecipient() {
+  var chatId = document.getElementById('newTgChatId').value.trim();
+  var label = document.getElementById('newTgLabel').value.trim();
+  if (!chatId) { alert('Nh\u1eadp Chat ID'); return; }
+  try { var data = await apiCall('/api/admin/telegram-recipients', { method:'POST', body:JSON.stringify({chatId:chatId,label:label}) }); document.getElementById('newTgChatId').value = ''; document.getElementById('newTgLabel').value = ''; renderTgRecipients(data.items || []); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+async function removeTgRecipient(id) {
+  if (!confirm('Xo\u00e1 ng\u01b0\u1eddi nh\u1eadn n\u00e0y?')) return;
+  try { var data = await apiCall('/api/admin/telegram-recipients/' + id, { method:'DELETE' }); renderTgRecipients(data.items || []); } catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+
+// === KNOWLEDGE ===
+var knowledgeCache = [];
+async function loadKnowledge() {
+  var div = document.getElementById('knowledgeList');
+  var countDiv = document.getElementById('knowledgeCount');
+  div.innerHTML = '<div class="muted">\u0110ang t\u1ea3i...</div>';
+  try { var data = await apiCall('/api/admin/prompts'); knowledgeCache = data.items || []; countDiv.textContent = knowledgeCache.length + ' m\u1ee5c ki\u1ebfn th\u1ee9c'; renderKnowledge(knowledgeCache); }
+  catch (err) { div.innerHTML = '<div class="empty">L\u1ed7i: ' + escapeHtml(err.message) + '</div>'; }
+}
+function renderKnowledge(items) {
+  var div = document.getElementById('knowledgeList');
+  if (!items.length) { div.innerHTML = '<div class="empty">Ch\u01b0a c\u00f3 ki\u1ebfn th\u1ee9c n\u00e0o.</div>'; return; }
+  div.innerHTML = items.map(function(item) {
+    var topicBadge = item.topic ? '<span class="badge badge-topic">' + escapeHtml(item.topic) + '</span>' : '<span class="badge" style="background:#f3f4f6;color:#6b7280;">Chung</span>';
+    var shortContent = item.content.length > 200 ? item.content.slice(0, 200) + '...' : item.content;
+    return '<div class="admin-item" id="knowledge-' + item.id + '"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div>' + topicBadge + ' <span class="muted" style="font-size:11px;">ID:' + item.id + ' \u00b7 ' + escapeHtml(item.created_at || '') + '</span></div></div><div class="a-line" style="margin-bottom:10px;">' + escapeHtml(shortContent) + '</div><div class="actions"><button class="btn btn-secondary btn-sm" onclick="editKnowledge(' + item.id + ')">\u270f\ufe0f S\u1eeda</button><button class="btn btn-danger btn-sm" onclick="deleteKnowledge(' + item.id + ')">\ud83d\uddd1\ufe0f Xo\u00e1</button></div></div>';
+  }).join('');
+}
+async function addKnowledge() {
+  var content = document.getElementById('newKnowledgeContent').value.trim();
+  var topic = document.getElementById('newKnowledgeTopic').value;
+  if (!content) { alert('Nh\u1eadp n\u1ed9i dung ki\u1ebfn th\u1ee9c'); return; }
+  try { var data = await apiCall('/api/admin/prompts', { method:'POST', body:JSON.stringify({content:content,topic:topic}) }); document.getElementById('newKnowledgeContent').value = ''; document.getElementById('newKnowledgeTopic').value = ''; knowledgeCache = data.items || []; document.getElementById('knowledgeCount').textContent = knowledgeCache.length + ' m\u1ee5c ki\u1ebfn th\u1ee9c'; renderKnowledge(knowledgeCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+function editKnowledge(id) {
+  var item = knowledgeCache.find(function(k) { return k.id === id; });
+  if (!item) return;
+  var div = document.getElementById('knowledge-' + id);
+  if (!div) return;
+  var topicOptions = ['San pham','Tu van','Tinh huong','Chinh sach','Khuyen mai','Tai lieu dao tao','Khac'];
+  var optHtml = '<option value="">Chung</option>';
+  topicOptions.forEach(function(t) { optHtml += '<option value="' + t + '"' + (item.topic === t ? ' selected' : '') + '>' + t + '</option>'; });
+  div.innerHTML = '<div class="form-group" style="margin-bottom:8px;"><label>Ch\u1ee7 \u0111\u1ec1</label><select id="editTopic_' + id + '" style="width:100%;padding:8px;border:1px solid #d1d5db;border-radius:6px;">' + optHtml + '</select></div><div class="form-group" style="margin-bottom:8px;"><label>N\u1ed9i dung</label><textarea id="editContent_' + id + '" rows="6" style="width:100%;padding:8px;border:1px solid #d1d5db;border-radius:6px;font-family:inherit;font-size:14px;resize:vertical;">' + escapeHtml(item.content) + '</textarea></div><div class="actions"><button class="btn btn-success btn-sm" onclick="saveKnowledge(' + id + ')">\ud83d\udcbe L\u01b0u</button><button class="btn btn-secondary btn-sm" onclick="renderKnowledge(knowledgeCache)">Hu\u1ef7</button></div>';
+}
+async function saveKnowledge(id) {
+  var content = document.getElementById('editContent_' + id).value.trim();
+  var topic = document.getElementById('editTopic_' + id).value;
+  if (!content) { alert('N\u1ed9i dung kh\u00f4ng \u0111\u01b0\u1ee3c tr\u1ed1ng'); return; }
+  try { var data = await apiCall('/api/admin/prompts/' + id, { method:'PUT', body:JSON.stringify({content:content,topic:topic}) }); knowledgeCache = data.items || []; document.getElementById('knowledgeCount').textContent = knowledgeCache.length + ' m\u1ee5c ki\u1ebfn th\u1ee9c'; renderKnowledge(knowledgeCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+async function deleteKnowledge(id) {
+  if (!confirm('Xo\u00e1 ki\u1ebfn th\u1ee9c n\u00e0y?')) return;
+  try { var data = await apiCall('/api/admin/prompts/' + id, { method:'DELETE' }); knowledgeCache = data.items || []; document.getElementById('knowledgeCount').textContent = knowledgeCache.length + ' m\u1ee5c ki\u1ebfn th\u1ee9c'; renderKnowledge(knowledgeCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+
+async function downloadKnowledge() {
+  try {
+    await requireOtpForDownload();
+    var data = await apiCall('/api/admin/export-knowledge');
+    if (data && data.download && data.blob) {
+      var url = URL.createObjectURL(data.blob);
+      var a = document.createElement('a'); a.href = url; a.download = 'knowledge.xlsx'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    }
+  } catch (err) { if (err.message !== '\u0110\u00e3 hu\u1ef7') alert('L\u1ed7i t\u1ea3i Excel: ' + err.message); }
+}
+
+// === EMPLOYEES ===
+var employeesCache = [];
+async function loadEmployees() {
+  var div = document.getElementById('employeesList');
+  var countDiv = document.getElementById('employeeCount');
+  try { var data = await apiCall('/api/admin/employees'); employeesCache = data.items || []; countDiv.textContent = employeesCache.length + ' nh\u00e2n vi\u00ean'; renderEmployees(employeesCache); }
+  catch (err) { div.innerHTML = '<div class="empty">L\u1ed7i: ' + escapeHtml(err.message) + '</div>'; }
+}
+function renderEmployees(items) {
+  var div = document.getElementById('employeesList');
+  if (!items.length) { div.innerHTML = '<div class="empty">Ch\u01b0a c\u00f3 nh\u00e2n vi\u00ean n\u00e0o.</div>'; return; }
+  div.innerHTML = items.map(function(e, i) {
+    var phoneStr = e.phone ? ' <span style="color:#6b7280;font-size:13px;">\ud83d\udcde ' + escapeHtml(e.phone) + '</span>' : '';
+    return '<div class="user-row" id="emp-row-' + e.id + '"><div style="flex:1;font-size:15px;"><b>' + (i+1) + '.</b> ' + escapeHtml(e.full_name) + phoneStr + '</div><span class="muted" style="font-size:12px;">' + escapeHtml(e.created_at || '') + '</span><div style="display:flex;gap:4px;"><button class="btn btn-secondary btn-sm" onclick="editEmployee(' + e.id + ')">\u270f\ufe0f</button><button class="btn btn-danger btn-sm" onclick="deleteEmployee(' + e.id + ')">\ud83d\uddd1\ufe0f</button></div></div>';
+  }).join('');
+}
+async function addEmployee() {
+  var input = document.getElementById('newEmployeeName');
+  var phoneInput = document.getElementById('newEmployeePhone');
+  var name = (input.value || '').trim();
+  var phone = (phoneInput.value || '').trim();
+  if (!name || name.length < 2) { alert('Nh\u1eadp h\u1ecd v\u00e0 t\u00ean (\u00edt nh\u1ea5t 2 k\u00fd t\u1ef1)'); input.focus(); return; }
+  try { var data = await apiCall('/api/admin/employees', { method:'POST', body:JSON.stringify({fullName:name, phone:phone}) }); input.value = ''; phoneInput.value = ''; employeesCache = data.items || []; document.getElementById('employeeCount').textContent = employeesCache.length + ' nh\u00e2n vi\u00ean'; renderEmployees(employeesCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+function editEmployee(id) {
+  var emp = employeesCache.find(function(e) { return e.id === id; });
+  if (!emp) return;
+  var row = document.getElementById('emp-row-' + id);
+  if (!row) return;
+  row.innerHTML = '<div style="flex:1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><input type="text" id="editEmpName_' + id + '" value="' + escapeHtml(emp.full_name) + '" placeholder="H\u1ecd v\u00e0 t\u00ean" style="flex:2;min-width:150px;padding:8px;border:2px solid #3b82f6;border-radius:6px;font-size:14px;"><input type="text" id="editEmpPhone_' + id + '" value="' + escapeHtml(emp.phone || '') + '" placeholder="S\u0110T" style="flex:1;min-width:110px;padding:8px;border:2px solid #3b82f6;border-radius:6px;font-size:14px;"><button class="btn btn-success btn-sm" onclick="saveEmployee(' + id + ')">\ud83d\udcbe</button><button class="btn btn-secondary btn-sm" onclick="renderEmployees(employeesCache)">\u2715</button></div>';
+  setTimeout(function() { var inp = document.getElementById('editEmpName_' + id); if (inp) inp.focus(); }, 100);
+}
+async function saveEmployee(id) {
+  var input = document.getElementById('editEmpName_' + id);
+  var phoneInput = document.getElementById('editEmpPhone_' + id);
+  var name = input ? input.value.trim() : '';
+  var phone = phoneInput ? phoneInput.value.trim() : '';
+  if (!name || name.length < 2) { alert('H\u1ecd t\u00ean ph\u1ea3i c\u00f3 \u00edt nh\u1ea5t 2 k\u00fd t\u1ef1'); return; }
+  try { var data = await apiCall('/api/admin/employees/' + id, { method:'PUT', body:JSON.stringify({fullName:name, phone:phone}) }); employeesCache = data.items || []; document.getElementById('employeeCount').textContent = employeesCache.length + ' nh\u00e2n vi\u00ean'; renderEmployees(employeesCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+async function deleteEmployee(id) {
+  var emp = employeesCache.find(function(e) { return e.id === id; });
+  if (!confirm('Xo\u00e1 nh\u00e2n vi\u00ean "' + (emp ? emp.full_name : '') + '"?')) return;
+  try { var data = await apiCall('/api/admin/employees/' + id, { method:'DELETE' }); employeesCache = data.items || []; document.getElementById('employeeCount').textContent = employeesCache.length + ' nh\u00e2n vi\u00ean'; renderEmployees(employeesCache); }
+  catch (err) { alert('L\u1ed7i: ' + err.message); }
+}
+
+document.getElementById('newEmployeeName').addEventListener('keydown', function(e) { if (e.key === 'Enter') addEmployee(); });
+checkAuth();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+data/qa.db
+data/qa.db-wal
+data/qa.db-shm
+data/qa.db-journal
+.env
+.DS_Store
+*.log
+Thumbs.db
