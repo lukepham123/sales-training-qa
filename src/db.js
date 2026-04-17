@@ -89,6 +89,7 @@ function getStats() {
   var empQs = db.prepare("SELECT COUNT(*) AS c FROM employee_questions").get().c;
   return {
     total: total, approved: approved, pending: pending,
+    a: sourceA, bApproved: sourceB,
     sourceA: sourceA, sourceB: sourceB,
     aiCalls: aiCalls,
     totalInputTokens: tokensRow.ti, totalOutputTokens: tokensRow.to2,
