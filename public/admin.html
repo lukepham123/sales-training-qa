@@ -134,14 +134,14 @@
 
   <!-- Chờ duyệt -->
   <div class="tab-panel active" id="panel-pending">
-    <div class="search-filter"><input id="searchPending" placeholder="🔍 Tìm câu hỏi chờ duyệt..." oninput="filterPending()" autocomplete="nope" data-form-type="other"></div>
+    <div class="search-filter"><input id="searchPending" placeholder="🔍 Tìm 10 câu hỏi liên quan nhất..." oninput="filterPending()" autocomplete="nope" data-form-type="other"></div>
     <div id="pendingList" class="admin-list"></div>
   </div>
 
   <!-- Bộ A (đã duyệt) -->
   <div class="tab-panel" id="panel-approvedA">
     <div class="filters" id="topicFiltersA"></div>
-    <div class="search-filter"><input id="searchApprovedA" placeholder="🔍 Tìm câu hỏi Bộ A..." oninput="filterApprovedSource('A')" autocomplete="nope" data-form-type="other"></div>
+    <div class="search-filter"><input id="searchApprovedA" placeholder="🔍 Tìm 10 câu hỏi liên quan nhất trong Bộ A..." oninput="filterApprovedSource('A')" autocomplete="nope" data-form-type="other"></div>
     <div class="section-box" style="margin-bottom:16px;">
       <h3>📂 Chỉnh chủ đề hàng loạt bằng Excel</h3>
       <p class="muted" style="margin-top:0;">Tải file mẫu chứa danh sách câu hỏi Bộ A, chỉnh cột "Chủ đề" rồi import lại.</p>
@@ -160,7 +160,7 @@
   <!-- Bộ B (đã duyệt) -->
   <div class="tab-panel" id="panel-approvedB">
     <div class="filters" id="topicFiltersB"></div>
-    <div class="search-filter"><input id="searchApprovedB" placeholder="🔍 Tìm câu hỏi Bộ B..." oninput="filterApprovedSource('B')" autocomplete="nope" data-form-type="other"></div>
+    <div class="search-filter"><input id="searchApprovedB" placeholder="🔍 Tìm 10 câu hỏi liên quan nhất trong Bộ B..." oninput="filterApprovedSource('B')" autocomplete="nope" data-form-type="other"></div>
     <div style="margin-bottom:12px;"><button class="btn btn-success btn-sm" onclick="downloadApprovedExcel('B')">📥 Tải Excel Bộ B</button></div>
     <div id="approvedListB" class="admin-list"></div>
   </div>
@@ -189,21 +189,36 @@
         <div class="chat-messages" id="chatMessages">
           <div class="chat-msg bot"><div><div class="bubble">Xin chào! Tôi là AI Agent của Hello Con.</div><div class="meta">AI Agent</div></div></div>
         </div>
+        <div id="chatAttachPreview" style="display:none;padding:8px 12px;background:#fffbeb;border:1px solid #f59e0b;border-radius:8px 8px 0 0;font-size:13px;"></div>
         <div class="chat-input-row">
-          <input type="text" id="chatInput" placeholder="Nhập lệnh hoặc câu hỏi..." onkeydown="if(event.key==='Enter')sendChat()">
+          <label title="Đính kèm ảnh" style="cursor:pointer;display:flex;align-items:center;padding:8px;border-radius:8px;border:2px solid #e5e7eb;background:white;">
+            🖼️<input type="file" id="chatImageFile" accept="image/*" style="display:none;" onchange="onChatFileSelect(this,'image')">
+          </label>
+          <label title="Đính kèm file văn bản" style="cursor:pointer;display:flex;align-items:center;padding:8px;border-radius:8px;border:2px solid #e5e7eb;background:white;">
+            📎<input type="file" id="chatDocFile" accept=".txt,.csv,.json,.md,.log" style="display:none;" onchange="onChatFileSelect(this,'file')">
+          </label>
+          <input type="text" id="chatInput" placeholder="Nhập lệnh hoặc câu hỏi..." onkeydown="if(event.key==='Enter')sendChat()" style="flex:1;">
           <button class="btn btn-primary" onclick="sendChat()">Gửi</button>
         </div>
       </div>
     </div>
     <div class="section-box" style="margin-top:16px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
         <h3 style="margin:0;">📋 Danh sách dặn dò AI</h3>
-        <div style="display:flex;gap:6px;">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          <label class="muted" style="font-size:13px;">Số dòng/trang:</label>
+          <select id="reminderPageSize" onchange="reminderPageSize=parseInt(this.value);reminderPage=1;renderRemindersPage();" style="padding:4px 8px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
           <button class="btn btn-secondary btn-sm" onclick="loadReminders()">🔄 Làm mới</button>
           <button class="btn btn-secondary btn-sm" onclick="downloadReminders()">📥 Tải Excel</button>
         </div>
       </div>
       <div id="remindersList"><div class="muted">Đang tải...</div></div>
+      <div id="remindersPagination" style="display:flex;gap:6px;justify-content:center;align-items:center;margin-top:12px;flex-wrap:wrap;"></div>
     </div>
   </div>
 
@@ -501,7 +516,7 @@ function filterPending() {
   var q = document.getElementById('searchPending').value.trim();
   if (!q) { searchTokens = []; renderPending(pendingCache); return; }
   searchTokens = q.toLowerCase().split(/\s+/);
-  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'pending',topK:50}) })
+  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'pending',topK:10}) })
     .then(function(data) {
       searchTokens = data.tokens || [];
       renderPending(data.results || [], true);
@@ -642,7 +657,7 @@ function filterApprovedSource(source) {
   var cache = source === 'A' ? approvedCacheA : approvedCacheB;
   var q = document.getElementById(inputId).value.trim();
   if (!q) { renderApprovedSource(source, cache); return; }
-  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'approved',topK:50}) })
+  apiCall('/api/search', { method:'POST', body:JSON.stringify({query:q,status:'approved',topK:10}) })
     .then(function(data) {
       searchTokens = data.tokens || [];
       var filtered = (data.results || []).filter(function(r) { return r.source === source; });
@@ -829,17 +844,68 @@ async function downloadApprovedExcel(source) {
 
 // === CHAT ===
 var chatHistory = [];
+var chatAttachments = [];
+function onChatFileSelect(input, type) {
+  var file = input.files && input.files[0];
+  if (!file) return;
+  var preview = document.getElementById('chatAttachPreview');
+  if (type === 'image') {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var base64 = reader.result.split(',')[1];
+      var mediaType = file.type || 'image/jpeg';
+      chatAttachments.push({ type: 'image', name: file.name, data: base64, mediaType: mediaType });
+      preview.style.display = '';
+      preview.innerHTML = chatAttachments.map(function(a, i) {
+        var icon = a.type === 'image' ? '🖼️' : '📎';
+        return '<span style="display:inline-flex;align-items:center;gap:4px;background:#fef3c7;padding:2px 8px;border-radius:6px;margin:2px;">' + icon + ' ' + escapeHtml(a.name) + ' <span style="cursor:pointer;color:#dc2626;" onclick="removeChatAttach(' + i + ')">✕</span></span>';
+      }).join(' ');
+    };
+    reader.readAsDataURL(file);
+  } else {
+    var reader2 = new FileReader();
+    reader2.onload = function() {
+      chatAttachments.push({ type: 'file', name: file.name, text: reader2.result.slice(0, 10000) });
+      preview.style.display = '';
+      preview.innerHTML = chatAttachments.map(function(a, i) {
+        var icon = a.type === 'image' ? '🖼️' : '📎';
+        return '<span style="display:inline-flex;align-items:center;gap:4px;background:#fef3c7;padding:2px 8px;border-radius:6px;margin:2px;">' + icon + ' ' + escapeHtml(a.name) + ' <span style="cursor:pointer;color:#dc2626;" onclick="removeChatAttach(' + i + ')">✕</span></span>';
+      }).join(' ');
+    };
+    reader2.readAsText(file);
+  }
+  input.value = '';
+}
+function removeChatAttach(idx) {
+  chatAttachments.splice(idx, 1);
+  var preview = document.getElementById('chatAttachPreview');
+  if (chatAttachments.length === 0) { preview.style.display = 'none'; preview.innerHTML = ''; return; }
+  preview.innerHTML = chatAttachments.map(function(a, i) {
+    var icon = a.type === 'image' ? '🖼️' : '📎';
+    return '<span style="display:inline-flex;align-items:center;gap:4px;background:#fef3c7;padding:2px 8px;border-radius:6px;margin:2px;">' + icon + ' ' + escapeHtml(a.name) + ' <span style="cursor:pointer;color:#dc2626;" onclick="removeChatAttach(' + i + ')">✕</span></span>';
+  }).join(' ');
+}
 async function sendChat() {
   var input = document.getElementById('chatInput');
   var message = input.value.trim();
-  if (!message) return;
+  if (!message && chatAttachments.length === 0) return;
   input.value = '';
   var md = document.getElementById('chatMessages');
-  md.innerHTML += '<div class="chat-msg user"><div><div class="bubble">' + escapeHtml(message) + '</div><div class="meta">Bạn</div></div></div>';
+  var attachHtml = chatAttachments.map(function(a) {
+    if (a.type === 'image') return '<div style="margin-top:6px;"><img src="data:' + (a.mediaType||'image/jpeg') + ';base64,' + a.data.slice(0,100) + '..." style="max-width:120px;max-height:80px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);" alt="' + escapeHtml(a.name) + '"><div style="font-size:11px;opacity:0.8;">🖼️ ' + escapeHtml(a.name) + '</div></div>';
+    return '<div style="margin-top:4px;font-size:12px;opacity:0.8;">📎 ' + escapeHtml(a.name) + '</div>';
+  }).join('');
+  md.innerHTML += '<div class="chat-msg user"><div><div class="bubble">' + escapeHtml(message) + attachHtml + '</div><div class="meta">Bạn</div></div></div>';
   md.innerHTML += '<div class="chat-msg bot" id="chatLoading"><div><div class="bubble">Đang suy nghĩ... <span class="loader purple"></span></div></div></div>';
   md.scrollTop = md.scrollHeight;
+  var sendAttachments = chatAttachments.slice();
+  chatAttachments = [];
+  document.getElementById('chatAttachPreview').style.display = 'none';
+  document.getElementById('chatAttachPreview').innerHTML = '';
   try {
-    var data = await apiCall('/api/admin/chat', { method:'POST', body:JSON.stringify({message:message,history:chatHistory}) });
+    var payload = {message:message,history:chatHistory};
+    if (sendAttachments.length > 0) payload.attachments = sendAttachments;
+    var data = await apiCall('/api/admin/chat', { method:'POST', body:JSON.stringify(payload) });
     var el = document.getElementById('chatLoading'); if (el) el.remove();
     chatHistory.push({role:'user',content:message}); chatHistory.push({role:'assistant',content:data.reply});
     if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
@@ -858,25 +924,82 @@ async function sendChat() {
 }
 
 // === REMINDERS (DAN DO) ===
+var remindersCache = [];
+var reminderPage = 1;
+var reminderPageSize = 10;
 async function loadReminders() {
   var div = document.getElementById('remindersList');
   div.innerHTML = '<div class="muted">Đang tải...</div>';
   try {
     var data = await apiCall('/api/admin/reminders');
-    var items = data.items || [];
-    if (!items.length) { div.innerHTML = '<div class="empty">Chưa có dặn dò nào. Hãy chat với AI và bảo "lưu lại", "hãy nhớ..." để tạo dặn dò.</div>'; return; }
-    div.innerHTML = items.map(function(r, i) {
-      var topicBadge = r.topic ? '<span class="badge badge-topic">' + escapeHtml(r.topic) + '</span> ' : '';
-      return '<div class="user-row" style="align-items:flex-start;">' +
-        '<div style="flex:1;"><b>' + (i+1) + '.</b> ' + topicBadge + escapeHtml(r.content.length > 200 ? r.content.slice(0,200) + '...' : r.content) +
-        '<div class="muted" style="font-size:11px;margin-top:4px;">🕒 ' + escapeHtml(r.created_at || '') + '</div></div>' +
-        '<button class="btn btn-danger btn-sm" onclick="deleteReminder(' + r.id + ')">🗑️</button></div>';
-    }).join('');
+    remindersCache = data.items || [];
+    renderRemindersPage();
   } catch (err) { div.innerHTML = '<div class="empty">Lỗi: ' + escapeHtml(err.message) + '</div>'; }
+}
+function renderRemindersPage() {
+  var div = document.getElementById('remindersList');
+  var pagDiv = document.getElementById('remindersPagination');
+  var items = remindersCache;
+  if (!items.length) { div.innerHTML = '<div class="empty">Chưa có dặn dò nào. Hãy chat với AI và bảo "lưu lại", "hãy nhớ..." để tạo dặn dò.</div>'; pagDiv.innerHTML = ''; return; }
+  var totalPages = Math.ceil(items.length / reminderPageSize);
+  if (reminderPage > totalPages) reminderPage = totalPages;
+  if (reminderPage < 1) reminderPage = 1;
+  var start = (reminderPage - 1) * reminderPageSize;
+  var pageItems = items.slice(start, start + reminderPageSize);
+  div.innerHTML = pageItems.map(function(r, i) {
+    var globalIdx = start + i + 1;
+    var topicBadge = r.topic ? '<span class="badge badge-topic">' + escapeHtml(r.topic) + '</span> ' : '';
+    return '<div class="user-row" style="align-items:flex-start;" id="reminder-row-' + r.id + '">' +
+      '<div style="flex:1;"><b>' + globalIdx + '.</b> ' + topicBadge + escapeHtml(r.content.length > 200 ? r.content.slice(0,200) + '...' : r.content) +
+      '<div class="muted" style="font-size:11px;margin-top:4px;">🕒 ' + escapeHtml(r.created_at || '') + '</div></div>' +
+      '<div style="display:flex;gap:4px;"><button class="btn btn-secondary btn-sm" onclick="editReminder(' + r.id + ')">✏️</button>' +
+      '<button class="btn btn-danger btn-sm" onclick="deleteReminder(' + r.id + ')">🗑️</button></div></div>';
+  }).join('');
+  // Pagination
+  if (totalPages > 1) {
+    var pHtml = '';
+    pHtml += '<button class="btn btn-secondary btn-sm" ' + (reminderPage <= 1 ? 'disabled' : '') + ' onclick="reminderPage=1;renderRemindersPage();">⏮</button>';
+    pHtml += '<button class="btn btn-secondary btn-sm" ' + (reminderPage <= 1 ? 'disabled' : '') + ' onclick="reminderPage--;renderRemindersPage();">◀</button>';
+    var startP = Math.max(1, reminderPage - 2);
+    var endP = Math.min(totalPages, reminderPage + 2);
+    for (var p = startP; p <= endP; p++) {
+      pHtml += '<button class="btn btn-sm ' + (p === reminderPage ? 'btn-primary' : 'btn-secondary') + '" onclick="reminderPage=' + p + ';renderRemindersPage();">' + p + '</button>';
+    }
+    pHtml += '<button class="btn btn-secondary btn-sm" ' + (reminderPage >= totalPages ? 'disabled' : '') + ' onclick="reminderPage++;renderRemindersPage();">▶</button>';
+    pHtml += '<button class="btn btn-secondary btn-sm" ' + (reminderPage >= totalPages ? 'disabled' : '') + ' onclick="reminderPage=' + totalPages + ';renderRemindersPage();">⏭</button>';
+    pHtml += '<span class="muted" style="font-size:12px;margin-left:8px;">Trang ' + reminderPage + '/' + totalPages + ' (' + items.length + ' dặn dò)</span>';
+    pagDiv.innerHTML = pHtml;
+  } else {
+    pagDiv.innerHTML = items.length > 0 ? '<span class="muted" style="font-size:12px;">' + items.length + ' dặn dò</span>' : '';
+  }
+}
+function editReminder(id) {
+  var item = remindersCache.find(function(r) { return r.id === id; });
+  if (!item) return;
+  var row = document.getElementById('reminder-row-' + id);
+  if (!row) return;
+  var topicOptions = ['San pham','Tu van','Tinh huong','Chinh sach','Khuyen mai','Khac'];
+  var optHtml = '<option value="">Chung</option>';
+  topicOptions.forEach(function(t) { optHtml += '<option value="' + t + '"' + (item.topic === t ? ' selected' : '') + '>' + t + '</option>'; });
+  row.innerHTML = '<div style="flex:1;padding:10px;background:#fffbeb;border:2px solid #f59e0b;border-radius:8px;">' +
+    '<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center;"><label style="font-size:12px;font-weight:600;color:#92400e;">Chủ đề:</label><select id="editRemTopic_' + id + '" style="padding:6px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;">' + optHtml + '</select></div>' +
+    '<textarea id="editRemContent_' + id + '" rows="4" style="width:100%;padding:8px;border:1px solid #d1d5db;border-radius:8px;font-family:inherit;font-size:14px;resize:vertical;">' + escapeHtml(item.content) + '</textarea>' +
+    '<div style="display:flex;gap:8px;margin-top:8px;"><button class="btn btn-success btn-sm" onclick="saveReminder(' + id + ')">💾 Lưu</button><button class="btn btn-secondary btn-sm" onclick="renderRemindersPage()">✕ Huỷ</button></div></div>';
+  setTimeout(function() { var ta = document.getElementById('editRemContent_' + id); if (ta) ta.focus(); }, 100);
+}
+async function saveReminder(id) {
+  var content = document.getElementById('editRemContent_' + id).value.trim();
+  var topic = document.getElementById('editRemTopic_' + id).value || null;
+  if (!content) { alert('Nội dung không được trống'); return; }
+  try {
+    var data = await apiCall('/api/admin/reminders/' + id, { method:'PUT', body:JSON.stringify({content:content,topic:topic}) });
+    remindersCache = data.items || [];
+    renderRemindersPage();
+  } catch (err) { alert('Lỗi: ' + err.message); }
 }
 async function deleteReminder(id) {
   if (!confirm('Xoá dặn dò này?')) return;
-  try { var data = await apiCall('/api/admin/reminders/' + id, { method:'DELETE' }); loadReminders(); }
+  try { var data = await apiCall('/api/admin/reminders/' + id, { method:'DELETE' }); remindersCache = data.items || []; renderRemindersPage(); }
   catch (err) { alert('Lỗi: ' + err.message); }
 }
 async function downloadReminders() {

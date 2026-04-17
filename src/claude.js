@@ -192,7 +192,7 @@ async function generateQAFromPrompt(promptText) {
   return { pairs: pairs, model: result.model, inputTokens: result.inputTokens, outputTokens: result.outputTokens };
 }
 
-async function chatWithAdmin(userMessage, conversationHistory) {
+async function chatWithAdmin(userMessage, conversationHistory, attachments) {
   var existingPrompts = settings().listPrompts();
   var knowledgeSection = '';
   if (existingPrompts && existingPrompts.length > 0) {
@@ -223,8 +223,24 @@ async function chatWithAdmin(userMessage, conversationHistory) {
     var recent = conversationHistory.slice(-20);
     for (var i = 0; i < recent.length; i++) messages.push({ role: recent[i].role, content: recent[i].content });
   }
-  messages.push({ role: 'user', content: userMessage });
+  // Build user message content with attachments
   var provider = getProvider();
+  var userContent = userMessage;
+  if (attachments && attachments.length > 0 && provider === 'claude') {
+    // Claude supports multimodal content blocks
+    var contentBlocks = [];
+    for (var ai = 0; ai < attachments.length; ai++) {
+      var att = attachments[ai];
+      if (att.type === 'image' && att.data) {
+        var mediaType = att.mediaType || 'image/jpeg';
+        contentBlocks.push({ type: 'image', source: { type: 'base64', media_type: mediaType, data: att.data } });
+      }
+    }
+    if (userMessage) contentBlocks.push({ type: 'text', text: userMessage });
+    if (contentBlocks.length > 0) userContent = contentBlocks;
+  }
+  messages.push({ role: 'user', content: userContent });
+
   var result;
   if (provider === 'claude') {
     result = await callAI(sys, '', { messages: messages, maxTokens: 2048 });

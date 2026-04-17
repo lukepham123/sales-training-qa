@@ -236,6 +236,12 @@ function listReminders() {
 function addReminder(content, topic, promptId) {
   db.prepare("INSERT INTO reminders (content, topic, prompt_id) VALUES (?,?,?)").run(content, topic || null, promptId || null);
 }
+function updateReminder(id, content, topic) {
+  db.prepare("UPDATE reminders SET content=?, topic=? WHERE id=?").run(content, topic || null, id);
+}
+function getReminder(id) {
+  return db.prepare("SELECT * FROM reminders WHERE id=?").get(id);
+}
 function deleteReminder(id) {
   db.prepare("DELETE FROM reminders WHERE id=?").run(id);
 }
@@ -283,5 +289,7 @@ module.exports = {
   deleteEmployee: deleteEmployee,
   listReminders: listReminders,
   addReminder: addReminder,
+  updateReminder: updateReminder,
+  getReminder: getReminder,
   deleteReminder: deleteReminder,
 };

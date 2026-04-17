@@ -163,6 +163,17 @@ function registerAdminRoutes(route, sendJson, requireAdmin, dbApi) {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
     sendJson(res, 200, { items: dbApi.listReminders() });
   });
+  route('PUT', '/api/admin/reminders/:id', async (req, res, ctx) => {
+    if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
+    var id = parseInt(ctx.params.id, 10);
+    var item = dbApi.getReminder(id);
+    if (!item) return sendJson(res, 404, { error: 'Khong tim thay' });
+    var content = ((ctx.body || {}).content || '').trim();
+    var topic = (ctx.body || {}).topic || null;
+    if (!content) return sendJson(res, 400, { error: 'Noi dung khong duoc trong' });
+    dbApi.updateReminder(id, content, topic);
+    sendJson(res, 200, { ok: true, items: dbApi.listReminders() });
+  });
   route('DELETE', '/api/admin/reminders/:id', async (req, res, ctx) => {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
     dbApi.deleteReminder(parseInt(ctx.params.id, 10));
@@ -273,9 +284,22 @@ function registerAdminRoutes(route, sendJson, requireAdmin, dbApi) {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
     var message = ((body || {}).message || '').trim();
     var history = (body || {}).history || [];
-    if (!message) return sendJson(res, 400, { error: 'Thieu noi dung' });
+    var attachments = (body || {}).attachments || [];
+    if (!message && attachments.length === 0) return sendJson(res, 400, { error: 'Thieu noi dung' });
+    // Build message with attachments
+    var fullMessage = message;
+    if (attachments.length > 0) {
+      for (var ai = 0; ai < attachments.length; ai++) {
+        var att = attachments[ai];
+        if (att.type === 'image') {
+          fullMessage += '\n\n[Hình ảnh đính kèm: ' + (att.name || 'image') + ']';
+        } else if (att.type === 'file') {
+          fullMessage += '\n\n[File đính kèm: ' + (att.name || 'file') + ']\nNội dung:\n' + (att.text || '(không đọc được)');
+        }
+      }
+    }
     try {
-      var result = await chatWithAdmin(message, history);
+      var result = await chatWithAdmin(fullMessage, history, attachments);
       var saved = null;
       try {
         // Try to find save_prompt JSON anywhere in reply (first few lines)
@@ -666,28 +690,6 @@ function registerAdminRoutes(route, sendJson, requireAdmin, dbApi) {
     if (!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
     var userId = (body || {}).userId;
     if (!userId) return sendJson(res, 400, { error: 'Thieu userId' });
-    dbApi.disableOtp(userId);
-    sendJson(res, 200, { ok: true });
-  });
-
-  console.log('[admin-routes] Da dang ky xong tat ca routes.');
-}
-
-module.exports = { registerAdminRoutes };
-  // ---------- OTP: check if current user has OTP enabled ----------
-  route('GET', '/api/admin/otp/status', async (req, res) => {
-    if (\!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
-    var token = (req.headers['authorization'] || '').replace('Bearer ', '');
-    var user = token ? dbApi.getUserByToken(token) : null;
-    if (\!user) return sendJson(res, 200, { otpEnabled: false });
-    sendJson(res, 200, { otpEnabled: \!\!(user.otp_enabled && user.otp_secret) });
-  });
-
-  // ---------- OTP: disable ----------
-  route('POST', '/api/admin/otp/disable', async (req, res, { body }) => {
-    if (\!requireAdmin(req)) return sendJson(res, 401, { error: 'Sai mat khau admin' });
-    var userId = (body || {}).userId;
-    if (\!userId) return sendJson(res, 400, { error: 'Thieu userId' });
     dbApi.disableOtp(userId);
     sendJson(res, 200, { ok: true });
   });
