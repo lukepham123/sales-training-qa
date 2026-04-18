@@ -113,12 +113,13 @@ function listEmployeeQuestionsPaged(limit, offset) {
   return db.prepare("SELECT * FROM employee_questions ORDER BY id DESC LIMIT ? OFFSET ?").all(limit, offset);
 }
 function listEmployeeQsFiltered(from, to) {
+  // Use +7 hours to convert UTC stored time to Vietnam timezone for date comparison
   if (from && to) {
-    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at) >= ? AND date(created_at) <= ? ORDER BY id DESC").all(from, to);
+    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at, '+7 hours') >= ? AND date(created_at, '+7 hours') <= ? ORDER BY id DESC").all(from, to);
   } else if (from) {
-    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at) >= ? ORDER BY id DESC").all(from);
+    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at, '+7 hours') >= ? ORDER BY id DESC").all(from);
   } else if (to) {
-    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at) <= ? ORDER BY id DESC").all(to);
+    return db.prepare("SELECT * FROM employee_questions WHERE date(created_at, '+7 hours') <= ? ORDER BY id DESC").all(to);
   }
   return db.prepare("SELECT * FROM employee_questions ORDER BY id DESC").all();
 }
